@@ -155,6 +155,13 @@
     window.addEventListener('resize', resize);
     resize();
 
+    const onanaImg = new Image();
+    let onanaReady = false;
+    onanaImg.onload = () => {
+      onanaReady = true;
+    };
+    onanaImg.src = 'img/onana.png';
+
     function drawField() {
       ctx.clearRect(0, 0, canvas.w, canvas.h);
 
@@ -185,47 +192,41 @@
       ctx.save();
       ctx.translate(x, y + bob);
 
-      ctx.strokeStyle = '#17263a';
-      ctx.lineWidth = 8;
-      ctx.lineCap = 'round';
+      if (onanaReady && onanaImg.naturalWidth) {
+        const imgW = Math.min(640, canvas.w * 0.54);
+        const imgH = imgW * (onanaImg.naturalHeight / onanaImg.naturalWidth);
+        ctx.drawImage(onanaImg, -imgW / 2, -imgH, imgW, imgH);
+      } else {
+        ctx.strokeStyle = '#17263a';
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(-10, 92);
+        ctx.lineTo(-18, 135);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(10, 92);
+        ctx.lineTo(24, 130);
+        ctx.stroke();
+        ctx.fillStyle = '#14233b';
+        ctx.fillRect(-18, 28, 36, 56);
+        ctx.beginPath();
+        ctx.arc(0, 8, 16, 0, Math.PI * 2);
+        ctx.fillStyle = '#f2ccb0';
+        ctx.fill();
+      }
 
-      ctx.beginPath();
-      ctx.moveTo(-10, 92);
-      ctx.lineTo(-18, 135);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(10, 92);
-      ctx.lineTo(24, 130);
-      ctx.stroke();
-
-      ctx.fillStyle = '#14233b';
-      ctx.fillRect(-18, 28, 36, 56);
-
-      ctx.beginPath();
-      ctx.arc(0, 8, 16, 0, Math.PI * 2);
-      ctx.fillStyle = '#f2ccb0';
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(-18, 46);
-      ctx.lineTo(-42, 18 + armSwing * 18);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(18, 46);
-      ctx.lineTo(54, 10 + armSwing * 16);
-      ctx.stroke();
-
-      ctx.translate(54, 10 + armSwing * 16);
-      ctx.rotate(-0.25 + armSwing * 0.18);
+      ctx.translate(240, -110 + armSwing * 12);
+      ctx.rotate(-0.12 + armSwing * 0.08);
       ctx.fillStyle = '#e74c3c';
-      ctx.fillRect(0, -30, 110, 60);
+      ctx.fillRect(0, -36, 150, 72);
       ctx.strokeStyle = '#ffffff';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(0, -30, 110, 60);
+      ctx.lineWidth = 4;
+      ctx.strokeRect(0, -36, 150, 72);
       ctx.fillStyle = '#ffffff';
-      ctx.font = '700 16px Segoe UI';
+      ctx.font = '700 20px Segoe UI';
       ctx.textAlign = 'center';
-      ctx.fillText('BẢO TRÌ', 55, 2);
+      ctx.fillText('BẢO TRÌ', 75, 2);
       ctx.textAlign = 'left';
 
       ctx.restore();
@@ -233,7 +234,7 @@
 
     function animate() {
       drawField();
-      drawOnana(canvas.w * 0.58, canvas.h * 0.72);
+      drawOnana(canvas.w * 0.5, canvas.h * 0.72);
 
       ctx.save();
       ctx.font = '700 32px Segoe UI';
