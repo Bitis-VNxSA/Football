@@ -133,6 +133,8 @@
 
     <div class="info-row">
       <span class="pill">🛠️ Đang tối ưu nội dung</span>
+      <span class="pill">⏰ 10:37</span>
+      <span class="pill">🌙 6:50</span>
       <span class="pill">⚡ Sẽ mở lại sớm</span>
       <span class="pill">🎯 Hỗ trợ học Python tốt hơn</span>
     </div>
@@ -152,31 +154,6 @@
     };
     window.addEventListener('resize', resize);
     resize();
-
-    const state = {
-      ballX: -80,
-      ballY: 0,
-      kick: 0,
-      particles: []
-    };
-
-    function rand(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-
-    function createParticles(x, y) {
-      for (let i = 0; i < 18; i++) {
-        state.particles.push({
-          x,
-          y,
-          vx: rand(-4, 4),
-          vy: rand(-4, 4),
-          life: rand(20, 40),
-          size: rand(2, 4),
-          color: i % 2 === 0 ? '#f1c40f' : '#ffffff'
-        });
-      }
-    }
 
     function drawField() {
       ctx.clearRect(0, 0, canvas.w, canvas.h);
@@ -198,87 +175,80 @@
       ctx.lineTo(canvas.w / 2, canvas.h - 50);
       ctx.stroke();
 
-      ctx.strokeStyle = 'rgba(255,255,255,0.7)';
-      ctx.lineWidth = 4;
-      ctx.strokeRect(canvas.w - 220, 140, 130, 160);
-      ctx.strokeRect(canvas.w - 210, 150, 110, 140);
-
-      ctx.fillStyle = 'rgba(255,255,255,0.12)';
-      ctx.fillRect(40, 50, canvas.w - 80, canvas.h - 100);
+      ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      ctx.fillRect(70, 110, canvas.w - 140, 120);
+      ctx.strokeRect(70, 110, canvas.w - 140, 120);
     }
 
-    function drawBall(x, y) {
+    function drawOnana(x, y) {
+      const t = performance.now() / 1000;
+      const bob = Math.sin(t * 2.4) * 4;
+      const armSwing = Math.sin(t * 2.2) * 0.16;
+
       ctx.save();
-      ctx.translate(x, y);
+      ctx.translate(x, y + bob);
+
+      ctx.strokeStyle = '#1d2433';
+      ctx.lineWidth = 10;
+      ctx.lineCap = 'round';
       ctx.beginPath();
-      ctx.arc(0, 0, 22, 0, Math.PI * 2);
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowBlur = 14;
-      ctx.shadowColor = 'rgba(0,0,0,0.25)';
+      ctx.moveTo(-8, 90);
+      ctx.lineTo(-20, 128);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(10, 90);
+      ctx.lineTo(20, 128);
+      ctx.stroke();
+
+      ctx.fillStyle = '#14233b';
+      ctx.fillRect(-22, 18, 44, 60);
+      ctx.fillStyle = '#f1b84b';
+      ctx.fillRect(-16, 35, 32, 14);
+
+      ctx.beginPath();
+      ctx.arc(0, -4, 18, 0, Math.PI * 2);
+      ctx.fillStyle = '#f2ccb0';
       ctx.fill();
-      ctx.shadowBlur = 0;
 
-      ctx.strokeStyle = '#000';
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#14233b';
+      ctx.lineWidth = 10;
       ctx.beginPath();
-      ctx.arc(0, 0, 22, 0, Math.PI * 2);
+      ctx.moveTo(-18, 42);
+      ctx.lineTo(-44, 18 + armSwing * 18);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(18, 42);
+      ctx.lineTo(60, 8 + armSwing * 16);
       ctx.stroke();
 
-      ctx.strokeStyle = '#c0392b';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(0, 0, 18, Math.PI * 0.2, Math.PI * 0.8);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(0, 0, 18, Math.PI * 1.2, Math.PI * 1.8);
-      ctx.stroke();
+      ctx.translate(60, 8 + armSwing * 16);
+      ctx.rotate(-0.25 + armSwing * 0.18);
+      ctx.fillStyle = '#e74c3c';
+      ctx.fillRect(0, -30, 110, 60);
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(0, -30, 110, 60);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '700 16px Segoe UI';
+      ctx.textAlign = 'center';
+      ctx.fillText('BẢO TRÌ', 55, 2);
+      ctx.textAlign = 'left';
+
       ctx.restore();
     }
 
     function animate() {
       drawField();
-
-      const t = performance.now() / 1000;
-      const swing = Math.sin(t * 3.2) * 10;
-      const progress = (t % 4.2) / 4.2;
-      const targetX = canvas.w * 0.8;
-      const targetY = canvas.h * 0.5 + swing;
-
-      if (progress < 0.6) {
-        state.ballX = -80 + progress * 1.7 * (targetX + 80);
-        state.ballY = 180 + Math.sin(progress * Math.PI * 2.4) * 40;
-      } else {
-        state.ballX = targetX;
-        state.ballY = targetY;
-      }
-
-      if (progress > 0.58 && progress < 0.62) {
-        createParticles(targetX, targetY);
-      }
-
-      state.particles = state.particles.filter(p => p.life > 0);
-      state.particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life -= 1;
-        p.vy += 0.03;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.life / 40;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      });
-
-      drawBall(state.ballX, state.ballY);
+      drawOnana(canvas.w * 0.58, canvas.h * 0.72);
 
       ctx.save();
-      ctx.font = '700 30px Segoe UI';
-      ctx.fillStyle = 'rgba(255,255,255,0.95)';
-      ctx.fillText('ĐANG BẢO TRÌ', 58, 70);
+      ctx.font = '700 32px Segoe UI';
+      ctx.fillStyle = 'rgba(255,255,255,0.97)';
+      ctx.fillText('ONANA ĐANG GIƠ BIỂN BÁO', 50, 78);
       ctx.font = '600 18px Segoe UI';
-      ctx.fillStyle = 'rgba(255,255,255,0.82)';
-      ctx.fillText('Sắp quay lại với những bài tập Python mới!', 58, 102);
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      ctx.fillText('Sắp quay lại với những bài tập Python mới!', 50, 108);
       ctx.restore();
 
       requestAnimationFrame(animate);
