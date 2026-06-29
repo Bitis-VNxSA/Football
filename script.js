@@ -65,7 +65,7 @@ const questionBank = [
     { m: "Thoát vòng lặp lập tức", r: /\bbreak\b/, h: "break", w: "Dùng lệnh break để dừng vòng lặp ngay chưa cần xong." }
 ];
 
-// Fallback trắc nghiệm Module 1 (lấy theo nội dung module1.json)
+// Fallback trắc nghiệm Module 1 (lấy theo nội dung module_1.json)
 const module1McqFallback = [
     { q: "Lệnh nào dùng để in ra màn hình?", opts: ["show()", "print()", "input()", "write()"], ans: 1 },
     { q: "Lệnh nào dùng để nhập dữ liệu từ bàn phím?", opts: ["get()", "scan()", "input()", "read()"], ans: 2 },
@@ -200,6 +200,13 @@ const questionBank4 = [
     { q: "Nested dictionary d = {'a': {'b': 5}}, cách lấy giá trị 5?", opts: ["d['a']['b']", "d['a.b']", "d.get('a.b')", "d['b']['a']"], ans: 0 },
     { q: "Kết quả của sorted({'c':3, 'a':1, 'b':2}) là gì?", opts: ["{'a':1, 'b':2, 'c':3}", "['a', 'b', 'c']", "[1, 2, 3]", "Lỗi"], ans: 1 },
     { q: "Kết quả của [i for i in range(5) if i % 2 != 0] là gì?", opts: ["[0, 2, 4]", "[1, 3]", "[1, 2, 3, 4]", "[0, 1, 2, 3, 4]"], ans: 1 },
+    { q: "Hàm map(lambda x: x * 2, [1, 2, 3]) trong Python trả về kiểu dữ liệu nào?", opts: ["List", "Map object", "Set", "Tuple"], ans: 1 },
+    { q: "Hàm sorted([3, 1, 2]) sẽ trả về kết quả nào?", opts: ["[1, 2, 3]", "[3, 2, 1]", "[2, 1, 3]", "Lỗi"], ans: 0 },
+    { q: "Hàm filter(lambda x: x % 2 == 0, [1, 2, 3, 4]) dùng để làm gì?", opts: ["Tạo một tuple mới", "Lọc các phần tử thỏa mãn điều kiện", "Chuyển đổi kiểu dữ liệu", "Sắp xếp dữ liệu"], ans: 1 },
+    { q: "Biểu thức lambda x: x + 1 có ý nghĩa là gì?", opts: ["Tạo một hàm ẩn danh trả về x + 1", "Tạo một biến x", "Kiểm tra điều kiện x > 1", "Sắp xếp x tăng dần"], ans: 0 },
+    { q: "Đoạn code try: 10 / 0 except ZeroDivisionError: ... dùng để làm gì?", opts: ["Bắt và xử lý lỗi chia cho 0", "Tạo một vòng lặp mới", "In ra số 10", "Xóa biến 10"], ans: 0 },
+    { q: "Trong thư viện math, câu lệnh math.sqrt(25) sẽ trả về giá trị nào?", opts: ["25", "5.0", "12.5", "Lỗi"], ans: 1 },
+    { q: "Để dùng hàm sqrt trong thư viện math, ta cần viết câu lệnh nào?", opts: ["import math", "include math", "using math", "from math import list"], ans: 0 },
 
     // === BÀI CODE ===
     { m: "Tạo list a gồm các số 1, 2, 3, 4", r: /a\s*=\s*\[\s*1\s*,\s*2\s*,\s*3\s*,\s*4\s*\]/, h: "a = [1, 2, 3, 4]", w: "List dùng ngoặc vuông và phần tử ngăn bởi dấu phẩy." },
@@ -471,15 +478,15 @@ function drawChibi(char, rotation = 0, scale = 1, isTrail = false) {
             // Optional: Gloves
             ctx.fillStyle = '#fff';
             rr(-48, -25, 12, 12, 4); rr(36, -25, 12, 12, 4);
-            
+
             // Draw sleeves on the raised arms
             ctx.fillStyle = shirt;
             ctx.save();
-            ctx.translate(-11, 2); ctx.rotate(Math.atan2(-20, -31)); 
+            ctx.translate(-11, 2); ctx.rotate(Math.atan2(-20, -31));
             rr(0, -4, 15, 8, 3);
             ctx.restore();
             ctx.save();
-            ctx.translate(11, 2); ctx.rotate(Math.atan2(-20, 31)); 
+            ctx.translate(11, 2); ctx.rotate(Math.atan2(-20, 31));
             rr(0, -4, 15, 8, 3);
             ctx.restore();
         } else if (state === 'catching') {
@@ -829,7 +836,7 @@ function animateShot(dir, isGoal, cb) {
 
 async function initGame() {
     try {
-        const response = await fetch(`module${selectedModule}.json`);
+        const response = await fetch(`module_${selectedModule}.json`);
         const data = await response.json();
 
         const pickRandom = (arr, count) => [...arr].sort(() => Math.random() - 0.5).slice(0, count);

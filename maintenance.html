@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penalty Master - Bảo trì</title>
+  <style>
+    :root {
+      --bg-1: #07131f;
+      --bg-2: #10324b;
+      --accent: #f1c40f;
+      --accent-2: #e74c3c;
+      --text: #f8fbff;
+      --muted: #aebfd4;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #17486b 0%, var(--bg-1) 45%, #030910 100%);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(241,196,15,0.10), transparent 30%, rgba(231,76,60,0.12));
+      pointer-events: none;
+    }
+
+    .maintenance-card {
+      width: min(96vw, 980px);
+      background: rgba(7, 19, 31, 0.78);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .maintenance-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      border: 1px solid rgba(241,196,15,0.22);
+      pointer-events: none;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: rgba(241,196,15,0.18);
+      color: var(--accent);
+      border: 1px solid rgba(241,196,15,0.3);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 20px;
+      max-width: 680px;
+    }
+
+    .field-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, #1d713f 0%, #2da04f 100%);
+      box-shadow: inset 0 -10px 25px rgba(0,0,0,0.2);
+      margin-top: 14px;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
+      background: linear-gradient(180deg, #288b49 0%, #1f6a3a 100%);
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 700px) {
+      .maintenance-card { padding: 20px; }
+      .info-row { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="maintenance-card">
+    <div class="status-badge">⚽ Bảo trì hệ thống</div>
+    <h1>Website đang được sửa chữa và nâng cấp</h1>
+    <p class="subtitle">Chúng tôi đang cập nhật nội dung và cải thiện trải nghiệm. Xin quay lại sau để tiếp tục chinh phục các module Python nhé!</p>
+
+    <div class="field-wrap">
+      <canvas id="maintenanceCanvas" width="1200" height="675"></canvas>
+    </div>
+
+    <div class="info-row">
+      <span class="pill">🛠️ Đang tối ưu nội dung</span>
+      <span class="pill">⚡ Sẽ mở lại sớm</span>
+      <span class="pill">🎯 Hỗ trợ học Python tốt hơn</span>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('maintenanceCanvas');
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      canvas.w = rect.width;
+      canvas.h = rect.height;
+    };
+    window.addEventListener('resize', resize);
+    resize();
+
+    const state = {
+      ballX: -80,
+      ballY: 0,
+      kick: 0,
+      particles: []
+    };
+
+    function rand(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createParticles(x, y) {
+      for (let i = 0; i < 18; i++) {
+        state.particles.push({
+          x,
+          y,
+          vx: rand(-4, 4),
+          vy: rand(-4, 4),
+          life: rand(20, 40),
+          size: rand(2, 4),
+          color: i % 2 === 0 ? '#f1c40f' : '#ffffff'
+        });
+      }
+    }
+
+    function drawField() {
+      ctx.clearRect(0, 0, canvas.w, canvas.h);
+
+      const grad = ctx.createLinearGradient(0, 0, 0, canvas.h);
+      grad.addColorStop(0, '#1c7f42');
+      grad.addColorStop(1, '#0f5d2f');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.w, canvas.h);
+
+      ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(40, 50, canvas.w - 80, canvas.h - 100);
+      ctx.beginPath();
+      ctx.arc(canvas.w / 2, canvas.h / 2 + 20, 70, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(canvas.w / 2, 50);
+      ctx.lineTo(canvas.w / 2, canvas.h - 50);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(canvas.w - 220, 140, 130, 160);
+      ctx.strokeRect(canvas.w - 210, 150, 110, 140);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.12)';
+      ctx.fillRect(40, 50, canvas.w - 80, canvas.h - 100);
+    }
+
+    function drawBall(x, y) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.beginPath();
+      ctx.arc(0, 0, 22, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowBlur = 14;
+      ctx.shadowColor = 'rgba(0,0,0,0.25)';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, 22, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#c0392b';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, 18, Math.PI * 0.2, Math.PI * 0.8);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, 18, Math.PI * 1.2, Math.PI * 1.8);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function animate() {
+      drawField();
+
+      const t = performance.now() / 1000;
+      const swing = Math.sin(t * 3.2) * 10;
+      const progress = (t % 4.2) / 4.2;
+      const targetX = canvas.w * 0.8;
+      const targetY = canvas.h * 0.5 + swing;
+
+      if (progress < 0.6) {
+        state.ballX = -80 + progress * 1.7 * (targetX + 80);
+        state.ballY = 180 + Math.sin(progress * Math.PI * 2.4) * 40;
+      } else {
+        state.ballX = targetX;
+        state.ballY = targetY;
+      }
+
+      if (progress > 0.58 && progress < 0.62) {
+        createParticles(targetX, targetY);
+      }
+
+      state.particles = state.particles.filter(p => p.life > 0);
+      state.particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 1;
+        p.vy += 0.03;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.life / 40;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      });
+
+      drawBall(state.ballX, state.ballY);
+
+      ctx.save();
+      ctx.font = '700 30px Segoe UI';
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.fillText('ĐANG BẢO TRÌ', 58, 70);
+      ctx.font = '600 18px Segoe UI';
+      ctx.fillStyle = 'rgba(255,255,255,0.82)';
+      ctx.fillText('Sắp quay lại với những bài tập Python mới!', 58, 102);
+      ctx.restore();
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
