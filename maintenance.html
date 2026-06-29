@@ -125,7 +125,7 @@
   <div class="maintenance-card">
     <div class="status-badge">⚽ Bảo trì hệ thống</div>
     <h1>Website đang được sửa chữa và nâng cấp</h1>
-    <p class="subtitle">Chúng tôi đang cập nhật nội dung và cải thiện trải nghiệm. Xin quay lại sau để tiếp tục chinh phục các module Python nhé!</p>
+    <p class="subtitle">Chúng tôi đang cập nhật nội dung và cải thiện trải nghiệm. Xin vui lòng quay lại sau!</p>
 
     <div class="field-wrap">
       <canvas id="maintenanceCanvas" width="1200" height="675"></canvas>
@@ -175,10 +175,6 @@
       ctx.lineTo(canvas.w / 2, canvas.h - 50);
       ctx.stroke();
 
-      ctx.strokeStyle = 'rgba(255,255,255,0.18)';
-      ctx.fillStyle = 'rgba(255,255,255,0.08)';
-      ctx.fillRect(70, 110, canvas.w - 140, 120);
-      ctx.strokeRect(70, 110, canvas.w - 140, 120);
     }
 
     function drawOnana(x, y) {
@@ -189,40 +185,37 @@
       ctx.save();
       ctx.translate(x, y + bob);
 
-      ctx.strokeStyle = '#1d2433';
-      ctx.lineWidth = 10;
+      ctx.strokeStyle = '#17263a';
+      ctx.lineWidth = 8;
       ctx.lineCap = 'round';
+
       ctx.beginPath();
-      ctx.moveTo(-8, 90);
-      ctx.lineTo(-20, 128);
+      ctx.moveTo(-10, 92);
+      ctx.lineTo(-18, 135);
       ctx.stroke();
       ctx.beginPath();
-      ctx.moveTo(10, 90);
-      ctx.lineTo(20, 128);
+      ctx.moveTo(10, 92);
+      ctx.lineTo(24, 130);
       ctx.stroke();
 
       ctx.fillStyle = '#14233b';
-      ctx.fillRect(-22, 18, 44, 60);
-      ctx.fillStyle = '#f1b84b';
-      ctx.fillRect(-16, 35, 32, 14);
+      ctx.fillRect(-18, 28, 36, 56);
 
       ctx.beginPath();
-      ctx.arc(0, -4, 18, 0, Math.PI * 2);
+      ctx.arc(0, 8, 16, 0, Math.PI * 2);
       ctx.fillStyle = '#f2ccb0';
       ctx.fill();
 
-      ctx.strokeStyle = '#14233b';
-      ctx.lineWidth = 10;
       ctx.beginPath();
-      ctx.moveTo(-18, 42);
-      ctx.lineTo(-44, 18 + armSwing * 18);
+      ctx.moveTo(-18, 46);
+      ctx.lineTo(-42, 18 + armSwing * 18);
       ctx.stroke();
       ctx.beginPath();
-      ctx.moveTo(18, 42);
-      ctx.lineTo(60, 8 + armSwing * 16);
+      ctx.moveTo(18, 46);
+      ctx.lineTo(54, 10 + armSwing * 16);
       ctx.stroke();
 
-      ctx.translate(60, 8 + armSwing * 16);
+      ctx.translate(54, 10 + armSwing * 16);
       ctx.rotate(-0.25 + armSwing * 0.18);
       ctx.fillStyle = '#e74c3c';
       ctx.fillRect(0, -30, 110, 60);
@@ -245,7 +238,6 @@
       ctx.save();
       ctx.font = '700 32px Segoe UI';
       ctx.fillStyle = 'rgba(255,255,255,0.97)';
-      ctx.fillText('ONANA ĐANG GIƠ BIỂN BÁO', 50, 78);
       ctx.font = '600 18px Segoe UI';
       ctx.fillStyle = 'rgba(255,255,255,0.85)';
       ctx.fillText('Sắp quay lại với những bài tập Python mới!', 50, 108);
