@@ -7,15 +7,18 @@
   <script>
     async function checkMaintenance() {
       try {
-        const res = await fetch('/maintenance.json?ts=' + Date.now());
+        const flagUrl = new URL('maintenance.json', window.location.href);
+        const maintenanceUrl = new URL('maintenance.html', window.location.href);
+        const indexUrl = new URL('index.html', window.location.href);
+        const res = await fetch(flagUrl.toString() + '?ts=' + Date.now());
         const data = await res.json();
         if (data.maintenance) {
-          window.location.replace('/maintenance.html');
+          window.location.replace(maintenanceUrl.toString());
         } else {
-          window.location.replace('/index.html');
+          window.location.replace(indexUrl.toString());
         }
       } catch (e) {
-        window.location.replace('/index.html');
+        window.location.replace(new URL('index.html', window.location.href).toString());
       }
     }
     checkMaintenance();
