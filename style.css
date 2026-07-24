@@ -317,11 +317,75 @@ button:hover {
 }
 
 
+.question-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.question-top-bar #lifelines {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.timer-badge {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.timer-badge.warning {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
+}
+
+.timer-badge.danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.6);
+    animation: timerPulse 0.8s infinite alternate;
+}
+
+@keyframes timerPulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.08);
+    }
+}
+
+/* Anti-Cheat Selection & Copy Protection */
+body.game-active #questionBox,
+body.game-active #gameContainer {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+#answer {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
+
 #lifelines {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .lifeline-btn {
@@ -343,8 +407,85 @@ button:hover {
     transform: none !important;
 }
 
+.lifeline-select-modal {
+    padding: 8px 15px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: 12px;
+    border: 2px solid var(--secondary);
+    background: #ffffff;
+    color: var(--dark);
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 85%;
+    max-width: 320px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.lifeline-select-modal:focus, .lifeline-select-modal:hover {
+    border-color: #2980b9;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.35);
+}
+
 #fiftyBtn {
     background: linear-gradient(135deg, #e67e22, #d35400);
+}
+
+.modal-close-x {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.modal-close-x:hover {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.radio-selection-box {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 15px 0 20px 0;
+    flex-wrap: wrap;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.radio-label:hover {
+    border-color: var(--secondary);
+    background: #ebf5fb;
+}
+
+.radio-label input[type="radio"] {
+    accent-color: #3498db;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
 .modal {

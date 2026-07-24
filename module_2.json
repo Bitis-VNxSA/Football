@@ -1,368 +1,433 @@
 {
-    "title": "Kiem_tra_module_2_Python_Algorithm",
-    "time_seconds": 7200,
-    "questions": [
-        {
-            "q": "Thuật toán (Algorithm) được định nghĩa là gì?",
-            "opts": [
-                "Một ngôn ngữ lập trình cụ thể",
-                "Dãy các bước hay lệnh để giải một bài toán",
-                "Một phần mềm máy tính",
-                "Một loại dữ liệu"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Đâu KHÔNG phải là đặc điểm của một thuật toán?",
-            "opts": [
-                "Tính hữu hạn",
-                "Tính chính xác",
-                "Tính vô tận",
-                "Tính khả thi"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Trong thuật toán, tính hiệu quả được đánh giá dựa trên yếu tố nào?",
-            "opts": [
-                "Thời gian chạy ít nhất",
-                "Sử dụng ít bộ nhớ nhất",
-                "Độ phức tạp thuật toán",
-                "Tất cả các phương án trên"
-            ],
-            "ans": 3
-        },
-        {
-            "q": "Độ phức tạp thời gian thường được ký hiệu bằng ký pháp nào?",
-            "opts": [
-                "O-Big",
-                "Big-O",
-                "Alpha-O",
-                "O-Small"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để đếm số lượng số chẵn trong một danh sách A, ta sử dụng điều kiện nào?",
-            "opts": [
-                "A[i] % 2 == 0",
-                "A[i] % 2 != 0",
-                "A[i] // 2 == 0",
-                "A[i] / 2 == 1"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Một số tự nhiên n > 1 được gọi là số hoàn hảo khi nào?",
-            "opts": [
-                "Nó là số nguyên tố",
-                "Nó bằng tổng các ước số thực sự của nó",
-                "Nó chia hết cho 2",
-                "Nó là số lẻ"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Dãy Fibonacci bắt đầu bằng hai số nào?",
-            "opts": [
-                "1, 1",
-                "0, 1",
-                "1, 2",
-                "0, 0"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Trong thuật toán Bubble Sort, nếu phần tử trước lớn hơn phần tử sau (a[i] > a[i+1]), ta cần làm gì?",
-            "opts": [
-                "Xóa phần tử đó",
-                "Giữ nguyên vị trí",
-                "Đổi chỗ chúng",
-                "Nhân hai phần tử"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Sau mỗi vòng lặp lớn (outer loop) của Bubble Sort, phần tử nào sẽ 'nổi' lên cuối danh sách?",
-            "opts": [
-                "Phần tử nhỏ nhất",
-                "Phần tử lớn nhất",
-                "Phần tử đầu tiên",
-                "Phần tử ngẫu nhiên"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Thuật toán tìm kiếm nhị phân (Binary Search) yêu cầu danh sách đầu vào phải thế nào?",
-            "opts": [
-                "Đã được sắp xếp",
-                "Chưa được sắp xếp",
-                "Chỉ chứa số nguyên",
-                "Rỗng"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Để tính trung bình cộng của một danh sách, ta cần thực hiện các bước nào?",
-            "opts": [
-                "Lấy tổng chia cho độ dài danh sách",
-                "Lấy số lớn nhất cộng số nhỏ nhất",
-                "Lấy tổng nhân độ dài",
-                "Lấy phần tử giữa"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Trong bài tập tính tổng 1000 số tự nhiên, biến TONG ban đầu nên đặt là bao nhiêu?",
-            "opts": [
-                "1",
-                "1000",
-                "0",
-                "-1"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Để kiểm tra số nguyên tố N, ta kiểm tra chia hết từ 2 đến đâu là tối ưu nhất?",
-            "opts": [
-                "đến N-1",
-                "đến N/2",
-                "đến căn bậc hai của N",
-                "đến N"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Cấu trúc dữ liệu nào hoạt động theo nguyên tắc LIFO (Last In First Out)?",
-            "opts": [
-                "Queue",
-                "Stack",
-                "List",
-                "Set"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Kiểu dữ liệu nào được dùng để lưu trữ các cặp key-value?",
-            "opts": [
-                "List",
-                "Tuple",
-                "Set",
-                "Dictionary"
-            ],
-            "ans": 3
-        },
-        {
-            "q": "Để loại bỏ các phần tử trùng lặp mà không quan tâm đến thứ tự, ta nên chuyển list sang kiểu gì?",
-            "opts": [
-                "Set",
-                "Tuple",
-                "String",
-                "Integer"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Hàm set1.intersection(set2) trả về kết quả nào?",
-            "opts": [
-                "Các phần tử có ở set1 hoặc set2",
-                "Các phần tử chỉ có ở set1",
-                "Các phần tử chung của cả hai",
-                "Các phần tử không có ở cả hai"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Toán tử nào dùng để tìm hợp (union) của hai set trong Python?",
-            "opts": [
-                "|",
-                "&",
-                "-",
-                "^"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Lệnh nào dùng để gộp (merge) dict2 vào dict1?",
-            "opts": [
-                "dict1.merge(dict2)",
-                "dict1.add(dict2)",
-                "dict1.update(dict2)",
-                "dict1.push(dict2)"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Biểu thức lambda x: x * 2 có nghĩa là gì?",
-            "opts": [
-                "Hàm nhân x với 2",
-                "Hàm bình phương x",
-                "Hàm lấy x chia 2",
-                "Hàm so sánh x với 2"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Kiểu dữ liệu nào là Immutable (không thể thay đổi)?",
-            "opts": [
-                "List",
-                "Dictionary",
-                "Tuple",
-                "Set"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Lệnh split() thường được dùng để làm gì khi xử lý chuỗi?",
-            "opts": [
-                "Gộp chuỗi",
-                "Cắt chuỗi thành danh sách",
-                "Xóa khoảng trắng",
-                "Đổi kiểu dữ liệu"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để kiểm tra chuỗi Palindrome, ta so sánh chuỗi s với chuỗi nào?",
-            "opts": [
-                "s.upper()",
-                "s[::-1]",
-                "len(s)",
-                "s.lower()"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Trong thuật toán đếm số (Count Digits), ta thường dùng phép toán nào để loại bỏ chữ số cuối?",
-            "opts": [
-                "N % 10",
-                "N // 10",
-                "N / 10",
-                "N ** 10"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Hàm Fibonacci(4) với dãy 0, 1, 1, 2, 3... sẽ trả về giá trị nào? (Tính từ F0=0)",
-            "opts": [
-                "1",
-                "2",
-                "3",
-                "5"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Để tìm số lớn thứ hai trong danh sách, thuật toán nào hiệu quả nhất?",
-            "opts": [
-                "Sắp xếp rồi lấy phần tử kế cuối",
-                "Chạy 2 vòng for",
-                "Sử dụng set để xóa trùng rồi sắp xếp",
-                "Cả A và C đều đúng"
-            ],
-            "ans": 3
-        },
-        {
-            "q": "Bài toán 'Two Sum' yêu cầu tìm gì?",
-            "opts": [
-                "Tổng của cả mảng",
-                "Hai chỉ số i, j sao cho tổng bằng target",
-                "Số lớn nhất và nhỏ nhất",
-                "Các số chia hết cho 2"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Trong thuật toán tính giai thừa n!, ta thực hiện phép toán gì?",
-            "opts": [
-                "Cộng dồn",
-                "Chia dồn",
-                "Nhân các số từ 1 đến n",
-                "Lũy thừa"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Hàm range(1, 10, 2) trong Python sẽ tạo ra các số nào?",
-            "opts": [
-                "1, 2, 3, 4, 5, 6, 7, 8, 9",
-                "1, 3, 5, 7, 9",
-                "2, 4, 6, 8",
-                "1, 2, 4, 6, 8, 10"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Khi dùng hàm pop() của List mà không truyền chỉ số, nó sẽ xóa phần tử ở đâu?",
-            "opts": [
-                "Đầu danh sách",
-                "Cuối danh sách",
-                "Ngẫu nhiên",
-                "Giữa danh sách"
-            ],
-            "ans": 1
-        }
-    ],
-    "coding_tasks": [
-        {
-            "q": "Đổi chỗ a[i] và a[j] bằng phép gán đồng thời",
-            "r": "a\\[i\\],\\s*a\\[j\\]\\s*=\\s*a\\[j\\],\\s*a\\[i\\]",
-            "h": "a[i], a[j] = a[j], a[i]",
-            "w": "a[i], a[j] = a[j], a[i]"
-        },
-        {
-            "q": "Viết dòng code kiểm tra x là số nguyên tố (x > 1 và không chia hết cho i)",
-            "r": "x\\s*%\\s*i\\s*!=\\s*0",
-            "h": "x % i != 0",
-            "w": "Phép chia lấy dư % dùng để kiểm tra tính chia hết."
-        },
-        {
-            "q": "Tính tổng các phần tử trong danh sách 'lst' bằng hàm có sẵn",
-            "r": "sum\\s*\\(\\s*lst\\s*\\)",
-            "h": "sum(lst)",
-            "w": "Sử dụng hàm sum() để tiết kiệm thời gian."
-        },
-        {
-            "q": "Cắt chuỗi 's' để lấy chuỗi đảo ngược",
-            "r": "s\\[\\s*:\\s*:\\s*-1\\]",
-            "h": "Dùng kỹ thuật slicing với bước nhảy -1 : s[::-1]",
-            "w": "Dùng kỹ thuật slicing với bước nhảy -1 : s[::-1]"
-        },
-        {
-            "q": "Lấy danh sách các 'key' của dictionary 'd'",
-            "r": "d\\.keys\\s*\\(\\s*\\)",
-            "h": "d.keys()",
-            "w": "Hàm .keys() trả về tất cả các khóa trong dict."
-        },
-        {
-            "q": "Tìm hợp (union) của set s1 và set s2 bằng toán tử",
-            "r": "s1\\s*\\|\\s*s2",
-            "h": "s1 | s2",
-            "w": "Toán tử | đại diện cho phép Hợp."
-        },
-        {
-            "q": "Chuyển danh sách 'a' thành tập hợp (set) để xóa trùng",
-            "r": "set\\s*\\(\\s*a\\s*\\)",
-            "h": "set(a)",
-            "w": "Ép kiểu sang set sẽ tự động loại bỏ các phần tử trùng."
-        },
-        {
-            "q": "Hàm GCD: return a nếu b == 0, ngược lại gọi đệ quy (a, b) = (b, a % b)",
-            "r": "gcd\\s*\\(\\s*b\\s*,\\s*a\\s*%\\s*b\\s*\\)",
-            "h": "gcd(b, a % b)",
-            "w": "Đây là thuật toán Euclid nổi tiếng."
-        },
-        {
-            "q": "Viết điều kiện IF kiểm tra n chia hết cho cả 2 và 3",
-            "r": "n\\s*%\\s*2\\s*==\\s*0\\s+and\\s+n\\s*%\\s*3\\s*==\\s*0",
-            "h": "n % 2 == 0 and n % 3 == 0",
-            "w": "Sử dụng từ khóa 'and' để kết hợp hai điều kiện."
-        },
-        {
-            "q": "Lấy phần tử cuối cùng của danh sách 'data'",
-            "r": "data\\[\\s*-1\\s*\\]",
-            "h": "data[-1]",
-            "w": "Chỉ số âm giúp truy cập từ cuối danh sách lên."
-        }
-    ]
+  "title": "Kiem_tra_module_2_Python_Algorithm",
+  "time_seconds": 7200,
+  "questions": [
+    {
+      "q": "Thuật toán (Algorithm) được định nghĩa là gì?",
+      "opts": [
+        "Một ngôn ngữ lập trình cụ thể",
+        "Dãy các bước hay lệnh rõ ràng để giải một bài toán",
+        "Một phần mềm máy tính",
+        "Một loại dữ liệu"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Đâu KHÔNG phải là đặc điểm bắt buộc của một thuật toán?",
+      "opts": [
+        "Tính hữu hạn (phải kết thúc sau số bước nhất định)",
+        "Tính xác định (mỗi bước phải rõ ràng, không mơ hồ)",
+        "Tính vô tận (chạy mãi không dừng)",
+        "Tính khả thi (có thể thực hiện được)"
+      ],
+      "ans": 2
+    },
+    {
+      "q": "Độ phức tạp thời gian của thuật toán thường được biểu diễn bằng ký pháp nào?",
+      "opts": ["Alpha-O", "Big-O", "O-Small", "O-Big"],
+      "ans": 1
+    },
+    {
+      "q": "Độ phức tạp O(1) của một thuật toán có ý nghĩa gì?",
+      "opts": [
+        "Thời gian thực thi tăng tuyến tính theo kích thước dữ liệu đầu vào",
+        "Thời gian thực thi là hằng số, không đổi bất kể kích thước dữ liệu đầu vào",
+        "Thuật toán chạy mất đúng 1 giây",
+        "Thuật toán chỉ chạy được với 1 phần tử dữ liệu"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Thuật toán tìm kiếm nhị phân (Binary Search) yêu cầu danh sách đầu vào phải thỏa mãn điều kiện gì?",
+      "opts": ["Đã được sắp xếp", "Chưa được sắp xếp", "Chỉ chứa số nguyên chẵn", "Không chứa số âm"],
+      "ans": 0
+    },
+    {
+      "q": "Trong thuật toán sắp xếp nổi bọt (Bubble Sort), khi nào ta thực hiện đổi chỗ hai phần tử cạnh nhau?",
+      "opts": [
+        "Khi phần tử đứng trước nhỏ hơn phần tử đứng sau",
+        "Khi phần tử đứng trước lớn hơn phần tử đứng sau",
+        "Khi hai phần tử bằng nhau",
+        "Thực hiện đổi chỗ một cách ngẫu nhiên"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Dãy số Fibonacci bắt đầu bằng hai số nào (F0, F1)?",
+      "opts": ["1, 1", "0, 1", "1, 2", "0, 0"],
+      "ans": 1
+    },
+    {
+      "q": "Một số nguyên n > 1 được gọi là số nguyên tố khi nào?",
+      "opts": [
+        "Nó là số chẵn",
+        "Nó chỉ chia hết cho 1 và chính nó",
+        "Nó chia hết cho tất cả các số nhỏ hơn nó",
+        "Nó bằng tổng các ước số thực sự của nó"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Để kiểm tra số nguyên tố N một cách tối ưu, ta chỉ cần thử chia hết từ 2 đến đâu?",
+      "opts": [
+        "Đến N - 1",
+        "Đến N / 2",
+        "Đến phần nguyên căn bậc hai của N",
+        "Đến số N"
+      ],
+      "ans": 2
+    },
+    {
+      "q": "Cấu trúc dữ liệu Stack (ngăn xếp) hoạt động theo nguyên lý nào?",
+      "opts": [
+        "FIFO (Vào trước Ra trước)",
+        "LIFO (Vào sau Ra trước / Vào trước Ra sau)",
+        "LILO (Vào trước Ra sau)",
+        "Ngẫu nhiên"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Cấu trúc dữ liệu Queue (hàng đợi) hoạt động theo nguyên lý nào?",
+      "opts": [
+        "FIFO (Vào trước Ra trước)",
+        "LIFO (Vào sau Ra trước)",
+        "LILO (Vào trước Ra sau)",
+        "Ngẫu nhiên"
+      ],
+      "ans": 0
+    },
+    {
+      "q": "Kiểu dữ liệu nào dùng để lưu trữ các cặp key-value độc nhất trong Python?",
+      "opts": ["List", "Tuple", "Set", "Dictionary"],
+      "ans": 3
+    },
+    {
+      "q": "Kiểu dữ liệu Set (tập hợp) có đặc điểm nổi bật nào?",
+      "opts": [
+        "Giữ nguyên thứ tự chèn và cho phép trùng lặp phần tử",
+        "Không chứa các phần tử trùng lặp và các phần tử không có thứ tự",
+        "Chỉ chứa được các kiểu dữ liệu số thực",
+        "Không thể thêm hoặc xóa phần tử sau khi tạo"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Để loại bỏ các phần tử trùng lặp trong một danh sách (List) nhanh nhất, ta nên chuyển nó sang kiểu dữ liệu nào?",
+      "opts": ["Tuple", "Set", "String", "Dictionary"],
+      "ans": 1
+    },
+    {
+      "q": "Hàm set1.intersection(set2) trả về kết quả nào?",
+      "opts": [
+        "Tập hợp các phần tử có ở set1 hoặc set2",
+        "Tập hợp các phần tử chung của cả hai tập hợp set1 và set2",
+        "Tập hợp các phần tử chỉ có ở set1 mà không có ở set2",
+        "Tập hợp tất cả phần tử không trùng của cả hai"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Toán tử nào dùng để thực hiện phép hợp (union) của hai Set trong Python?",
+      "opts": ["|", "&", "-", "^"],
+      "ans": 0
+    },
+    {
+      "q": "Toán tử nào dùng để thực hiện phép giao (intersection) của hai Set trong Python?",
+      "opts": ["|", "&", "-", "^"],
+      "ans": 1
+    },
+    {
+      "q": "Biểu thức lambda x: x * 2 định nghĩa điều gì?",
+      "opts": [
+        "Một hàm ẩn danh nhân đối số đầu vào x với 2",
+        "Một phép bình phương x",
+        "Một điều kiện so sánh x với 2",
+        "Lỗi cú pháp trong Python"
+      ],
+      "ans": 0
+    },
+    {
+      "q": "Kiểu dữ liệu nào sau đây là Immutable (không thể chỉnh sửa giá trị sau khi tạo)?",
+      "opts": ["List", "Tuple", "Set", "Dictionary"],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức nào của List dùng để xóa và trả về phần tử cuối cùng?",
+      "opts": ["remove()", "pop()", "clear()", "discard()"],
+      "ans": 1
+    },
+    {
+      "q": "Lệnh nào dùng để gộp các cặp key-value từ dict2 vào dict1?",
+      "opts": ["dict1.merge(dict2)", "dict1.add(dict2)", "dict1.update(dict2)", "dict1.extend(dict2)"],
+      "ans": 2
+    },
+    {
+      "q": "Cách kiểm tra một chuỗi s có phải là chuỗi đối xứng (Palindrome) hay không?",
+      "opts": [
+        "So sánh s == s.upper()",
+        "So sánh s == s[::-1]",
+        "So sánh len(s) == 0",
+        "So sánh s == s.lower()"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức split() của chuỗi dùng để làm gì?",
+      "opts": [
+        "Gộp nhiều chuỗi con thành một chuỗi lớn",
+        "Tách một chuỗi thành danh sách các chuỗi con dựa trên ký tự phân tách",
+        "Xóa bỏ khoảng trắng thừa ở hai đầu chuỗi",
+        "Đổi toàn bộ chữ thường thành chữ hoa"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Để tính trung bình cộng của một danh sách số, công thức nào đúng?",
+      "opts": [
+        "Tổng các phần tử chia cho độ dài danh sách",
+        "Tổng số lớn nhất và số nhỏ nhất chia đôi",
+        "Nhân tổng các phần tử với độ dài danh sách",
+        "Lấy phần tử ở chính giữa danh sách"
+      ],
+      "ans": 0
+    },
+    {
+      "q": "Độ phức tạp thời gian trung bình của tìm kiếm tuần tự (Linear Search) trên mảng kích thước n là bao nhiêu?",
+      "opts": ["O(1)", "O(log n)", "O(n)", "O(n^2)"],
+      "ans": 2
+    },
+    {
+      "q": "Độ phức tạp thời gian của tìm kiếm nhị phân (Binary Search) là bao nhiêu?",
+      "opts": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+      "ans": 1
+    },
+    {
+      "q": "Trong thuật toán Euclid tìm ước chung lớn nhất (GCD) của hai số a và b, nếu b == 0 thì GCD(a, b) bằng bao nhiêu?",
+      "opts": ["0", "a", "1", "Lỗi chia cho 0"],
+      "ans": 1
+    },
+    {
+      "q": "Cấu trúc dữ liệu nào phù hợp nhất để triển khai tính năng Hoàn tác (Undo) trong các ứng dụng soạn thảo văn bản?",
+      "opts": ["Stack", "Queue", "Set", "Dictionary"],
+      "ans": 0
+    },
+    {
+      "q": "Cấu trúc dữ liệu nào phù hợp nhất để mô phỏng hàng chờ in tài liệu?",
+      "opts": ["Stack", "Queue", "Set", "Dictionary"],
+      "ans": 1
+    },
+    {
+      "q": "Để lấy danh sách tất cả các key trong dictionary d, ta dùng phương thức nào?",
+      "opts": ["d.keys()", "d.values()", "d.items()", "d.getkeys()"],
+      "ans": 0
+    },
+    {
+      "q": "Để lấy danh sách tất cả các value trong dictionary d, ta dùng phương thức nào?",
+      "opts": ["d.keys()", "d.values()", "d.items()", "d.getvalues()"],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của phép toán tập hợp: {1, 2, 3} - {2, 3, 4} là tập hợp nào?",
+      "opts": ["{1}", "{4}", "{1, 4}", "{}"],
+      "ans": 0
+    },
+    {
+      "q": "Kiểu dữ liệu nào sau đây KHÔNG thể dùng làm Key trong dictionary của Python?",
+      "opts": ["Integer (số nguyên)", "String (chuỗi)", "List (danh sách)", "Tuple (bộ dữ liệu immutable)"],
+      "ans": 2
+    },
+    {
+      "q": "Phương thức nào dùng để làm trống hoàn toàn một Dictionary?",
+      "opts": ["empty()", "clear()", "delete()", "reset()"],
+      "ans": 1
+    },
+    {
+      "q": "Khi khai báo một Tuple có duy nhất 1 phần tử là số 5, cú pháp nào đúng?",
+      "opts": ["(5)", "[5]", "(5,)", "{5}"],
+      "ans": 2
+    },
+    {
+      "q": "Kết quả của [x**2 for x in range(3)] là gì?",
+      "opts": ["[1, 4, 9]", "[0, 1, 4]", "[0, 2, 4]", "[1, 2, 3]"],
+      "ans": 1
+    },
+    {
+      "q": "Lệnh a.extend([4, 5]) trên danh sách a = [1, 2] cho ra kết quả gì ở danh sách a?",
+      "opts": ["[1, 2, [4, 5]]", "[1, 2, 4, 5]", "[5, 4, 1, 2]", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Để kiểm tra xem key k có tồn tại trong dictionary d hay không, ta dùng cú pháp nào?",
+      "opts": ["d.contains(k)", "k in d", "d.has_key(k)", "k exists d"],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức pop(0) trên danh sách a = [10, 20, 30] trả về giá trị nào?",
+      "opts": ["10", "30", "[20, 30]", "0"],
+      "ans": 0
+    },
+    {
+      "q": "Kết quả của phép toán: (1, 2) * 2 là gì?",
+      "opts": ["(2, 4)", "(1, 2, 1, 2)", "(1, 1, 2, 2)", "Lỗi vì tuple immutable"],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức nào dùng để chèn phần tử val vào vị trí chỉ số idx của một List?",
+      "opts": ["append(val, idx)", "insert(idx, val)", "add(idx, val)", "push(val, idx)"],
+      "ans": 1
+    },
+    {
+      "q": "Để đếm số lần xuất hiện của phần tử x trong List a, ta dùng phương thức nào?",
+      "opts": ["a.find(x)", "a.count(x)", "a.index(x)", "a.search(x)"],
+      "ans": 1
+    },
+    {
+      "q": "Điểm khác biệt giữa remove(x) và discard(x) trên tập hợp Set là gì?",
+      "opts": [
+        "Không có sự khác biệt nào",
+        "remove() báo lỗi nếu x không tồn tại, discard() thì không báo lỗi",
+        "discard() xóa tất cả x, remove() chỉ xóa một phần tử",
+        "remove() trả về giá trị bị xóa, discard() thì không"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Hàm sorted(a) khác với phương thức a.sort() ở điểm nào?",
+      "opts": [
+        "Hàm sorted(a) sắp xếp tăng dần, a.sort() sắp xếp giảm dần",
+        "sorted(a) trả về danh sách mới đã sắp xếp, a.sort() sắp xếp trực tiếp trên danh sách gốc",
+        "a.sort() chỉ hoạt động với chuỗi ký tự, sorted() chỉ với số",
+        "Hai hàm này hoàn toàn giống nhau"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của phép toán tập hợp: {1, 2} & {2, 3} là gì?",
+      "opts": ["{2}", "{1, 2, 3}", "{1, 3}", "{}"],
+      "ans": 0
+    }
+  ],
+  "coding_tasks": [
+    {
+      "q": "Đổi chỗ x và y bằng phép gán đồng thời",
+      "r": "x\\s*,\\s*y\\s*=\\s*y\\s*,\\s*x",
+      "h": "x, y = y, x",
+      "w": "Dùng phép gán đồng thời dạng a, b = b, a."
+    },
+    {
+      "q": "Kiểm tra xem số n có không chia hết cho i hay không",
+      "r": "n\\s*%\\s*i\\s*!=\\s*0",
+      "h": "n % i != 0",
+      "w": "Sử dụng toán tử chia lấy dư % và toán tử so sánh khác !=."
+    },
+    {
+      "q": "Tính tổng các phần tử trong danh sách 'a' dùng hàm sum() có sẵn",
+      "r": "sum\\s*\\(\\s*a\\s*\\)",
+      "h": "sum(a)",
+      "w": "Sử dụng hàm sum() truyền đối số là danh sách a."
+    },
+    {
+      "q": "Đảo ngược chuỗi 's' bằng kỹ thuật slicing bước nhảy -1",
+      "r": "s\\[\\s*:\\s*:\\s*-1\\]",
+      "h": "s[::-1]",
+      "w": "Sử dụng cú pháp s[::bước_nhảy] với bước nhảy âm."
+    },
+    {
+      "q": "Lấy danh sách các key của dictionary 'd'",
+      "r": "d\\.keys\\s*\\(\\s*\\)",
+      "h": "d.keys()",
+      "w": "Sử dụng phương thức .keys() của đối tượng dictionary."
+    },
+    {
+      "q": "Tìm phép Hợp (union) hai tập hợp s1 và s2 dùng toán tử",
+      "r": "s1\\s*\\|\\s*s2",
+      "h": "s1 | s2",
+      "w": "Toán tử Hợp tập hợp trong Python là gạch đứng |."
+    },
+    {
+      "q": "Ép kiểu danh sách 'lst' sang tập hợp (set) để loại bỏ phần tử trùng lặp",
+      "r": "set\\s*\\(\\s*lst\\s*\\)",
+      "h": "set(lst)",
+      "w": "Sử dụng hàm dựng set(lst) để ép kiểu dữ liệu."
+    },
+    {
+      "q": "Thuật toán GCD đệ quy với a và b: gọi đệ quy nhận vào b và phần dư a chia b",
+      "r": "gcd\\s*\\(\\s*b\\s*,\\s*a\\s*%\\s*b\\s*\\)",
+      "h": "gcd(b, a % b)",
+      "w": "Gọi đệ quy hàm gcd với đối số thứ nhất là b, đối số thứ hai là a % b."
+    },
+    {
+      "q": "Kiểm tra xem số n có chia hết cho cả 3 và 5 hay không",
+      "r": "n\\s*%\\s*3\\s*==\\s*0\\s+and\\s+n\\s*%\\s*5\\s*==\\s*0",
+      "h": "n % 3 == 0 and n % 5 == 0",
+      "w": "Kết hợp hai điều kiện chia lấy dư bằng 0 thông qua từ khóa logic and."
+    },
+    {
+      "q": "Lấy phần tử cuối cùng của danh sách 'arr' bằng chỉ số âm",
+      "r": "arr\\[\\s*-1\\s*\\]",
+      "h": "arr[-1]",
+      "w": "Truy cập tại chỉ mục âm -1 để lấy phần tử cuối."
+    },
+    {
+      "q": "Thêm phần tử chuỗi 'A' vào tập hợp s",
+      "r": "s\\.add\\s*\\(\\s*['\"]A['\"]\\s*\\)",
+      "h": "s.add('A')",
+      "w": "Sử dụng phương thức .add('A') của tập hợp set."
+    },
+    {
+      "q": "Xóa phần tử chuỗi 'B' khỏi tập hợp s",
+      "r": "s\\.remove\\s*\\(\\s*['\"]B['\"]\\s*\\)",
+      "h": "s.remove('B')",
+      "w": "Sử dụng phương thức .remove('B') để loại bỏ phần tử."
+    },
+    {
+      "q": "Tạo một dictionary d chứa duy nhất cặp key 'age' có giá trị 18",
+      "r": "d\\s*=\\s*\\{\\s*['\"]age['\"]\\s*:\\s*18\\s*\\}",
+      "h": "d = {'age': 18}",
+      "w": "Khai báo dictionary sử dụng ngoặc nhọn {} và cặp key: value."
+    },
+    {
+      "q": "Lấy giá trị của key 'name' trong dict d bằng hàm get, trả về 'Ẩn' nếu không tồn tại",
+      "r": "d\\.get\\s*\\(\\s*['\"]name['\"]\\s*,\\s*['\"]Ẩn['\"]\\s*\\)",
+      "h": "d.get('name', 'Ẩn')",
+      "w": "Sử dụng phương thức .get(key, giá_trị_mặc_định)."
+    },
+    {
+      "q": "Xóa phần tử cuối cùng khỏi danh sách 'lst' bằng hàm pop không tham số",
+      "r": "lst\\.pop\\s*\\(\\s*\\)",
+      "h": "lst.pop()",
+      "w": "Sử dụng phương thức .pop() trên danh sách."
+    },
+    {
+      "q": "Tìm số lớn nhất trong danh sách 'nums'",
+      "r": "max\\s*\\(\\s*nums\\s*\\)",
+      "h": "max(nums)",
+      "w": "Sử dụng hàm max() có sẵn trong Python."
+    },
+    {
+      "q": "Tìm số nhỏ nhất trong danh sách 'nums'",
+      "r": "min\\s*\\(\\s*nums\\s*\\)",
+      "h": "min(nums)",
+      "w": "Sử dụng hàm min() có sẵn trong Python."
+    },
+    {
+      "q": "Chèn phần tử chuỗi 'X' vào vị trí chỉ số 0 của danh sách 'lst'",
+      "r": "lst\\.insert\\s*\\(\\s*0\\s*,\\s*['\"]X['\"]\\s*\\)",
+      "h": "lst.insert(0, 'X')",
+      "w": "Sử dụng phương thức .insert(chỉ_số, giá_trị) trên danh sách."
+    },
+    {
+      "q": "Tìm phép Giao (intersection) hai tập hợp s1 và s2 dùng toán tử",
+      "r": "s1\\s*&\\s*s2",
+      "h": "s1 & s2",
+      "w": "Toán tử Giao tập hợp trong Python là dấu &."
+    },
+    {
+      "q": "Đếm số lần xuất hiện của số 5 trong danh sách 'nums'",
+      "r": "nums\\.count\\s*\\(\\s*5\\s*\\)",
+      "h": "nums.count(5)",
+      "w": "Sử dụng phương thức .count(giá_trị) của đối tượng danh sách."
+    }
+  ]
 }

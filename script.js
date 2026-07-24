@@ -113,127 +113,43 @@ const questionBank2 = [
     { m: "Câu lệnh pass (không làm gì cả)", r: /\bpass\b/, h: "pass", w: "Dùng pass khi bạn muốn để trống một khối lệnh." }
 ];
 
+// Fallback Module 3: OOP, Exception, File I/O, Comprehension, Lambda/map/filter
 const questionBank3 = [
-    { m: "Kết hợp 2 list k, v thành dict", r: /dict\s*\(\s*zip\s*\(\s*k\s*,\s*v\s*\)\s*\)/, h: "dict(zip(k, v))", w: "Nhà thông thái: 'Zip kết hợp, Dict chuyển đổi nhé!'" },
-    { m: "Tính tuổi: nam_nay - nam_sinh", r: /nam_nay\s*-\s*nam_sinh/, h: "nam_nay - nam_sinh", w: "Đơn giản là lấy năm hiện tại trừ năm sinh thôi." },
-    { m: "Nhân đôi list a dùng map và lambda", r: /map\s*\(\s*lambda\s+x\s*:\s*x\s*\*\s*2\s*,\s*a\s*\)/, h: "map(lambda x: x*2, a)", w: "Map áp dụng hàm cho từng phần tử." },
-    { m: "Lấy giá trị key 'x' trong d, mặc định 0", r: /d\.get\s*\(\s*['\"]x['\"]\s*,\s*0\s*\)/, h: "d.get('x', 0)", w: "Get giúp tránh lỗi khi không tìm thấy khóa." },
-    { m: "Lọc số > 5 từ list a dùng filter", r: /filter\s*\(\s*lambda\s+x\s*:\s*x\s*>\s*5\s*,\s*a\s*\)/, h: "filter(lambda x: x > 5, a)", w: "Filter giữ lại các phần tử thỏa mãn điều kiện." },
-    { m: "Tạo set các số lẻ từ 1-9", r: /\{\s*x\s*for\s+x\s+in\s+range\s*\(\s*1\s*,\s*10\s*\)\s+if\s+x\s*%\s*2\s*!=\s*0\s*\}/, h: "{x for x in range(1, 10) if x%2 != 0}", w: "Set comprehension với điều kiện if." },
-    { m: "Đảo ngược tuple t", r: /t\s*\[\s*:\s*:\s*-1\s*\]/, h: "t[::-1]", w: "Kỹ thuật slicing hoạt động cả với tuple." },
-    { m: "Gộp 2 dict d1, d2", r: /d1\s*\|\s*d2/, h: "d1 | d2", w: "Toán tử | (union) cho dict có từ Python 3.9." },
-    { m: "Giải nén ma trận matrix dùng zip", r: /zip\s*\(\s*\*\s*matrix\s*\)/, h: "zip(*matrix)", w: "Sử dụng * để giải nén hàng thành các đối số." },
-    { m: "Kiểm tra chuỗi s là số", r: /s\.isdigit\s*\(\s*\)/, h: "s.isdigit()", w: "Hàm này cực kỳ hữu ích để validate dữ liệu." }
+    { q: "Từ khóa nào dùng để định nghĩa một lớp (class) trong Python?", opts: ["object", "class", "struct", "type"], ans: 1 },
+    { q: "Phương thức nào tự động được gọi khi tạo đối tượng mới từ lớp?", opts: ["__start__()", "__new__()", "__init__()", "__create__()"], ans: 2 },
+    { q: "Tham số đầu tiên của phương thức trong lớp thường đặt tên là gì?", opts: ["this", "self", "me", "cls"], ans: 1 },
+    { q: "Hàm super() trong Python dùng để làm gì?", opts: ["Tạo đối tượng cấp cao hơn", "Gọi phương thức từ lớp cha", "Kiểm tra kiểu dữ liệu", "Xóa đối tượng"], ans: 1 },
+    { q: "Khối lệnh nào luôn được thực thi dù có lỗi hay không trong try/except?", opts: ["try", "except", "else", "finally"], ans: 3 },
+    { q: "Ngoại lệ nào xảy ra khi chia một số cho 0?", opts: ["ValueError", "TypeError", "ZeroDivisionError", "ArithmeticError"], ans: 2 },
+    { q: "Ngoại lệ nào xảy ra khi truy cập key không tồn tại trong dictionary?", opts: ["IndexError", "KeyError", "AttributeError", "LookupError"], ans: 1 },
+    { q: "Chế độ nào dùng để mở file chỉ đọc?", opts: ["'w'", "'r'", "'a'", "'rb'"], ans: 1 },
+    { q: "Hàm lambda x: x * 2 là loại hàm gì?", opts: ["Hàm đệ quy", "Hàm ẩn danh (anonymous)", "Hàm bất đồng bộ", "Hàm tĩnh"], ans: 1 },
+    { q: "Kết quả của list(map(str, [1, 2, 3])) là gì?", opts: ["[1, 2, 3]", "['1', '2', '3']", "123", "Lỗi"], ans: 1 },
 ];
 
+// Fallback Module 4: Thuật toán Nâng cao (Đệ quy, DP, Sắp xếp, Đồ thị)
 const questionBank4 = [
-    // === CÂU HỎI TRẮC NGHIỆM (MCQ) ===
-    { q: "Cấu trúc dữ liệu nào trong Python giữ THỨ TỰ phần tử và cho phép thay đổi (mutable)?", opts: ["Tuple", "Set", "List", "Frozen set"], ans: 2 },
-    { q: "Cấu trúc dữ liệu nào KHÔNG cho phép phần tử trùng lặp?", opts: ["List", "Tuple", "Set", "String"], ans: 2 },
-    { q: "Tuple có đặc điểm nổi bật nào?", opts: ["Không có thứ tự", "Mutable", "Immutable", "Lưu key-value"], ans: 2 },
-    { q: "Dictionary lưu dữ liệu theo dạng nào?", opts: ["index-value", "key-value", "item-only", "value-key"], ans: 1 },
-    { q: "Lệnh nào thêm phần tử 10 vào cuối list a?", opts: ["a.add(10)", "a.insert(10)", "a.append(10)", "a.push(10)"], ans: 2 },
-    { q: "Phương thức nào thêm phần tử vào set s?", opts: ["s.append(x)", "s.add(x)", "s.insert(x)", "s.push(x)"], ans: 1 },
-    { q: "Để truy cập giá trị theo key 'name' trong dict d an toàn, nên dùng?", opts: ["d.name", "d['name']", "d.get('name')", "d.fetch('name')"], ans: 2 },
-    { q: "So với list, set phù hợp hơn trong bài toán nào?", opts: ["Giữ nguyên thứ tự nhập", "Truy cập theo chỉ số", "Kiểm tra tồn tại nhanh và loại trùng", "Lưu cặp key-value"], ans: 2 },
-    { q: "Trong tuple t = (1, 2, 3), t[0] bằng bao nhiêu?", opts: ["0", "1", "2", "3"], ans: 1 },
-    { q: "Kết quả của len({'a':1, 'b':2, 'c':3}) là gì?", opts: ["2", "3", "1", "Lỗi"], ans: 1 },
-    { q: "Đâu là khai báo tuple một phần tử đúng?", opts: ["(5)", "[5]", "(5,)", "{5}"], ans: 2 },
-    { q: "Phép toán nào lấy phần tử CHUNG của hai set?", opts: ["|", "&", "-", "^"], ans: 1 },
-    { q: "Biểu thức nào lấy phần tử cuối list a?", opts: ["a[last]", "a[len(a)]", "a[-1]", "a(end)"], ans: 2 },
-    { q: "Điều gì đúng với dictionary key?", opts: ["Có thể dùng list làm key", "Có thể trùng key", "Key phải hashable và duy nhất", "Chỉ dùng string làm key"], ans: 2 },
-    { q: "Chuyển list a sang set để loại trùng dùng lệnh nào?", opts: ["list(a)", "set(a)", "tuple(a)", "dict(a)"], ans: 1 },
-    { q: "Set có hỗ trợ truy cập theo chỉ số như s[0] không?", opts: ["Có, luôn luôn", "Không, vì set không có thứ tự chỉ mục", "Chỉ khi set có số", "Chỉ Python 2 mới có"], ans: 1 },
-    { q: "Để cập nhật nhiều key từ dict d2 vào d1 dùng gì?", opts: ["d1.merge(d2)", "d1.add(d2)", "d1.update(d2)", "d1.append(d2)"], ans: 2 },
-    { q: "So sánh đúng về list và tuple là gì?", opts: ["Cả hai đều immutable", "List immutable, tuple mutable", "List mutable, tuple immutable", "Cả hai đều chỉ chứa số"], ans: 2 },
-    { q: "Để đếm tần suất phần tử trong danh sách, cấu trúc nào hay dùng nhất?", opts: ["Set", "Tuple", "Dictionary", "Float"], ans: 2 },
-    { q: "Kết quả của {1,2,3} - {2} là gì?", opts: ["{2}", "{1,3}", "{1,2,3}", "{}"], ans: 1 },
-    { q: "Bài toán giữ thứ tự lịch sử thao tác nên ưu tiên cấu trúc nào?", opts: ["Set", "List", "Tuple", "Boolean"], ans: 1 },
-    { q: "Khi cần dữ liệu cố định không thay đổi để làm key dict, nên dùng?", opts: ["List", "Tuple", "Set", "Dictionary"], ans: 1 },
-    { q: "Dictionary nào sau đây hợp lệ?", opts: ["{[1,2]: 'A'}", "{(1,2): 'A'}", "{{1,2}: 'A'}", "{ {'k':1}: 'A' }"], ans: 1 },
-    { q: "Nếu muốn kiểm tra phần tử x có trong list a nhanh hơn ở dữ liệu lớn, nên làm gì?", opts: ["Chuyển sang tuple", "Chuyển sang set", "Chuyển sang string", "Nhân đôi list"], ans: 1 },
-    { q: "Kết quả của tuple([1,2,3]) là gì?", opts: ["[1,2,3]", "{1,2,3}", "(1,2,3)", "{'1':2,'3':4}"], ans: 2 },
-    { q: "Phát biểu nào đúng về độ phức tạp trung bình tra cứu key trong dict?", opts: ["O(n)", "O(log n)", "O(1)", "O(n^2)"], ans: 2 },
-    { q: "Để lấy danh sách tất cả key trong dict d dùng gì?", opts: ["d.keys()", "d.items()", "d.values()", "d.getkeys()"], ans: 0 },
-    { q: "Để lấy cả key và value khi duyệt dict d, cách nào chuẩn nhất?", opts: ["for x in d:", "for k, v in d.items():", "for v in d.values():", "for i in range(d):"], ans: 1 },
-    { q: "Kết quả của [1,2,2,3] khi chuyển sang set là?", opts: ["{1,2,2,3}", "{1,2,3}", "[1,2,3]", "(1,2,3)"], ans: 1 },
-    { q: "Trong so sánh tổng quan, cấu trúc nào phù hợp nhất để ánh xạ thông tin hồ sơ sinh viên theo mã số?", opts: ["List", "Tuple", "Set", "Dictionary"], ans: 3 },
-    { q: "Khi cần lưu tập các môn học không trùng và thường xuyên phép giao/hợp, nên chọn?", opts: ["List", "Set", "Tuple", "Dictionary"], ans: 1 },
-    { q: "Hàm nào tạo list mới đã sắp xếp từ list a mà không sửa list gốc?", opts: ["a.sort()", "sorted(a)", "a.sorted()", "sort(a, in_place=True)"], ans: 1 },
-    { q: "Lệnh nào xóa và trả về value của key 'x' trong dict d?", opts: ["d.remove('x')", "d.pop('x')", "d.delete('x')", "d.cut('x')"], ans: 1 },
-    { q: "Khi cần dữ liệu có thể lặp và truy cập theo index cho bài toán sliding window, cấu trúc hợp lý nhất là?", opts: ["Set", "Tuple", "List", "Dictionary"], ans: 2 },
-    { q: "Cấu trúc nào sau đây không chấp nhận phần tử mutable làm phần tử con trực tiếp?", opts: ["List", "Tuple", "Set", "Dictionary"], ans: 2 },
-    { q: "Kết quả của d = {'a': 1}; d.get('b', 0) là gì?", opts: ["Error", "None", "0", "'b'"], ans: 2 },
-    { q: "Kết quả của [x**2 for x in range(4)] là gì?", opts: ["[1, 4, 9, 16]", "[0, 1, 4, 9]", "[0, 2, 4, 6]", "[1, 2, 3, 4]"], ans: 1 },
-    { q: "Lệnh nào xóa phần tử đầu tiên có giá trị 3 trong list a?", opts: ["a.pop(3)", "a.delete(3)", "a.remove(3)", "del a(3)"], ans: 2 },
-    { q: "Kết quả của a = [1,2,3]; a[1:2] là gì?", opts: ["[1, 2]", "[2]", "[2, 3]", "[1]"], ans: 1 },
-    { q: "Lệnh nào chèn phần tử 99 vào vị trí index 0 của list a?", opts: ["a.insert(99, 0)", "a.insert(0, 99)", "a.add(0, 99)", "a.prepend(99)"], ans: 1 },
-    { q: "Kết quả của a = [1,2,3]; a.extend([4,5]) là gì?", opts: ["[1,2,3,[4,5]]", "[1,2,3,4,5]", "[[1,2,3],4,5]", "Lỗi"], ans: 1 },
-    { q: "Phương thức nào đếm số lần xuất hiện của giá trị 2 trong list a?", opts: ["a.find(2)", "a.count(2)", "a.index(2)", "a.search(2)"], ans: 1 },
-    { q: "Kết quả của a = [1,2,3]; a.reverse(); print(a) là gì?", opts: ["[1,2,3]", "[3,2,1]", "None", "Lỗi"], ans: 1 },
-    { q: "Kết quả của a = [1,2,3,4,5]; a[::2] là gì?", opts: ["[2, 4]", "[1, 3, 5]", "[1, 2]", "[5, 3, 1]"], ans: 1 },
-    { q: "Kết quả của a = [1,2,3]; b = a; b.append(4); print(a) là gì?", opts: ["[1,2,3]", "[1,2,3,4]", "Lỗi", "[4,3,2,1]"], ans: 1 },
-    { q: "Để tạo bản sao độc lập (shallow copy) của list a, cách nào đúng?", opts: ["b = a", "b = a[:]", "b = &a", "b = a.ref()"], ans: 1 },
-    { q: "Kết quả của 'x' in {'x': 1, 'y': 2} là gì?", opts: ["True", "False", "1", "Lỗi"], ans: 0 },
-    { q: "Lệnh nào xóa tất cả phần tử trong dict d?", opts: ["d.removeAll()", "d.clear()", "d.empty()", "del d[:]"], ans: 1 },
-    { q: "Kết quả của list(range(1, 10, 3)) là gì?", opts: ["[1, 3, 6, 9]", "[1, 4, 7]", "[3, 6, 9]", "[1, 4, 7, 10]"], ans: 1 },
-    { q: "Phương thức nào trả về vị trí (index) đầu tiên của giá trị 5 trong list a?", opts: ["a.find(5)", "a.index(5)", "a.search(5)", "a.pos(5)"], ans: 1 },
-    { q: "Kết quả của (1, 2) + (3,) là gì?", opts: ["(1, 2, 3)", "(4, 2)", "Lỗi vì tuple immutable", "[1, 2, 3]"], ans: 0 },
-    { q: "Kết quả của (1, 2, 3) * 2 là gì?", opts: ["(2, 4, 6)", "(1, 2, 3, 1, 2, 3)", "Lỗi", "(1, 2, 3, 2)"], ans: 1 },
-    { q: "Phương thức nào đếm số lần xuất hiện của giá trị trong tuple?", opts: ["t.find(x)", "t.count(x)", "t.search(x)", "t.num(x)"], ans: 1 },
-    { q: "Kết quả của a, b, *c = [1, 2, 3, 4, 5] thì c bằng gì?", opts: ["[3, 4, 5]", "(3, 4, 5)", "3", "[1, 2]"], ans: 0 },
-    { q: "Phép toán nào lấy hợp (UNION) của hai set?", opts: ["&", "|", "-", "^"], ans: 1 },
-    { q: "Kết quả của {1,2,3} ^ {2,3,4} là gì?", opts: ["{2, 3}", "{1, 4}", "{1, 2, 3, 4}", "{}"], ans: 1 },
-    { q: "Phương thức nào xóa phần tử bất kỳ khỏi set và trả về nó?", opts: ["s.remove()", "s.pop()", "s.delete()", "s.take()"], ans: 1 },
-    { q: "Sự khác biệt giữa s.remove(x) và s.discard(x) ở set là gì?", opts: ["Không có sự khác biệt", "remove() báo lỗi nếu x không tồn tại, discard() thì không", "discard() xóa tất cả x, remove() chỉ xóa một", "remove() trả về x, discard() không trả về"], ans: 1 },
-    { q: "frozenset khác set ở điểm nào?", opts: ["frozenset nhanh hơn", "frozenset là immutable, không thêm/xóa phần tử được", "frozenset cho phép phần tử trùng", "frozenset có thứ tự"], ans: 1 },
-    { q: "Kết quả của d = {}; d.setdefault('a', []).append(1); print(d) là gì?", opts: ["{'a': 1}", "{'a': [1]}", "Lỗi", "{}"], ans: 1 },
-    { q: "Kết quả của {k: v for k, v in [('a',1), ('b',2)]} là gì?", opts: ["[('a',1), ('b',2)]", "{'a': 1, 'b': 2}", "{('a',1), ('b',2)}", "Lỗi"], ans: 1 },
-    { q: "Trong Python 3.7+, dictionary có đảm bảo thứ tự chèn không?", opts: ["Không, dict không có thứ tự", "Có, dict giữ thứ tự chèn", "Chỉ khi dùng OrderedDict", "Chỉ khi key là số"], ans: 1 },
-    { q: "Kết quả của list('hello') là gì?", opts: ["['hello']", "['h', 'e', 'l', 'l', 'o']", "('h', 'e', 'l', 'l', 'o')", "Lỗi"], ans: 1 },
-    { q: "Lệnh del a[1:3] trên a = [10,20,30,40,50] cho kết quả gì?", opts: ["[10, 40, 50]", "[10, 20, 50]", "[20, 30]", "Lỗi"], ans: 0 },
-    { q: "Kết quả của min([3, 1, 4, 1, 5]) là gì?", opts: ["3", "1", "5", "0"], ans: 1 },
-    { q: "Kết quả của sum([1, 2, 3, 4]) là gì?", opts: ["4", "10", "24", "Lỗi"], ans: 1 },
-    { q: "Lệnh nào kiểm tra set s1 là tập con của set s2?", opts: ["s1.subset(s2)", "s1.issubset(s2)", "s1.contains(s2)", "s1.in(s2)"], ans: 1 },
-    { q: "Kết quả của a = [1,2,3]; a.pop() là gì?", opts: ["1", "[1,2]", "3", "Lỗi"], ans: 2 },
-    { q: "Kết quả của a = [1,2,3]; a.pop(0) là gì?", opts: ["1", "3", "[2,3]", "0"], ans: 0 },
-    { q: "Nested dictionary d = {'a': {'b': 5}}, cách lấy giá trị 5?", opts: ["d['a']['b']", "d['a.b']", "d.get('a.b')", "d['b']['a']"], ans: 0 },
-    { q: "Kết quả của sorted({'c':3, 'a':1, 'b':2}) là gì?", opts: ["{'a':1, 'b':2, 'c':3}", "['a', 'b', 'c']", "[1, 2, 3]", "Lỗi"], ans: 1 },
-    { q: "Kết quả của [i for i in range(5) if i % 2 != 0] là gì?", opts: ["[0, 2, 4]", "[1, 3]", "[1, 2, 3, 4]", "[0, 1, 2, 3, 4]"], ans: 1 },
-    { q: "Hàm map(lambda x: x * 2, [1, 2, 3]) trong Python trả về kiểu dữ liệu nào?", opts: ["List", "Map object", "Set", "Tuple"], ans: 1 },
-    { q: "Hàm sorted([3, 1, 2]) sẽ trả về kết quả nào?", opts: ["[1, 2, 3]", "[3, 2, 1]", "[2, 1, 3]", "Lỗi"], ans: 0 },
-    { q: "Hàm filter(lambda x: x % 2 == 0, [1, 2, 3, 4]) dùng để làm gì?", opts: ["Tạo một tuple mới", "Lọc các phần tử thỏa mãn điều kiện", "Chuyển đổi kiểu dữ liệu", "Sắp xếp dữ liệu"], ans: 1 },
-    { q: "Biểu thức lambda x: x + 1 có ý nghĩa là gì?", opts: ["Tạo một hàm ẩn danh trả về x + 1", "Tạo một biến x", "Kiểm tra điều kiện x > 1", "Sắp xếp x tăng dần"], ans: 0 },
-    { q: "Đoạn code try: 10 / 0 except ZeroDivisionError: ... dùng để làm gì?", opts: ["Bắt và xử lý lỗi chia cho 0", "Tạo một vòng lặp mới", "In ra số 10", "Xóa biến 10"], ans: 0 },
-    { q: "Trong thư viện math, câu lệnh math.sqrt(25) sẽ trả về giá trị nào?", opts: ["25", "5.0", "12.5", "Lỗi"], ans: 1 },
-    { q: "Để dùng hàm sqrt trong thư viện math, ta cần viết câu lệnh nào?", opts: ["import math", "include math", "using math", "from math import list"], ans: 0 },
-
-    // === BÀI CODE ===
-    { m: "Tạo list a gồm các số 1, 2, 3, 4", r: /a\s*=\s*\[\s*1\s*,\s*2\s*,\s*3\s*,\s*4\s*\]/, h: "a = [1, 2, 3, 4]", w: "List dùng ngoặc vuông và phần tử ngăn bởi dấu phẩy." },
-    { m: "Thêm số 10 vào cuối list a", r: /a\.append\s*\(\s*10\s*\)/, h: "a.append(10)", w: "append dùng để thêm phần tử vào cuối list." },
-    { m: "Tạo set s từ list a", r: /s\s*=\s*set\s*\(\s*a\s*\)/, h: "s = set(a)", w: "Set loại bỏ phần tử trùng." },
-    { m: "Lấy giao hai set s1 và s2", r: /s1\s*&\s*s2|s1\.intersection\s*\(\s*s2\s*\)/, h: "s1 & s2", w: "Giao là phần chung giữa hai tập." },
-    { m: "Tạo tuple point có giá trị 5 và 8", r: /point\s*=\s*\(\s*5\s*,\s*8\s*\)/, h: "point = (5, 8)", w: "Tuple dùng ngoặc đơn, phù hợp dữ liệu cố định." },
-    { m: "Tạo tuple một phần tử t chỉ chứa số 9", r: /t\s*=\s*\(\s*9\s*,\s*\)/, h: "t = (9,)", w: "Tuple 1 phần tử bắt buộc có dấu phẩy cuối." },
-    { m: "Tạo dict student có name='Lan' và age=20", r: /student\s*=\s*\{\s*['"]name['"]\s*:\s*['"]Lan['"]\s*,\s*['"]age['"]\s*:\s*20\s*\}/, h: "student = {'name': 'Lan', 'age': 20}", w: "Dict dùng cặp key:value trong ngoặc nhọn." },
-    { m: "Lấy giá trị key 'name' từ dict student", r: /student\s*\[\s*['"]name['"]\s*\]|student\.get\s*\(\s*['"]name['"]\s*\)/, h: "student['name'] hoặc student.get('name')", w: "Dùng get an toàn hơn khi có thể thiếu key." },
-    { m: "Cập nhật điểm score=100 trong dict d", r: /d\s*\[\s*['"]score['"]\s*\]\s*=\s*100/, h: "d['score'] = 100", w: "Bạn có thể cập nhật trực tiếp value theo key." },
-    { m: "Chuyển list a thành set rồi đếm phần tử", r: /len\s*\(\s*set\s*\(\s*a\s*\)\s*\)/, h: "len(set(a))", w: "Set là lựa chọn chuẩn để xử lý trùng lặp." },
-    { m: "Lấy key-value của dict d bằng vòng lặp", r: /for\s+\w+\s*,\s*\w+\s+in\s+d\.items\s*\(\s*\)\s*:/, h: "for k, v in d.items():", w: "items() trả về cặp key-value để unpack." },
-    { m: "Chuyển tuple t sang list lst", r: /lst\s*=\s*list\s*\(\s*t\s*\)/, h: "lst = list(t)", w: "list() giúp chuyển đổi để có thể chỉnh sửa dữ liệu." },
-    { m: "Xóa phần tử có giá trị 3 khỏi list a", r: /a\.remove\s*\(\s*3\s*\)/, h: "a.remove(3)", w: "remove() xóa phần tử đầu tiên khớp giá trị." },
-    { m: "Chèn số 99 vào vị trí index 1 của list a", r: /a\.insert\s*\(\s*1\s*,\s*99\s*\)/, h: "a.insert(1, 99)", w: "insert(index, value) chèn phần tử vào vị trí chỉ định." },
-    { m: "Tạo list squares bình phương các số từ 1 đến 5", r: /squares\s*=\s*\[\s*x\s*\*\*\s*2\s+for\s+x\s+in\s+range\s*\(\s*1\s*,\s*6\s*\)\s*\]/, h: "squares = [x**2 for x in range(1, 6)]", w: "List comprehension tạo danh sách ngắn gọn." },
-    { m: "Lấy hợp (union) của hai set s1 và s2", r: /s1\s*\|\s*s2|s1\.union\s*\(\s*s2\s*\)/, h: "s1 | s2", w: "Phép hợp gộp tất cả phần tử từ cả hai set." },
-    { m: "Xóa key 'age' khỏi dict d bằng pop", r: /d\.pop\s*\(\s*['"]age['"]\s*\)/, h: "d.pop('age')", w: "pop(key) xóa key và trả về value tương ứng." },
-    { m: "Đảo ngược list a tại chỗ", r: /a\.reverse\s*\(\s*\)/, h: "a.reverse()", w: "reverse() đảo ngược list gốc, không tạo list mới." },
-    { m: "Sắp xếp list a tăng dần tại chỗ", r: /a\.sort\s*\(\s*\)/, h: "a.sort()", w: "sort() sắp xếp tại chỗ, sorted() tạo list mới." },
-    { m: "Lấy 3 phần tử đầu của list a", r: /a\s*\[\s*:\s*3\s*\]/, h: "a[:3]", w: "Slice a[:n] lấy n phần tử đầu tiên." },
-    { m: "Tạo dict comprehension d: key 1-5, value bình phương", r: /d\s*=\s*\{\s*x\s*:\s*x\s*\*\*\s*2\s+for\s+x\s+in\s+range\s*\(\s*1\s*,\s*6\s*\)\s*\}/, h: "d = {x: x**2 for x in range(1, 6)}", w: "Dict comprehension dùng cú pháp {key: value for ...}." },
-    { m: "Nối list b = [4,5] vào cuối list a", r: /a\.extend\s*\(\s*b\s*\)/, h: "a.extend(b)", w: "extend() thêm từng phần tử của list b vào a." },
-    { m: "Kiểm tra s1 có phải tập con của s2", r: /s1\.issubset\s*\(\s*s2\s*\)|s1\s*<=\s*s2/, h: "s1.issubset(s2) hoặc s1 <= s2", w: "issubset() hoặc <= kiểm tra tập con." },
-    { m: "Xóa tất cả phần tử trong list a", r: /a\.clear\s*\(\s*\)/, h: "a.clear()", w: "clear() xóa tất cả phần tử, giữ lại list rỗng." }
+    { q: "Điều kiện nào bắt buộc phải có trong hàm đệ quy để tránh Stack Overflow?", opts: ["Vòng lặp for", "Điều kiện dừng (base case)", "Câu lệnh return None", "Ít nhất 2 lần gọi đệ quy"], ans: 1 },
+    { q: "Độ phức tạp thời gian của Bubble Sort trong trường hợp xấu nhất là bao nhiêu?", opts: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"], ans: 2 },
+    { q: "Thuật toán sắp xếp nào hoạt động theo nguyên lý 'chia để trị'?", opts: ["Bubble Sort", "Insertion Sort", "Selection Sort", "Merge Sort"], ans: 3 },
+    { q: "Độ phức tạp thời gian trung bình của Merge Sort là bao nhiêu?", opts: ["O(n^2)", "O(n)", "O(n log n)", "O(log n)"], ans: 2 },
+    { q: "Binary Search yêu cầu mảng đầu vào phải như thế nào?", opts: ["Chứa số nguyên", "Đã được sắp xếp", "Có số lượng là lũy thừa 2", "Không có trùng lặp"], ans: 1 },
+    { q: "Độ phức tạp thời gian của Binary Search là bao nhiêu?", opts: ["O(1)", "O(n)", "O(log n)", "O(n log n)"], ans: 2 },
+    { q: "Kỹ thuật Memoization dùng để làm gì?", opts: ["Lưu kết quả đã tính để tránh tính lại", "Ghi log đệ quy", "Giới hạn độ sâu đệ quy", "Chuyển đệ quy thành vòng lặp"], ans: 0 },
+    { q: "Độ phức tạp của Fibonacci đệ quy thuần túy là bao nhiêu?", opts: ["O(n)", "O(log n)", "O(2^n)", "O(n^2)"], ans: 2 },
+    { q: "BFS sử dụng cấu trúc dữ liệu nào?", opts: ["Stack", "Queue", "Heap", "Set"], ans: 1 },
+    { q: "DFS thường dùng kỹ thuật nào?", opts: ["Queue", "Đệ quy hoặc Stack", "Heap", "Dictionary"], ans: 1 },
+    { q: "Two Sum với O(n) dùng cấu trúc dữ liệu nào?", opts: ["Sắp xếp O(n log n)", "Dictionary/Hash Map O(n)", "Hai vòng lặp O(n^2)", "Binary Search O(n log n)"], ans: 1 },
+    { q: "Bài toán Knapsack 0/1 là ví dụ điển hình của kỹ thuật nào?", opts: ["Tham lam (Greedy)", "Chia để trị", "Quy hoạch động (DP)", "Tìm kiếm nhị phân"], ans: 2 },
+    { q: "Kiểm tra chuỗi ngoặc hợp lệ thường dùng cấu trúc nào?", opts: ["Queue", "Stack", "Set", "Dictionary"], ans: 1 },
+    { q: "Fibonacci với memoization giảm độ phức tạp xuống còn bao nhiêu?", opts: ["O(2^n)", "O(n^2)", "O(n)", "O(log n)"], ans: 2 },
+    { m: "Điều kiện dừng đệ quy Fibonacci khi n <= 1", r: /if\s+n\s*<=\s*1\s*:\s*return\s+n/, h: "if n <= 1: return n", w: "Điều kiện dừng: fib(0) = 0 và fib(1) = 1." },
+    { m: "Tính mid trong Binary Search từ left và right", r: /mid\s*=\s*\(\s*left\s*\+\s*right\s*\)\s*\/\/\s*2/, h: "mid = (left + right) // 2", w: "Chia đôi bằng phép chia lấy phần nguyên." },
+    { m: "Hoán đổi a[j] và a[j+1] trong Bubble Sort", r: /a\s*\[\s*j\s*\]\s*,\s*a\s*\[\s*j\s*\+\s*1\s*\]\s*=\s*a\s*\[\s*j\s*\+\s*1\s*\]\s*,\s*a\s*\[\s*j\s*\]/, h: "a[j], a[j+1] = a[j+1], a[j]", w: "Dùng phép gán đồng thời để hoán đổi." },
+    { m: "Two Sum: tính complement = target - x", r: /complement\s*=\s*target\s*-\s*\w+/, h: "complement = target - x", w: "Với mỗi x, kiểm tra (target - x) đã có trong hashmap chưa." },
+    { m: "Cập nhật a, b theo Fibonacci: a, b = b, a + b", r: /a\s*,\s*b\s*=\s*b\s*,\s*a\s*\+\s*b/, h: "a, b = b, a + b", w: "Cập nhật đồng thời a và b theo công thức Fibonacci." },
 ];
+
 
 
 let selectedModule = 1;
@@ -853,28 +769,10 @@ async function initGame() {
         const mcqs = (data.questions || []).map(q => ({ ...q, type: 'mcq' }));
         const codes = (data.coding_tasks || []).map(q => ({ ...q, type: 'code', m: q.q }));
 
-        let allQuestions = [...mcqs, ...codes];
-        if (selectedModule === 1) {
-            const extraMcqs = module1McqFallback.map(q => ({ ...q, type: 'mcq' }));
-            const extraCodes = questionBank.map(q => ({ ...q, type: 'code' }));
+        // Lấy toàn bộ câu hỏi từ JSON (module_1.json và module_2.json đã đủ câu)
+        const allQuestions = dedupeQuestions([...mcqs, ...codes]);
 
-            const basePool = dedupeQuestions([...mcqs, ...codes]);
-            const extraPool = dedupeQuestions([...extraMcqs, ...extraCodes]);
-
-            const basePicked = pickRandom(basePool, Math.min(6, basePool.length));
-            const extraPicked = pickRandom(extraPool, Math.min(4, extraPool.length));
-
-            const merged = dedupeQuestions([...basePicked, ...extraPicked]);
-            if (merged.length < 10) {
-                const fillerPool = dedupeQuestions([...basePool, ...extraPool]);
-                const remaining = fillerPool.filter((q) => !merged.some((m) => (m.q || m.m) === (q.q || q.m)));
-                allQuestions = [...merged, ...pickRandom(remaining, 10 - merged.length)];
-            } else {
-                allQuestions = merged;
-            }
-        }
-
-        activeQuestions = pickRandom(dedupeQuestions(allQuestions), 10);
+        activeQuestions = pickRandom(allQuestions, 10);
 
         currentQuestion = 0;
         score = 0;
@@ -883,6 +781,10 @@ async function initGame() {
         isPowerShot = false;
         helps = { call: false, wise: false, fifty: false };
         document.querySelectorAll('.lifeline-btn').forEach(b => b.classList.remove('used'));
+        document.querySelectorAll('.lifeline-select').forEach(s => {
+            s.classList.remove('used');
+            s.disabled = false;
+        });
         showQuestion();
     } catch (e) {
         console.error("Lỗi tải câu hỏi:", e);
@@ -922,6 +824,224 @@ function selectClub(clubId, el) {
     selectedShirtColor = clubData[clubId].shirt;
     document.querySelectorAll('.club-card').forEach(c => c.classList.remove('active'));
     el.classList.add('active');
+}
+
+// === CẤU HÌNH HỆ THỐNG CHỐNG GIAN LẬN & ĐẾM NGƯỢC THỜI GIAN ===
+let questionTimerInterval = null;
+let timeLeft = 30;
+let isQuestionAnswered = false;
+let antiCheatSetupDone = false;
+let tabSwitchPenalized = false;
+
+function setupAntiCheat() {
+    if (antiCheatSetupDone) return;
+    antiCheatSetupDone = true;
+
+    // 1. Phát hiện chuyển Tab & rời Cửa sổ
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            triggerTabSwitchPenalty("Chuyển tab trình duyệt");
+        }
+    });
+
+    window.addEventListener('blur', () => {
+        if (document.visibilityState === 'hidden') {
+            triggerTabSwitchPenalty("Rời khỏi cửa sổ game");
+        }
+    });
+
+    // 2. Chặn Chuột phải (Context menu)
+    document.addEventListener('contextmenu', (e) => {
+        if (gameStarted && !shooting) {
+            e.preventDefault();
+            showAntiCheatNotice("⚠️ CHỐNG GIAN LẬN: Chuột phải bị vô hiệu hóa trong khi làm bài!");
+        }
+    });
+
+    // 3. Chặn Copy / Cut
+    document.addEventListener('copy', handleCopyCut);
+    document.addEventListener('cut', handleCopyCut);
+
+    // 4. Chặn Phím tắt (Ctrl+C, Ctrl+V, Ctrl+U, F12, etc.)
+    document.addEventListener('keydown', handleKeyCombination);
+
+    // 5. Chặn Dán (Paste) vào ô nhập code
+    const answerInput = document.getElementById('answer');
+    if (answerInput) {
+        answerInput.addEventListener('paste', (e) => {
+            e.preventDefault();
+            showAntiCheatNotice("⚠️ CHỐNG GIAN LẬN: Không cho dán (paste)! Vui lòng tự gõ câu trả lời.");
+        });
+    }
+}
+
+function handleCopyCut(e) {
+    if (gameStarted) {
+        e.preventDefault();
+        showAntiCheatNotice("⚠️ CHỐNG GIAN LẬN: Không cho phép sao chép nội dung câu hỏi!");
+    }
+}
+
+function handleKeyCombination(e) {
+    if (!gameStarted) return;
+    const isCtrl = e.ctrlKey || e.metaKey;
+    const key = e.key.toLowerCase();
+
+    if (e.key === 'F12' || (isCtrl && (key === 'c' || key === 'v' || key === 'u' || key === 's')) || (isCtrl && e.shiftKey && (key === 'i' || key === 'c' || key === 'j'))) {
+        e.preventDefault();
+        showAntiCheatNotice("⚠️ CHỐNG GIAN LẬN: Thao tác phím tắt bị vô hiệu hóa!");
+    }
+}
+
+function showAntiCheatNotice(msg) {
+    const hintDiv = document.getElementById('hint');
+    if (hintDiv) {
+        hintDiv.style.color = '#e74c3c';
+        hintDiv.style.fontWeight = '700';
+        hintDiv.innerText = msg;
+        setTimeout(() => {
+            if (hintDiv.innerText === msg) hintDiv.innerText = '';
+        }, 3000);
+    }
+}
+
+let pendingPenaltyNextAction = null;
+
+function showPenaltyModal(title, message, onAcknowledge) {
+    stopQuestionTimer();
+
+    const modal = document.getElementById('penaltyModal');
+    const titleElem = document.getElementById('penaltyTitle');
+    const msgElem = document.getElementById('penaltyMessage');
+
+    if (titleElem) titleElem.innerText = title;
+    if (msgElem) msgElem.innerHTML = message;
+
+    pendingPenaltyNextAction = onAcknowledge;
+
+    if (modal) modal.style.display = 'flex';
+}
+
+function acknowledgePenalty() {
+    const modal = document.getElementById('penaltyModal');
+    if (modal) modal.style.display = 'none';
+
+    if (typeof pendingPenaltyNextAction === 'function') {
+        const action = pendingPenaltyNextAction;
+        pendingPenaltyNextAction = null;
+        action();
+    }
+}
+
+function triggerTabSwitchPenalty(reason) {
+    if (!gameStarted || shooting || currentQuestion >= 10 || lives <= 0) return;
+    if (isQuestionAnswered) return;
+
+    if (tabSwitchPenalized) return;
+    tabSwitchPenalized = true;
+    setTimeout(() => { tabSwitchPenalized = false; }, 2500);
+
+    stopQuestionTimer();
+
+    const optsContainer = document.getElementById('optsContainer');
+    const answerInput = document.getElementById('answer');
+    const submitBtn = document.getElementById('submitBtn');
+    const directionBox = document.getElementById('directionBox');
+    if (optsContainer) optsContainer.style.display = 'none';
+    if (answerInput) answerInput.style.display = 'none';
+    if (submitBtn) submitBtn.style.display = 'none';
+    if (directionBox) directionBox.style.display = 'none';
+
+    const isDead = handleLifeLoss();
+
+    showPenaltyModal(
+        "⚠️ PHÁT HIỆN GIAN LẬN!",
+        `Hệ thống phát hiện: <b>${reason}</b>.<br>Bạn bị <b>trừ 1 tim ❤️</b> và mất lượt sút này!`,
+        () => {
+            if (!isDead) {
+                currentQuestion++;
+                showQuestion();
+            }
+        }
+    );
+}
+
+function startQuestionTimer() {
+    stopQuestionTimer();
+
+    const q = activeQuestions[currentQuestion];
+    if (!q) return;
+
+    const isCode = q.type === 'code';
+    const isHardModule = selectedModule >= 3;
+
+    // Thời gian suy nghĩ tùy độ khó:
+    // Trắc nghiệm Module 1-2: 30 giây | Code Module 1-2: 45 giây
+    // Trắc nghiệm Module 3-4: 40 giây | Code Module 3-4: 60 giây
+    timeLeft = isCode ? (isHardModule ? 60 : 45) : (isHardModule ? 40 : 30);
+    isQuestionAnswered = false;
+
+    updateTimerUI();
+
+    questionTimerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerUI();
+
+        if (timeLeft <= 0) {
+            stopQuestionTimer();
+            handleTimeOut();
+        }
+    }, 1000);
+}
+
+function stopQuestionTimer() {
+    if (questionTimerInterval) {
+        clearInterval(questionTimerInterval);
+        questionTimerInterval = null;
+    }
+}
+
+function updateTimerUI() {
+    const secondsSpan = document.getElementById('timerSeconds');
+    const timerBadge = document.getElementById('timerBadge');
+
+    if (secondsSpan) secondsSpan.innerText = timeLeft;
+
+    if (timerBadge) {
+        timerBadge.classList.remove('warning', 'danger');
+        if (timeLeft <= 10) {
+            timerBadge.classList.add('danger');
+        } else if (timeLeft <= 15) {
+            timerBadge.classList.add('warning');
+        }
+    }
+}
+
+function handleTimeOut() {
+    if (!gameStarted || shooting || currentQuestion >= 10 || lives <= 0) return;
+    if (isQuestionAnswered) return;
+
+    const optsContainer = document.getElementById('optsContainer');
+    const answerInput = document.getElementById('answer');
+    const submitBtn = document.getElementById('submitBtn');
+    const directionBox = document.getElementById('directionBox');
+    if (optsContainer) optsContainer.style.display = 'none';
+    if (answerInput) answerInput.style.display = 'none';
+    if (submitBtn) submitBtn.style.display = 'none';
+    if (directionBox) directionBox.style.display = 'none';
+
+    const isDead = handleLifeLoss();
+
+    showPenaltyModal(
+        "⏱️ HẾT GIỜ SUY NGHĨ!",
+        `Bạn đã quá thời gian làm bài cho phép.<br>Bạn bị <b>trừ 1 tim ❤️</b> và mất lượt sút này!`,
+        () => {
+            if (!isDead) {
+                currentQuestion++;
+                showQuestion();
+            }
+        }
+    );
 }
 
 function startGame() {
@@ -965,8 +1085,10 @@ function startGame() {
     localStorage.setItem('penalty_clubId', selectedClubId);
 
     gameStarted = true;
+    document.body.classList.add('game-active');
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('gameContainer').style.display = 'flex';
+    setupAntiCheat();
     initGame();
 }
 
@@ -1010,6 +1132,7 @@ function showQuestion() {
     goalie.x = cw / 2; goalie.y = 90; goalie.rotation = 0; goalie.state = 'idle'; goalie.trail = [];
     player.x = cw / 2 - 160; player.y = ch - 100; player.state = 'idle'; player.thought = null;
     render();
+    startQuestionTimer();
 }
 
 function closeMixiNotice() {
@@ -1038,6 +1161,8 @@ function handleLifeLoss() {
 }
 
 function showGameOver() {
+    stopQuestionTimer();
+    document.body.classList.remove('game-active');
     shooting = false;
     document.getElementById('questionBox').style.display = 'none';
     document.getElementById('directionBox').style.display = 'none';
@@ -1067,6 +1192,8 @@ function checkMCQ(idx) {
     if (shooting) return;
     const q = activeQuestions[currentQuestion];
     if (idx === q.ans) {
+        stopQuestionTimer();
+        isQuestionAnswered = true;
         consecutiveCorrect++;
         if (consecutiveCorrect >= 3) {
             isPowerShot = true;
@@ -1077,10 +1204,19 @@ function checkMCQ(idx) {
         document.getElementById('directionBox').style.display = 'block';
         document.getElementById('optsContainer').style.display = "none";
     } else {
-        document.getElementById('result').style.color = '#e74c3c';
-        document.getElementById('result').innerText = 'Sai rồi! -1 tim ❤️';
-        document.getElementById('hint').innerText = 'Gợi ý: Hãy suy nghĩ kỹ hơn!';
-        handleLifeLoss();
+        stopQuestionTimer();
+        document.getElementById('optsContainer').style.display = 'none';
+        const isDead = handleLifeLoss();
+        showPenaltyModal(
+            "❌ ĐÁP ÁN CHƯA CHÍNH XÁC!",
+            `Rất tiếc! Bạn đã chọn sai đáp án và bị <b>trừ 1 tim ❤️</b>.<br>Hãy suy nghĩ kỹ hơn ở các câu tiếp theo!`,
+            () => {
+                if (!isDead) {
+                    currentQuestion++;
+                    showQuestion();
+                }
+            }
+        );
     }
 }
 
@@ -1092,6 +1228,8 @@ function submitAnswer() {
     const regex = typeof q.r === 'string' ? new RegExp(q.r) : q.r;
 
     if (regex.test(val)) {
+        stopQuestionTimer();
+        isQuestionAnswered = true;
         consecutiveCorrect++;
         if (consecutiveCorrect >= 3) {
             isPowerShot = true;
@@ -1103,10 +1241,21 @@ function submitAnswer() {
         document.getElementById("answer").style.display = "none";
         document.getElementById("submitBtn").style.display = "none";
     } else {
-        document.getElementById('result').style.color = '#e74c3c';
-        document.getElementById('result').innerText = 'Mã code chưa đúng rồi! -1 tim ❤️';
-        document.getElementById('hint').innerText = 'Nhà thông thái gợi ý: ' + q.h;
-        handleLifeLoss();
+        stopQuestionTimer();
+        document.getElementById('answer').style.display = 'none';
+        document.getElementById('submitBtn').style.display = 'none';
+        const isDead = handleLifeLoss();
+        const hintText = q.h ? `<br><small style="color: #7f8c8d; font-size: 0.95rem;">Gợi ý: ${q.h}</small>` : '';
+        showPenaltyModal(
+            "❌ MÃ CODE CHƯA ĐÚNG!",
+            `Mã code của bạn chưa chính xác và bị <b>trừ 1 tim ❤️</b>.${hintText}`,
+            () => {
+                if (!isDead) {
+                    currentQuestion++;
+                    showQuestion();
+                }
+            }
+        );
     }
 }
 
@@ -1149,6 +1298,55 @@ function shoot(dir) {
     });
 }
 
+function setHelperImage(imgElem, primarySrc, fallbackSrcs) {
+    if (!imgElem) return;
+    const fallbacks = fallbackSrcs ? [...fallbackSrcs] : [];
+    imgElem.onerror = function () {
+        if (fallbacks.length > 0) {
+            const nextSrc = fallbacks.shift();
+            imgElem.src = nextSrc;
+        } else {
+            imgElem.onerror = null;
+        }
+    };
+    imgElem.src = primarySrc;
+}
+
+function updateCallPreview() {
+    const person = document.querySelector('input[name="callPerson"]:checked')?.value || 'mixi';
+    const callImg = document.getElementById('callImg');
+    const nameElem = document.getElementById('callPersonName');
+
+    if (person === 'messi') {
+        if (nameElem) nameElem.innerText = "GOAT Lionel Messi";
+        setHelperImage(callImg, 'img/messi_help.jpg', ['img/face_messi.png']);
+    } else {
+        if (nameElem) nameElem.innerText = "Anh Độ Mixi";
+        setHelperImage(callImg, 'img/mixi.jpg', []);
+    }
+}
+
+function updateWisePreview() {
+    const person = document.querySelector('input[name="wisePerson"]:checked')?.value || 'TAN';
+    const wiseImg = document.getElementById('wiseImg');
+    const wiseIcon = document.getElementById('wiseIcon');
+    const nameElem = document.getElementById('wisePersonName');
+
+    if (person === 'lukaku') {
+        if (nameElem) nameElem.innerText = "Romelu Lukaku (Lakaka)";
+        setHelperImage(wiseImg, 'img/lakaka.jpg', []);
+        if (wiseIcon) wiseIcon.innerText = "🧱";
+    } else if (person === 'cr7') {
+        if (nameElem) nameElem.innerText = "Cristiano Ronaldo (CR7)";
+        setHelperImage(wiseImg, 'img/Ronaldo_help.webp', ['img/Ronaldo_help', 'img/face_ronaldo.png']);
+        if (wiseIcon) wiseIcon.innerText = "⚽";
+    } else {
+        if (nameElem) nameElem.innerText = "Bác Trương Anh Ngọc";
+        setHelperImage(wiseImg, 'img/TAN.jpg', []);
+        if (wiseIcon) wiseIcon.innerText = "🧙‍♂️";
+    }
+}
+
 function useLifeline(type) {
     if (helps[type]) return;
     const q = activeQuestions[currentQuestion];
@@ -1178,62 +1376,151 @@ function useLifeline(type) {
         return;
     }
 
-    helps[type] = true;
-    document.getElementById(type + 'Btn').classList.add('used');
-
-    let resultText = "";
-    if (q.type === 'mcq') {
-        resultText = q.opts[q.ans];
-    } else {
-        resultText = (type === 'call') ? q.h : q.w;
-    }
-
     if (type === 'call') {
-        const audio = document.getElementById('callAudio');
-        if (audio) {
-            audio.currentTime = 0;
-            audio.play().catch(e => console.log("Audio play failed:", e));
-        }
-        document.getElementById('callModal').style.display = 'flex';
-        document.getElementById('callMsg').innerText = "Số này của ai ấy nhỉ?...";
+        document.getElementById('callSelectionBox').style.display = 'flex';
+        document.getElementById('startCallBtn').style.display = 'inline-block';
+        document.getElementById('closeCallBtn').style.display = 'none';
+        document.getElementById('callMsg').innerText = "Chọn người bạn muốn gọi";
+        document.getElementById('callMsg').style.color = "#e74c3c";
         document.getElementById('callResult').innerText = "";
+        updateCallPreview();
+        document.getElementById('callModal').style.display = 'flex';
+    } else if (type === 'wise') {
+        document.getElementById('wiseSelectionBox').style.display = 'flex';
+        document.getElementById('startWiseBtn').style.display = 'inline-block';
+        document.getElementById('closeWiseBtn').style.display = 'none';
+        document.getElementById('wiseMsg').innerText = "Chọn nhà thông thái để hỏi";
+        document.getElementById('wiseMsg').style.color = "#3498db";
+        document.getElementById('wiseResult').innerText = "";
+        updateWisePreview();
+        document.getElementById('wiseModal').style.display = 'flex';
+    }
+}
+
+function playCharacterAudio(audioId) {
+    const audio = document.getElementById(audioId);
+    if (audio && audio.getAttribute('src') && audio.getAttribute('src').trim() !== '') {
+        audio.currentTime = 0;
+        audio.play().catch(e => console.log(`Audio ${audioId} play failed:`, e));
+    }
+}
+
+function stopAllLifelineAudio() {
+    ['callAudio', 'callAudio_messi', 'wiseAudio', 'wiseAudio_lukaku', 'wiseAudio_cr7'].forEach(id => {
+        const audio = document.getElementById(id);
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    });
+}
+
+function confirmCall() {
+    const q = activeQuestions[currentQuestion];
+    let resultText = (q.type === 'mcq') ? q.opts[q.ans] : q.h;
+
+    helps['call'] = true;
+    document.getElementById('callBtn').classList.add('used');
+
+    document.getElementById('callSelectionBox').style.display = 'none';
+    document.getElementById('startCallBtn').style.display = 'none';
+    document.getElementById('closeCallBtn').style.display = 'inline-block';
+
+    const person = document.querySelector('input[name="callPerson"]:checked')?.value || 'mixi';
+    const callImg = document.getElementById('callImg');
+    const callMsg = document.getElementById('callMsg');
+    const callResult = document.getElementById('callResult');
+
+    if (person === 'messi') {
+        playCharacterAudio('callAudio_messi');
+        setHelperImage(callImg, 'img/messi_help.jpg', ['img/face_messi.png']);
+        callMsg.style.color = "#27ae60";
+        callMsg.innerText = "Đang kết nối vệ tinh gọi cho GOAT Messi...";
         setTimeout(() => {
-            document.getElementById('callMsg').innerText = "À, Anh Độ Mixi đây rồi!";
-            document.getElementById('callResult').innerHTML = `Anh bảo đáp án là: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Em đừng có mà chối!"</span>`;
+            callMsg.innerText = "¡Hola! GOAT Lionel Messi đang trả lời!";
+            callResult.innerHTML = `GOAT Messi tư vấn: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Muchachos! GOAT tin tưởng tuyệt đối vào đáp án này!"</span>`;
+            player.thought = "¡Muchas gracias GOAT Messi! Vamos Argentina!";
+            render();
+        }, 1500);
+    } else {
+        playCharacterAudio('callAudio');
+        setHelperImage(callImg, 'img/mixi.jpg', []);
+        callMsg.style.color = "#e74c3c";
+        callMsg.innerText = "Số này của ai ấy nhỉ?...";
+        setTimeout(() => {
+            callMsg.innerText = "À, Anh Độ Mixi đây rồi!";
+            callResult.innerHTML = `Anh bảo đáp án là: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Em đừng có mà chối!"</span>`;
             player.thought = "Nà ná na na. Cảm ơn Anh Độ Mixi!";
             render();
         }, 1500);
-    } else if (type === 'wise') {
-        const audio = document.getElementById('wiseAudio');
-        if (audio) {
-            audio.currentTime = 0;
-            audio.play().catch(e => console.log("Audio play failed:", e));
-        }
-        document.getElementById('wiseModal').style.display = 'flex';
-        document.getElementById('wiseResult').innerText = "";
+    }
+}
+
+function confirmWise() {
+    const q = activeQuestions[currentQuestion];
+    let resultText = (q.type === 'mcq') ? q.opts[q.ans] : q.w;
+
+    helps['wise'] = true;
+    document.getElementById('wiseBtn').classList.add('used');
+
+    document.getElementById('wiseSelectionBox').style.display = 'none';
+    document.getElementById('startWiseBtn').style.display = 'none';
+    document.getElementById('closeWiseBtn').style.display = 'inline-block';
+
+    const person = document.querySelector('input[name="wisePerson"]:checked')?.value || 'TAN';
+    const wiseImg = document.getElementById('wiseImg');
+    const wiseIcon = document.getElementById('wiseIcon');
+    const wiseMsg = document.getElementById('wiseMsg');
+    const wiseResult = document.getElementById('wiseResult');
+
+    if (person === 'lukaku') {
+        playCharacterAudio('wiseAudio_lukaku');
+        setHelperImage(wiseImg, 'img/lakaka.jpg', []);
+        if (wiseIcon) wiseIcon.innerText = "🧱";
+        wiseMsg.style.color = "#d35400";
+        wiseMsg.innerText = "Đang nhận tư vấn từ siêu tiền đạo Lukaku...";
         setTimeout(() => {
-            document.getElementById('wiseMsg').innerText = "Lời khuyên từ nhà thông thái (người Ý):";
-            document.getElementById('wiseResult').innerHTML = `Người Ý nói: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Tin chuẩn em nhé!"</span>`;
+            wiseMsg.innerText = "Chân gỗ Lukaku (Lakaka) phán truyền:";
+            wiseResult.innerHTML = `Lukaku gợi ý: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Tốt nhất là sút trúng người thủ môn như Lukaku nhé!"</span>`;
+            player.thought = "Cảm ơn chiến thần Lakaka Lukaku!";
+            render();
+        }, 1500);
+    } else if (person === 'cr7') {
+        playCharacterAudio('wiseAudio_cr7');
+        setHelperImage(wiseImg, 'img/Ronaldo_help.webp', ['img/Ronaldo_help', 'img/face_ronaldo.png']);
+        if (wiseIcon) wiseIcon.innerText = "⚽";
+        wiseMsg.style.color = "#2980b9";
+        wiseMsg.innerText = "Đang nhận lời tư vấn từ siêu sao CR7...";
+        setTimeout(() => {
+            wiseMsg.innerText = "SIUUU! CR7 phán truyền tuyệt đỉnh:";
+            wiseResult.innerHTML = `Cristiano Ronaldo tư vấn: <div class="highlight-code">${resultText}</div><span class="extra-msg">"SIUUU! Sút chính xác như cú dứt điểm của CR7!"</span>`;
+            player.thought = "SIUUU! Cảm ơn anh Bảy CR7!";
+            render();
+        }, 1500);
+    } else {
+        playCharacterAudio('wiseAudio');
+        setHelperImage(wiseImg, 'img/TAN.jpg', []);
+        if (wiseIcon) wiseIcon.innerText = "🧙‍♂️";
+        wiseMsg.style.color = "#3498db";
+        wiseMsg.innerText = "Nhà thông thái đang suy nghĩ...";
+        setTimeout(() => {
+            wiseMsg.innerText = "Lời khuyên từ nhà thông thái (người Ý):";
+            wiseResult.innerHTML = `Người Ý nói: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Tin chuẩn em nhé!"</span>`;
             player.thought = "Cảm ơn bác Trông Anh Ngược!";
             render();
         }, 1500);
     }
 }
 
+function closeModalWithoutUsing(id) {
+    document.getElementById(id).style.display = 'none';
+    stopAllLifelineAudio();
+}
+
 function closeModal(id) {
     document.getElementById(id).style.display = 'none';
-    if (id === 'callModal') {
-        const audio = document.getElementById('callAudio');
-        if (audio) {
-            audio.pause();
-            audio.currentTime = 0;
-        }
-    } else if (id === 'wiseModal') {
-        const audio = document.getElementById('wiseAudio');
-        if (audio) {
-            audio.pause();
-            audio.currentTime = 0;
-        }
+    if (id === 'callModal' || id === 'wiseModal') {
+        stopAllLifelineAudio();
     } else if (id === 'finalPrizeModal') {
         const audio = document.getElementById('winAudio');
         if (audio) {
@@ -1253,6 +1540,8 @@ function scrollToPrizes() {
 let picksAllowed = 0;
 
 function showFinalResult() {
+    stopQuestionTimer();
+    document.body.classList.remove('game-active');
     let msg = `Bạn đã ghi được <b>${score}/10</b> bàn thắng. `;
     const openBtn = document.getElementById('openEnvelopesBtn');
 

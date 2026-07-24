@@ -19,7 +19,7 @@
                         window.location.replace(maintenanceUrl.toString());
                     }
                 })
-                .catch(function () {});
+                .catch(function () { });
         })();
     </script>
     <link rel="stylesheet" href="style.css">
@@ -50,6 +50,24 @@
                         <div class="rule-item">
                             <span class="rule-icon">👑</span>
                             <p>Ghi <b>> 10</b> bàn: Được mở <b>3</b> bao lì xì</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rules-section timer-rules-section" style="background: rgba(230, 126, 34, 0.1); margin-bottom: 25px;">
+                    <h3 style="color: #d35400;">⏱️ THỜI GIAN LÀM BÀI & CHỐNG GIAN LẬN</h3>
+                    <div class="rules-grid">
+                        <div class="rule-item">
+                            <span class="rule-icon">⚡</span>
+                            <p><b>Module 1 & 2:</b> Trắc nghiệm <b>30s</b> | Code <b>45s</b></p>
+                        </div>
+                        <div class="rule-item">
+                            <span class="rule-icon">🧠</span>
+                            <p><b>Module 3 & 4:</b> Trắc nghiệm <b>40s</b> | Code <b>60s</b></p>
+                        </div>
+                        <div class="rule-item" style="border-left: 4px solid #e74c3c;">
+                            <span class="rule-icon">⚠️</span>
+                            <p><b>Phạt -1 tim ❤️:</b> Hết giờ suy nghĩ hoặc chuyển tab / rời game!</p>
                         </div>
                     </div>
                 </div>
@@ -204,23 +222,28 @@
 
     <div id="gameContainer" style="display: none; flex-direction: column; align-items: center; width: 100%;">
         <div id="rulePanel">
-            <h3>🎁 QUY TẮC NHẬN QUÀ</h3>
+            <h3>🎁 QUY TẮC & THỜI GIAN</h3>
             <ul>
-                <li>✅ Ghi <b>7 - 8</b> bàn: Được mở <b>1</b> bao lì xì</li>
-                <li>🚀 Ghi <b>9 - 10</b> bàn: Được mở <b>2</b> bao lì xì</li>
-                <li>🔥 Ghi <b>> 10</b> bàn: Được mở <b>3</b> bao lì xì</li>
-                <li style="color:#e67e22; font-weight:700;">☄️ Combo 3 câu đúng liên tiếp: <b>POWERSHOT (x2 BÀN)</b>
-                </li>
+                <li>✅ Ghi <b>7 - 8</b> bàn: Mở <b>1</b> bao lì xì</li>
+                <li>🚀 Ghi <b>9 - 10</b> bàn: Mở <b>2</b> bao lì xì</li>
+                <li>🔥 Ghi <b>> 10</b> bàn: Mở <b>3</b> bao lì xì</li>
+                <li style="color:#e67e22; font-weight:700;">☄️ Combo 3 câu đúng: <b>POWERSHOT (x2)</b></li>
+                <li style="color:#d35400; font-weight:700; border-top: 1px dashed rgba(0,0,0,0.15); padding-top: 5px; margin-top: 5px;">⏱️ Hết giờ / Chuyển tab: <b>TRỪ 1 TIM ❤️</b></li>
             </ul>
         </div>
         <h1>PENALTY MASTER ⚽</h1>
         <canvas id="gameCanvas" width="600" height="400"></canvas>
 
         <div id="questionBox">
-            <div id="lifelines">
-                <button class="lifeline-btn" id="callBtn" onclick="useLifeline('call')">📞 Gọi điện</button>
-                <button class="lifeline-btn" id="wiseBtn" onclick="useLifeline('wise')">🧙 Thông thái</button>
-                <button class="lifeline-btn" id="fiftyBtn" onclick="useLifeline('fifty')">🌓 50/50</button>
+            <div class="question-top-bar">
+                <div id="lifelines">
+                    <button class="lifeline-btn" id="callBtn" onclick="useLifeline('call')">📞 Gọi điện</button>
+                    <button class="lifeline-btn" id="wiseBtn" onclick="useLifeline('wise')">🧙 Thông thái</button>
+                    <button class="lifeline-btn" id="fiftyBtn" onclick="useLifeline('fifty')">🌓 50/50</button>
+                </div>
+                <div id="timerBadge" class="timer-badge" title="Thời gian còn lại cho câu hỏi">
+                    ⏱️ <span id="timerSeconds">30</span>s
+                </div>
             </div>
             <div id="question"></div>
 
@@ -239,33 +262,80 @@
             <div id="hint"></div>
         </div>
 
-        <!-- Calling Modal (Anh Độ Mixi style) -->
+        <!-- Calling Modal -->
         <div id="callModal" class="modal" style="display:none;">
-            <div class="modal-content">
+            <div class="modal-content" style="position: relative;">
+                <span class="modal-close-x" onclick="closeModalWithoutUsing('callModal')">&times;</span>
+                <h3 style="margin-top: 0; color: #2c3e50; text-align: center;">📞 CHỌN NGƯỜI MUỐN GỌI ĐIỆN</h3>
+                <div id="callSelectionBox" class="radio-selection-box">
+                    <label class="radio-label">
+                        <input type="radio" name="callPerson" value="mixi" checked onchange="updateCallPreview()">
+                        <span>📞 Anh Độ Mixi</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="callPerson" value="messi" onchange="updateCallPreview()">
+                        <span>🐐 GOAT Messi</span>
+                    </label>
+                </div>
                 <div class="mixi-flex">
-                    <img src="img/mixi.jpg" alt="Anh Độ Mixi" id="mixiImg">
+                    <div style="text-align: center;">
+                        <h4 id="callPersonName"
+                            style="margin: 0 0 10px 0; color: #e74c3c; font-size: 1.2rem; font-weight: 800;">Anh Độ Mixi
+                        </h4>
+                        <img src="img/mixi.jpg" alt="Gọi điện" id="callImg"
+                            style="width: 220px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                    </div>
                     <div class="mixi-content">
                         <div id="callingIcon">📱</div>
-                        <div id="callMsg">Đang gọi cho Anh Độ Mixi...</div>
+                        <div id="callMsg" style="font-weight: 700; color: #e74c3c;">Chọn người bạn muốn gọi</div>
                         <div id="callResult"></div>
-                        <button onclick="closeModal('callModal')">Đồng ý luôn!</button>
+                        <button id="startCallBtn" onclick="confirmCall()"
+                            style="background: linear-gradient(135deg, #e74c3c, #c0392b); margin-top: 10px;">📞 BẮT ĐẦU
+                            GỌI</button>
+                        <button id="closeCallBtn" onclick="closeModal('callModal')" style="display:none;">Đồng ý
+                            luôn!</button>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Wise Modal -->
         <div id="wiseModal" class="modal" style="display:none;">
-            <div class="modal-content">
+            <div class="modal-content" style="position: relative;">
+                <span class="modal-close-x" onclick="closeModalWithoutUsing('wiseModal')">&times;</span>
+                <h3 style="margin-top: 0; color: #2c3e50; text-align: center;">🧙 CHỌN NHÀ THÔNG THÁI TRỢ GIÚP</h3>
+                <div id="wiseSelectionBox" class="radio-selection-box">
+                    <label class="radio-label">
+                        <input type="radio" name="wisePerson" value="TAN" checked onchange="updateWisePreview()">
+                        <span>🧙 Bác Trương Anh Ngọc</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="wisePerson" value="lukaku" onchange="updateWisePreview()">
+                        <span>🧱 Romelu Lukaku</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="wisePerson" value="cr7" onchange="updateWisePreview()">
+                        <span>⚽ Cristiano Ronaldo</span>
+                    </label>
+                </div>
                 <div class="mixi-flex">
-                    <img src="img/TAN.jpg" alt="Nhà thông thái" id="wiseImg"
-                        style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                    <div style="text-align: center;">
+                        <h4 id="wisePersonName"
+                            style="margin: 0 0 10px 0; color: #3498db; font-size: 1.2rem; font-weight: 800;">Bác Trương
+                            Anh Ngọc</h4>
+                        <img src="img/TAN.jpg" alt="Nhà thông thái" id="wiseImg"
+                            style="width: 220px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                    </div>
                     <div class="mixi-content">
                         <div id="wiseIcon" style="font-size: 2.5rem; margin-bottom: 10px;">🧙‍♂️</div>
-                        <div id="wiseMsg" style="font-weight: 700; color: #3498db;">Nhà thông thái đang suy nghĩ...
-                        </div>
+                        <div id="wiseMsg" style="font-weight: 700; color: #3498db;">Chọn nhà thông thái để hỏi</div>
                         <div id="wiseResult" style="font-size: 1.1rem; color: #2c3e50; margin: 15px 0;"></div>
-                        <button onclick="closeModal('wiseModal')"
-                            style="background: linear-gradient(135deg, #3498db, #2980b9);">Đã hiểu, cảm ơn bác!</button>
+                        <button id="startWiseBtn" onclick="confirmWise()"
+                            style="background: linear-gradient(135deg, #3498db, #2980b9); margin-top: 10px;">🧙 XIN TƯ
+                            VẤN</button>
+                        <button id="closeWiseBtn" onclick="closeModal('wiseModal')"
+                            style="display:none; background: linear-gradient(135deg, #3498db, #2980b9);">Đã hiểu, cảm
+                            ơn!</button>
                     </div>
                 </div>
             </div>
@@ -325,12 +395,31 @@
         </div>
 
     </div>
+    <!-- Penalty Notice Modal (Chống gian lận / Hết giờ / Trừ tim) -->
+    <div id="penaltyModal" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 450px; text-align: center; border: 3px solid #e74c3c; border-radius: 20px; padding: 25px;">
+            <div style="font-size: 3.5rem; margin-bottom: 5px;">💔</div>
+            <h3 id="penaltyTitle" style="color: #e74c3c; margin: 0 0 10px 0; font-size: 1.5rem; font-weight: 800;">THÔNG BÁO BỊ TRỪ TIM!</h3>
+            <div id="penaltyMessage" style="font-size: 1.05rem; color: #2c3e50; margin: 15px 0; line-height: 1.5;"></div>
+            <button class="start-game-btn" onclick="acknowledgePenalty()"
+                style="background: linear-gradient(135deg, #e74c3c, #c0392b); border-radius: 25px; padding: 12px 35px; margin-top: 10px; width: auto;">
+                EM ĐÃ RÕ ⚽
+            </button>
+        </div>
+    </div>
+
     <!-- Âm thanh -->
     <audio id="callAudio" src="music/call.mp3"></audio>
+    <audio id="callAudio_messi" src=""></audio>
+
     <audio id="wiseAudio" src="music/wise.mp3"></audio>
+    <audio id="wiseAudio_lukaku" src=""></audio>
+    <audio id="wiseAudio_cr7" src="music/win.mp3"></audio>
+
     <audio id="winAudio" src="music/win2.mp3"></audio>
     <audio id="looseAudio" src="music/lose.mp3"></audio>
-    <audio id="goalAudio" src=""></audio>
+    <audio id="goalAudio" src="music/win.mp3"></audio>
     <audio id="saveAudio" src="music/gk.mp3"></audio>
 
     <script src="script.js"></script>

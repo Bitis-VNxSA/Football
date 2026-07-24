@@ -3,548 +3,376 @@
   "time_seconds": 3600,
   "questions": [
     {
-      "q": "Lệnh nào dùng để in ra màn hình?",
-      "opts": [
-        "show()",
-        "print()",
-        "input()",
-        "write()"
-      ],
+      "q": "Lệnh nào dùng để hiển thị dữ liệu ra màn hình?",
+      "opts": ["show()", "print()", "input()", "write()"],
       "ans": 1
     },
     {
-      "q": "Lệnh nào dùng để nhập dữ liệu từ bàn phím?",
-      "opts": [
-        "get()",
-        "scan()",
-        "input()",
-        "read()"
-      ],
+      "q": "Lệnh nào dùng để nhận dữ liệu nhập vào từ bàn phím?",
+      "opts": ["get()", "scan()", "input()", "read()"],
       "ans": 2
     },
     {
-      "q": "Kết quả của: print(3 + 4)",
-      "opts": [
-        "34",
-        "7",
-        "3+4",
-        "Lỗi"
-      ],
+      "q": "Hàm input() trong Python mặc định trả về dữ liệu kiểu gì?",
+      "opts": ["Số nguyên (int)", "Số thực (float)", "Chuỗi ký tự (str)", "Logic (bool)"],
+      "ans": 2
+    },
+    {
+      "q": "Phép toán 3 + 4 trả về kết quả là gì?",
+      "opts": ["34", "7", "3+4", "Lỗi"],
       "ans": 1
     },
     {
-      "q": "Biến nào sau đây là hợp lệ?",
-      "opts": [
-        "1so",
-        "so-1",
-        "so_1",
-        "so 1"
-      ],
+      "q": "Tên biến nào sau đây là hợp lệ trong Python?",
+      "opts": ["1_number", "my-number", "my_number", "my number"],
       "ans": 2
     },
     {
-      "q": "Kiểu dữ liệu nào là số nguyên?",
-      "opts": [
-        "3.5",
-        "\"3\"",
-        "3",
-        "'3.0'"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "\"Em học Python\" là kiểu dữ liệu nào?",
-      "opts": [
-        "float",
-        "string",
-        "int",
-        "bool"
-      ],
+      "q": "Kiểu dữ liệu nào đại diện cho số nguyên trong Python?",
+      "opts": ["float", "int", "str", "bool"],
       "ans": 1
     },
     {
-      "q": "Toán tử nào dùng để so sánh bằng?",
-      "opts": [
-        "=",
-        "==",
-        "!=",
-        "<="
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Kết quả của đoạn code lst = [1,2,3], lst.append(6) với x = 10?",
-      "opts": [
-        "[1,2,3,10]",
-        "[1,2,3,6]",
-        "[4,1,2,3]",
-        "Lỗi"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Vòng lặp nào dùng khi chưa biết trước số lần lặp?",
-      "opts": [
-        "for",
-        "while",
-        "if",
-        "elif"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Kết quả của: for i in range(3): print(i)",
-      "opts": [
-        "1 2 3",
-        "0 1 2",
-        "0 1 2 3",
-        "3 2 1"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Lệnh nào thêm phần tử vào cuối danh sách?",
-      "opts": [
-        "add()",
-        "append()",
-        "insert()",
-        "push()"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Danh sách nào hợp lệ?",
-      "opts": [
-        "(1,2,3)",
-        "{1,2,3}",
-        "[1,2,3]",
-        "<1,2,3>"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "Kết quả của đoạn code append? lst = [1,2,3], lst.append(4)",
-      "opts": [
-        "[1,2,3]",
-        "[4,1,2,3]",
-        "[1,2,3,4]",
-        "Lỗi"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "Hàm randint(1,5) trả về:",
-      "opts": [
-        "Số thực",
-        "Số nguyên từ 1 đến 4",
-        "Số nguyên từ 1 đến 5",
-        "Số > 5"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "Kết quả của: print(7 % 2)",
-      "opts": [
-        "0",
-        "1",
-        "2",
-        "7"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Lệnh nào xoá phần tử cuối danh sách?",
-      "opts": [
-        "remove()",
-        "del",
-        "pop()",
-        "clear()"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "Đoạn code randint(1,3) có thể in ra kết quả nào?",
-      "opts": [
-        "0",
-        "-1",
-        "2",
-        "4"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "Sau lệnh lst.pop(), danh sách sẽ:",
-      "opts": [
-        "Giữ nguyên",
-        "Mất phần tử đầu",
-        "Mất phần tử cuối",
-        "Bị xoá hết"
-      ],
-      "ans": 2
-    },
-    {
-      "q": "Kết quả của: print(lst.pop(0)) với lst = [10,20,30]",
-      "opts": [
-        "10",
-        "20",
-        "30",
-        "Lỗi"
-      ],
+      "q": "Kiểu dữ liệu nào đại diện cho số thực (thập phân) trong Python?",
+      "opts": ["float", "int", "str", "bool"],
       "ans": 0
     },
     {
-      "q": "Cách kiểm tra số chẵn đúng là:",
-      "opts": [
-        "n / 2 == 0",
-        "n % 2 == 0",
-        "n // 2 == 0",
-        "n == 2"
-      ],
+      "q": "Giá trị \"100\" thuộc kiểu dữ liệu nào?",
+      "opts": ["Integer (int)", "Float (float)", "String (str)", "Boolean (bool)"],
+      "ans": 2
+    },
+    {
+      "q": "Toán tử nào dùng để so sánh bằng trong Python?",
+      "opts": ["=", "==", "!=", "is"],
       "ans": 1
+    },
+    {
+      "q": "Toán tử nào dùng để so sánh khác trong Python?",
+      "opts": ["<>", "not", "!=", "=="],
+      "ans": 2
+    },
+    {
+      "q": "Vòng lặp nào thường dùng khi biết trước số lần lặp?",
+      "opts": ["while", "for", "if", "loop"],
+      "ans": 1
+    },
+    {
+      "q": "Vòng lặp nào thường dùng khi chưa biết trước số lần lặp, chạy dựa trên điều kiện?",
+      "opts": ["while", "for", "if", "loop"],
+      "ans": 0
+    },
+    {
+      "q": "Kết quả của đoạn code: for i in range(3): print(i) là gì?",
+      "opts": ["1 2 3", "0 1 2", "0 1 2 3", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Phép chia lấy phần dư trong Python ký hiệu là gì?",
+      "opts": ["/", "%", "//", "**"],
+      "ans": 1
+    },
+    {
+      "q": "Phép chia lấy phần nguyên trong Python ký hiệu là gì?",
+      "opts": ["/", "%", "//", "**"],
+      "ans": 2
+    },
+    {
+      "q": "Phép tính lũy thừa (ví dụ 2 mũ 3) ký hiệu là gì?",
+      "opts": ["^", "**", "*", "//"],
+      "ans": 1
+    },
+    {
+      "q": "Hàm nào dùng để tính độ dài (số ký tự hoặc phần tử) của một đối tượng?",
+      "opts": ["size()", "count()", "length()", "len()"],
+      "ans": 3
+    },
+    {
+      "q": "Ký tự nào dùng để bắt đầu một dòng ghi chú (comment) đơn trong Python?",
+      "opts": ["//", "/*", "#", "--"],
+      "ans": 2
     },
     {
       "q": "Kiểu dữ liệu Boolean trong Python gồm hai giá trị nào?",
-      "opts": [
-        "True, False",
-        "Yes, No",
-        "Correct, Incorrect",
-        "0, 1"
-      ],
+      "opts": ["True, False", "Yes, No", "0, 1", "Correct, Incorrect"],
       "ans": 0
     },
     {
-      "q": "Kết quả của: 10 // 3 là gì?",
-      "opts": [
-        "3.33",
-        "3",
-        "1",
-        "4"
-      ],
+      "q": "Kết quả của phép toán logic True and False là gì?",
+      "opts": ["True", "False", "None", "Lỗi"],
       "ans": 1
     },
     {
-      "q": "Dấu nào dùng để ghi chú một dòng trong Python?",
-      "opts": [
-        "//",
-        "/* */",
-        "#",
-        "--"
-      ],
+      "q": "Kết quả của phép toán logic True or False là gì?",
+      "opts": ["True", "False", "None", "Lỗi"],
+      "ans": 0
+    },
+    {
+      "q": "Dòng bắt đầu khối lệnh của cấu trúc rẽ nhánh if kết thúc bằng ký tự nào?",
+      "opts": ["Dấu chấm phẩy ;", "Dấu hai chấm :", "Dấu ngoặc nhọn {", "Dấu ngoặc đơn ("],
+      "ans": 1
+    },
+    {
+      "q": "Từ khóa nào dùng để định nghĩa một hàm mới trong Python?",
+      "opts": ["function", "def", "func", "define"],
+      "ans": 1
+    },
+    {
+      "q": "Để thêm phần tử vào cuối một danh sách (List), ta dùng phương thức nào?",
+      "opts": ["add()", "append()", "insert()", "push()"],
+      "ans": 1
+    },
+    {
+      "q": "Cú pháp nào tạo ra một danh sách (List) rỗng?",
+      "opts": ["[]", "()", "{}", "<>"],
+      "ans": 0
+    },
+    {
+      "q": "Kết quả của print(10 / 2) trong Python là gì?",
+      "opts": ["5", "5.0", "10/2", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của print(10 // 3) là gì?",
+      "opts": ["3.33", "3", "1", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của print(10 % 3) là gì?",
+      "opts": ["3.33", "3", "1", "Lỗi"],
       "ans": 2
     },
     {
-      "q": "Hàm nào dùng để lấy độ dài của một danh sách?",
-      "opts": [
-        "size()",
-        "count()",
-        "length()",
-        "len()"
-      ],
-      "ans": 3
-    },
-    {
-      "q": "Làm thế nào để truy cập phần tử cuối cùng của danh sách 'lst'?",
-      "opts": [
-        "lst[last]",
-        "lst[len(lst)]",
-        "lst[-1]",
-        "lst[0]"
-      ],
+      "q": "Hàm nào dùng để chuyển một chuỗi chữ số thành số nguyên?",
+      "opts": ["to_int()", "convert()", "int()", "str()"],
       "ans": 2
     },
     {
-      "q": "Lệnh nào dùng để kết thúc sớm một vòng lặp?",
-      "opts": [
-        "stop",
-        "exit",
-        "break",
-        "continue"
-      ],
+      "q": "Hàm nào dùng để chuyển một giá trị thành kiểu chuỗi ký tự?",
+      "opts": ["to_str()", "string()", "str()", "char()"],
       "ans": 2
     },
     {
-      "q": "Python có cần dùng dấu ; ở cuối mỗi câu lệnh không?",
-      "opts": [
-        "Bắt buộc",
-        "Không cần",
-        "Chỉ dùng khi có nhiều lệnh trên 1 dòng",
-        "Cả B và C đều đúng"
-      ],
-      "ans": 3
-    },
-    {
-      "q": "Kết quả của: 'Hello' + ' World' là gì?",
-      "opts": [
-        "Hello World",
-        "HelloWorld",
-        "Lỗi",
-        "Hello+World"
-      ],
-      "ans": 0
-    },
-    {
-      "q": "Để chuyển chuỗi '123' sang số nguyên, ta dùng hàm nào?",
-      "opts": [
-        "to_int()",
-        "convert()",
-        "string()",
-        "int()"
-      ],
-      "ans": 3
-    },
-    {
-      "q": "Cấu trúc nào dùng để kiểm tra điều kiện?",
-      "opts": [
-        "if...else",
-        "for...in",
-        "while",
-        "def"
-      ],
-      "ans": 0
-    },
-    {
-      "q": "Hàm range(5) sẽ tạo ra dãy số nào?",
-      "opts": [
-        "1, 2, 3, 4, 5",
-        "0, 1, 2, 3, 4",
-        "0, 1, 2, 3, 4, 5",
-        "5, 4, 3, 2, 1, 0"
-      ],
+      "q": "Khai báo biến trong Python có cần chỉ định kiểu dữ liệu trước không? (Ví dụ: int x = 5)",
+      "opts": ["Có", "Không", "Chỉ với số thực", "Chỉ với chuỗi"],
       "ans": 1
     },
     {
-      "q": "Biến khởi tạo trong Python có cần khai báo kiểu dữ liệu không? (VD: int x = 5)",
-      "opts": [
-        "Có",
-        "Không",
-        "Tùy trường hợp",
-        "Chỉ với số thực"
-      ],
+      "q": "Kết quả của phép nối chuỗi: \"Hello\" + \"World\" là gì?",
+      "opts": ["Hello World", "HelloWorld", "Lỗi", "Hello+World"],
       "ans": 1
     },
     {
-      "q": "Lệnh nào dùng để định nghĩa một hàm?",
-      "opts": [
-        "function",
-        "def",
-        "func",
-        "define"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Kết quả của: 2 ** 3 là gì?",
-      "opts": [
-        "6",
-        "8",
-        "9",
-        "5"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Hàm nào dùng để chuyển tất cả chữ cái trong chuỗi thành chữ hoa?",
-      "opts": [
-        "toUpperCase()",
-        "upper()",
-        "UPPER()",
-        "capitalize()"
-      ],
-      "ans": 1
-    },
-    {
-      "q": "Phép toán AND trả về True khi nào?",
-      "opts": [
-        "Cả hai đều True",
-        "Ít nhất một cái True",
-        "Cả hai đều False",
-        "Khi cái đầu tiên True"
-      ],
-      "ans": 0
-    },
-    {
-      "q": "Lệnh nào dùng để nhảy đến lần lặp kế tiếp của vòng lặp?",
-      "opts": [
-        "next",
-        "skip",
-        "continue",
-        "break"
-      ],
+      "q": "Làm thế nào để truy cập phần tử đầu tiên của danh sách lst?",
+      "opts": ["lst[first]", "lst[1]", "lst[0]", "lst[-0]"],
       "ans": 2
     },
     {
-      "q": "Danh sách (List) trong Python có thể chứa nhiều kiểu dữ liệu khác nhau không?",
-      "opts": [
-        "Có",
-        "Không",
-        "Chỉ chứa số",
-        "Chỉ chứa chuỗi"
-      ],
-      "ans": 0
-    },
-    {
-      "q": "Lệnh nào dùng để xóa toàn bộ phần tử trong danh sách?",
-      "opts": [
-        "delete()",
-        "empty()",
-        "clear()",
-        "remove_all()"
-      ],
+      "q": "Làm thế nào để truy cập phần tử cuối cùng của danh sách lst?",
+      "opts": ["lst[last]", "lst[len(lst)]", "lst[-1]", "lst[0]"],
       "ans": 2
     },
     {
-      "q": "Làm thế nào để kiểm tra một phần tử 'x' có nằm trong danh sách 'lst' hay không?",
-      "opts": [
-        "x in lst",
-        "lst.contains(x)",
-        "check(x, lst)",
-        "x exists in lst"
-      ],
+      "q": "Từ khóa nào dùng để thoát khỏi vòng lặp lập tức?",
+      "opts": ["stop", "exit", "break", "continue"],
+      "ans": 2
+    },
+    {
+      "q": "Từ khóa nào dùng để bỏ qua các lệnh còn lại trong vòng lặp và nhảy sang lần lặp kế tiếp?",
+      "opts": ["next", "skip", "continue", "break"],
+      "ans": 2
+    },
+    {
+      "q": "Kết quả của len(\"Python\") là bao nhiêu?",
+      "opts": ["5", "6", "7", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Kiểu dữ liệu của đối tượng [1, 2, 3] là gì?",
+      "opts": ["tuple", "set", "list", "dict"],
+      "ans": 2
+    },
+    {
+      "q": "Phép toán logic: not True trả về giá trị nào?",
+      "opts": ["True", "False", "None", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của phép chuyển đổi kiểu: bool(0) là gì?",
+      "opts": ["True", "False", "0", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của phép chuyển đổi kiểu: bool(5) là gì?",
+      "opts": ["True", "False", "5", "Lỗi"],
       "ans": 0
     },
     {
-      "q": "67 là kiểu dữ liệu gì?",
-      "opts": [
-        "String (Chuỗi)",
-        "Integer (Số nguyên)",
-        "Float (Số thực)",
-        "Boolean (Giá trị đúng/sai)"
-      ],
+      "q": "Nếu x = 5, sau lệnh x += 3 thì giá trị của x bằng bao nhiêu?",
+      "opts": ["5", "3", "8", "Lỗi"],
+      "ans": 2
+    },
+    {
+      "q": "Hàm nào dùng để chuyển một chuỗi chữ số thành số thực?",
+      "opts": ["to_float()", "float()", "int()", "real()"],
       "ans": 1
     },
-    { "q": "Lệnh nào dùng để in ra màn hình?", "opts": ["show()", "print()", "input()", "write()"], "ans": 1 },
-    { "q": "Lệnh nào dùng để nhập dữ liệu từ bàn phím?", "opts": ["get()", "scan()", "input()", "read()"], "ans": 2 },
-    { "q": "Kết quả của: print(3 + 4)", "opts": ["34", "7", "3+4", "Lỗi"], "ans": 1 },
-    { "q": "Biến nào sau đây là hợp lệ?", "opts": ["1so", "so-1", "so_1", "so 1"], "ans": 2 },
-    { "q": "Kiểu dữ liệu nào là số nguyên?", "opts": ["3.5", "\"3\"", "3", "'3.0'"], "ans": 2 },
-    { "q": "\"Em học Python\" là kiểu dữ liệu nào?", "opts": ["float", "string", "int", "bool"], "ans": 1 },
-    { "q": "Toán tử nào dùng để so sánh bằng?", "opts": ["=", "==", "!=", "<="], "ans": 1 },
-    { "q": "Kết quả của đoạn code lst = [1,2,3], lst.append(6) với x = 10?", "opts": ["[1,2,3,10]", "[1,2,3,6]", "[4,1,2,3]", "Lỗi"], "ans": 1 },
-    { "q": "Vòng lặp nào dùng khi chưa biết trước số lần lặp?", "opts": ["for", "while", "if", "elif"], "ans": 1 },
-    { "q": "Kết quả của: for i in range(3): print(i)", "opts": ["1 2 3", "0 1 2", "0 1 2 3", "3 2 1"], "ans": 1 },
-    { "q": "Lệnh nào thêm phần tử vào cuối danh sách?", "opts": ["add()", "append()", "insert()", "push()"], "ans": 1 },
-    { "q": "Danh sách nào hợp lệ?", "opts": ["(1,2,3)", "{1,2,3}", "[1,2,3]", "<1,2,3>"], "ans": 2 },
-    { "q": "Kết quả của đoạn code append? lst = [1,2,3], lst.append(4)", "opts": ["[1,2,3]", "[4,1,2,3]", "[1,2,3,4]", "Lỗi"], "ans": 2 },
-    { "q": "Hàm randint(1,5) trả về:", "opts": ["Số thực", "Số nguyên từ 1 đến 4", "Số nguyên từ 1 đến 5", "Số > 5"], "ans": 2 },
-    { "q": "Kết quả của: print(7 % 2)", "opts": ["0", "1", "2", "7"], "ans": 1 },
-    { "q": "Lệnh nào xoá phần tử cuối danh sách?", "opts": ["remove()", "del", "pop()", "clear()"], "ans": 2 },
-    { "q": "Đoạn code randint(1,3) có thể in ra kết quả nào?", "opts": ["0", "-1", "2", "4"], "ans": 2 },
-    { "q": "Sau lệnh lst.pop(), danh sách sẽ:", "opts": ["Giữ nguyên", "Mất phần tử đầu", "Mất phần tử cuối", "Bị xoá hết"], "ans": 2 },
-    { "q": "Kết quả của: print(lst.pop(0)) với lst = [10,20,30]", "opts": ["10", "20", "30", "Lỗi"], "ans": 0 },
-    { "q": "Cách kiểm tra số chẵn đúng là:", "opts": ["n / 2 == 0", "n % 2 == 0", "n // 2 == 0", "n == 2"], "ans": 1 },
-    { "q": "Kiểu dữ liệu Boolean trong Python gồm hai giá trị nào?", "opts": ["True, False", "Yes, No", "Correct, Incorrect", "0, 1"], "ans": 0 },
-    { "q": "Kết quả của: 10 // 3 là gì?", "opts": ["3.33", "3", "1", "4"], "ans": 1 },
-    { "q": "Dấu nào dùng để ghi chú một dòng trong Python?", "opts": ["//", "/* */", "#", "--"], "ans": 2 },
-    { "q": "Hàm nào dùng để lấy độ dài của một danh sách?", "opts": ["size()", "count()", "length()", "len()"], "ans": 3 },
-    { "q": "Làm thế nào để truy cập phần tử cuối cùng của danh sách 'lst'?", "opts": ["lst[last]", "lst[len(lst)]", "lst[-1]", "lst[0]"], "ans": 2 },
-    { "q": "Lệnh nào dùng để kết thúc sớm một vòng lặp?", "opts": ["stop", "exit", "break", "continue"], "ans": 2 },
-    { "q": "Python có cần dùng dấu ; ở cuối mỗi câu lệnh không?", "opts": ["Bắt buộc", "Không cần", "Chỉ dùng khi có nhiều lệnh trên 1 dòng", "Cả B và C đều đúng"], "ans": 3 },
-    { "q": "Kết quả của: 'Hello' + ' World' là gì?", "opts": ["Hello World", "HelloWorld", "Lỗi", "Hello+World"], "ans": 0 },
-    { "q": "Để chuyển chuỗi '123' sang số nguyên, ta dùng hàm nào?", "opts": ["to_int()", "convert()", "string()", "int()"], "ans": 3 },
-    { "q": "Cấu trúc nào dùng để kiểm tra điều kiện?", "opts": ["if...else", "for...in", "while", "def"], "ans": 0 },
-    { "q": "Hàm range(5) sẽ tạo ra dãy số nào?", "opts": ["1, 2, 3, 4, 5", "0, 1, 2, 3, 4", "0, 1, 2, 3, 4, 5", "5, 4, 3, 2, 1, 0"], "ans": 1 },
-    { "q": "Biến khởi tạo trong Python có cần khai báo kiểu dữ liệu không? (VD: int x = 5)", "opts": ["Có", "Không", "Tùy trường hợp", "Chỉ với số thực"], "ans": 1 },
-    { "q": "Lệnh nào dùng để định nghĩa một hàm?", "opts": ["function", "def", "func", "define"], "ans": 1 },
-    { "q": "Kết quả của: 2 ** 3 là gì?", "opts": ["6", "8", "9", "5"], "ans": 1 },
-    { "q": "Hàm nào dùng để chuyển tất cả chữ cái trong chuỗi thành chữ hoa?", "opts": ["toUpperCase()", "upper()", "UPPER()", "capitalize()"], "ans": 1 },
-    { "q": "Phép toán AND trả về True khi nào?", "opts": ["Cả hai đều True", "Ít nhất một cái True", "Cả hai đều False", "Khi cái đầu tiên True"], "ans": 0 },
-    { "q": "Lệnh nào dùng để nhảy đến lần lặp kế tiếp của vòng lặp?", "opts": ["next", "skip", "continue", "break"], "ans": 2 },
-    { "q": "Danh sách (List) trong Python có thể chứa nhiều kiểu dữ liệu khác nhau không?", "opts": ["Có", "Không", "Chỉ chứa số", "Chỉ chứa chuỗi"], "ans": 0 },
-    { "q": "Lệnh nào dùng để xóa toàn bộ phần tử trong danh sách?", "opts": ["delete()", "empty()", "clear()", "remove_all()"], "ans": 2 },
-    { "q": "Làm thế nào để kiểm tra một phần tử 'x' có nằm trong danh sách 'lst' hay không?", "opts": ["x in lst", "lst.contains(x)", "check(x, lst)", "x exists in lst"], "ans": 0 },
-    { "q": "67 là kiểu dữ liệu gì?", "opts": ["String (Chuỗi)", "Integer (Số nguyên)", "Float (Số thực)", "Boolean (Giá trị đúng/sai)"], "ans": 1 },
-
-    { "q": "Hàm nào dùng để lấy giá trị lớn nhất trong danh sách?", "opts": ["max()", "top()", "high()", "largest()"], "ans": 0 },
-    { "q": "Hàm nào dùng để lấy giá trị nhỏ nhất?", "opts": ["min()", "low()", "small()", "least()"], "ans": 0 },
-    { "q": "len('abc') trả về gì?", "opts": ["2", "3", "4", "Lỗi"], "ans": 1 },
-    { "q": "Kiểu dữ liệu của True là gì?", "opts": ["int", "string", "bool", "float"], "ans": 2 },
-    { "q": "Kết quả của: bool(0)", "opts": ["True", "False", "0", "Lỗi"], "ans": 1 },
-    { "q": "Kết quả của: bool(5)", "opts": ["True", "False", "5", "Lỗi"], "ans": 0 },
-    { "q": "Chuỗi 'abc'[0] là gì?", "opts": ["a", "b", "c", "Lỗi"], "ans": 0 },
-    { "q": "Chuỗi 'abc'[-1] là gì?", "opts": ["a", "b", "c", "Lỗi"], "ans": 2 },
-    { "q": "Hàm nào dùng để chuyển số thành chuỗi?", "opts": ["str()", "int()", "float()", "string()"], "ans": 0 },
-    { "q": "Hàm nào dùng để làm tròn số?", "opts": ["round()", "ceil()", "floor()", "approx()"], "ans": 0 },
-    { "q": "range(1,4) tạo ra gì?", "opts": ["1,2,3", "1,2,3,4", "0,1,2,3", "2,3,4"], "ans": 0 },
-    { "q": "Toán tử nào là phép chia?", "opts": ["/", "%", "//", "**"], "ans": 0 },
-    { "q": "Toán tử nào là lũy thừa?", "opts": ["^", "**", "*", "//"], "ans": 1 },
-    { "q": "Kiểu dữ liệu của [1,2,3] là gì?", "opts": ["tuple", "set", "list", "dict"], "ans": 2 },
-    { "q": "Kiểu dữ liệu của (1,2,3) là gì?", "opts": ["list", "tuple", "set", "dict"], "ans": 1 },
-    { "q": "Kiểu dữ liệu của {1,2,3} là gì?", "opts": ["list", "tuple", "set", "dict"], "ans": 2 },
-    { "q": "Hàm input() trả về kiểu dữ liệu gì?", "opts": ["int", "string", "float", "bool"], "ans": 1 },
-    { "q": "print(type(5)) sẽ in gì?", "opts": ["int", "<class 'int'>", "5", "type"], "ans": 1 },
-    { "q": "Toán tử != nghĩa là gì?", "opts": ["Bằng", "Lớn hơn", "Khác", "Nhỏ hơn"], "ans": 2 },
-    { "q": "Kết quả của: 5 > 3", "opts": ["True", "False", "5", "3"], "ans": 0 }
+    {
+      "q": "Biểu thức \"abc\"[1] trả về ký tự nào?",
+      "opts": ["a", "b", "c", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Phép chia 7 / 2 trong Python trả về kết quả nào?",
+      "opts": ["3", "3.5", "3.0", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Vòng lặp while True: là vòng lặp như thế nào?",
+      "opts": ["Chạy đúng 1 lần", "Không bao giờ chạy", "Vòng lặp vô hạn", "Bị lỗi cú pháp"],
+      "ans": 2
+    },
+    {
+      "q": "Hàm range(1, 5) sẽ sinh ra dãy số nào?",
+      "opts": ["1, 2, 3, 4, 5", "1, 2, 3, 4", "0, 1, 2, 3, 4", "2, 3, 4, 5"],
+      "ans": 1
+    },
+    {
+      "q": "Hàm range(5) sẽ sinh ra dãy số nào?",
+      "opts": ["1, 2, 3, 4, 5", "1, 2, 3, 4", "0, 1, 2, 3, 4", "0, 1, 2, 3, 4, 5"],
+      "ans": 2
+    },
+    {
+      "q": "Từ khóa nào dùng trong cấu trúc rẽ nhánh khi cần kiểm tra điều kiện phụ khác nếu điều kiện if sai?",
+      "opts": ["else if", "elseif", "elif", "else"],
+      "ans": 2
+    },
+    {
+      "q": "Cách gọi thực thi đúng cho một hàm tên là test không chứa tham số là gì?",
+      "opts": ["test", "test()", "run test", "call test()"],
+      "ans": 1
+    }
   ],
   "coding_tasks": [
     {
-      "q": "In ra chuỗi 'Hello World'",
-      "r": "print\\s*\\(\\s*['\"]Hello World['\"]\\s*\\)",
-      "h": "Sử dụng hàm print('Hello World')",
-      "w": "Đừng quên dấu ngoặc và dấu nháy nhé!"
+      "q": "In ra chuỗi 'Hello'",
+      "r": "print\\s*\\(\\s*['\"]Hello['\"]\\s*\\)",
+      "h": "print('Hello')",
+      "w": "Sử dụng hàm print và nội dung chuỗi nằm trong dấu nháy đơn hoặc nháy kép."
     },
     {
-      "q": "Tạo biến x và gán giá trị bằng 10",
-      "r": "x\\s*=\\s*10",
-      "h": "x = 10",
-      "w": "Tên biến bên trái, dấu bằng, rồi đến giá trị."
+      "q": "Tạo biến x và gán giá trị bằng 5",
+      "r": "x\\s*=\\s*5",
+      "h": "x = 5",
+      "w": "Tên biến bên trái, dấu bằng ở giữa, rồi đến giá trị gán bên phải."
     },
     {
-      "q": "Thực hiện phép chia lấy dư của 10 cho 3",
+      "q": "Thực hiện phép cộng giữa 3 và 7",
+      "r": "3\\s*\\+\\s*7",
+      "h": "3 + 7",
+      "w": "Sử dụng toán tử cộng + thông thường."
+    },
+    {
+      "q": "Thực hiện phép chia lấy phần dư của 10 cho 3",
       "r": "10\\s*%\\s*3",
-      "h": "Sử dụng toán tử %",
-      "w": "Phép chia lấy dư dùng dấu phần trăm đó em."
+      "h": "10 % 3",
+      "w": "Toán tử chia lấy dư trong Python là dấu phần trăm %."
     },
     {
-      "q": "Kiểm tra nếu x lớn hơn 5",
+      "q": "Kiểm tra điều kiện x lớn hơn 5",
       "r": "x\\s*>\\s*5",
       "h": "x > 5",
-      "w": "Dùng dấu lớn hơn > để so sánh."
+      "w": "Sử dụng toán tử so sánh lớn hơn >."
     },
     {
-      "q": "Thêm phần tử 5 vào cuối danh sách 'lst'",
-      "r": "lst\\.append\\s*\\(\\s*5\\s*\\)",
-      "h": "lst.append(5)",
-      "w": "Hàm .append() sẽ thêm vào cuối danh sách."
+      "q": "Định nghĩa một hàm tên là 'chao' không nhận tham số đầu vào",
+      "r": "def\\s+chao\\s*\\(\\s*\\)\\s*:",
+      "h": "def chao():",
+      "w": "Dùng từ khóa def, tên hàm, cặp ngoặc đơn và kết thúc bằng dấu hai chấm."
     },
     {
-      "q": "Vòng lặp for i chạy từ 0 đến 9",
-      "r": "for\\s+i\\s+in\\s+range\\s*\\(\\s*10\\s*\\)\\s*:",
-      "h": "for i in range(10):",
-      "w": "Nhớ dấu hai chấm ở cuối dòng for nhé!"
+      "q": "Thêm số 10 vào cuối danh sách có tên là 'a'",
+      "r": "a\\.append\\s*\\(\\s*10\\s*\\)",
+      "h": "a.append(10)",
+      "w": "Sử dụng phương thức .append(giá_trị) trên danh sách."
     },
     {
-      "q": "Định nghĩa hàm tên là 'chao_hoi'",
-      "r": "def\\s+chao_hoi\\s*\\(\\s*\\)\\s*:",
-      "h": "def chao_hoi():",
-      "w": "Từ khóa def dùng để bắt đầu một hàm."
-    },
-    {
-      "q": "In ra độ dài của chuỗi s",
+      "q": "In ra độ dài của chuỗi có tên là 's'",
       "r": "print\\s*\\(\\s*len\\s*\\(\\s*s\\s*\\)\\s*\\)",
       "h": "print(len(s))",
-      "w": "Hàm len() giúp tính độ dài chuỗi."
+      "w": "Sử dụng hàm print kết hợp lồng hàm len(s) ở bên trong."
     },
     {
-      "q": "Ép kiểu biến x sang số thực (float)",
-      "r": "float\\s*\\(\\s*x\\s*\\)",
-      "h": "float(x)",
-      "w": "Dùng hàm float() để chuyển đổi kiểu."
+      "q": "Chuyển kiểu dữ liệu của biến x sang số nguyên (int)",
+      "r": "int\\s*\\(\\s*x\\s*\\)",
+      "h": "int(x)",
+      "w": "Sử dụng hàm int(x) để ép kiểu dữ liệu."
     },
     {
-      "q": "Kiểm tra xem x có khác 0 không",
+      "q": "Kiểm tra xem giá trị biến x có khác 0 hay không",
       "r": "x\\s*!=\\s*0",
       "h": "x != 0",
-      "w": "Dấu != nghĩa là so sánh khác."
+      "w": "Sử dụng toán tử so sánh khác !=."
     },
-    { "q": "In ra chuỗi 'Hello World'", "r": "print\\s*\\(\\s*['\"]Hello World['\"]\\s*\\)", "h": "Sử dụng hàm print('Hello World')", "w": "Đừng quên dấu ngoặc và dấu nháy nhé!" },
-    { "q": "Tạo biến x và gán giá trị bằng 10", "r": "x\\s*=\\s*10", "h": "x = 10", "w": "Tên biến bên trái, dấu bằng, rồi đến giá trị." },
-    { "q": "Thực hiện phép chia lấy dư của 10 cho 3", "r": "10\\s*%\\s*3", "h": "Sử dụng toán tử %", "w": "Phép chia lấy dư dùng dấu phần trăm đó em." },
-    { "q": "Kiểm tra nếu x lớn hơn 5", "r": "x\\s*>\\s*5", "h": "x > 5", "w": "Dùng dấu lớn hơn > để so sánh." },
-    { "q": "Thêm phần tử 5 vào cuối danh sách 'lst'", "r": "lst\\.append\\s*\\(\\s*5\\s*\\)", "h": "lst.append(5)", "w": "Hàm .append() sẽ thêm vào cuối danh sách." },
-    { "q": "Vòng lặp for i chạy từ 0 đến 9", "r": "for\\s+i\\s+in\\s+range\\s*\\(\\s*10\\s*\\)\\s*:", "h": "for i in range(10):", "w": "Nhớ dấu hai chấm ở cuối dòng for nhé!" },
-    { "q": "Định nghĩa hàm tên là 'chao_hoi'", "r": "def\\s+chao_hoi\\s*\\(\\s*\\)\\s*:", "h": "def chao_hoi():", "w": "Từ khóa def dùng để bắt đầu một hàm." },
-    { "q": "In ra độ dài của chuỗi s", "r": "print\\s*\\(\\s*len\\s*\\(\\s*s\\s*\\)\\s*\\)", "h": "print(len(s))", "w": "Hàm len() giúp tính độ dài chuỗi." },
-    { "q": "Ép kiểu biến x sang số thực (float)", "r": "float\\s*\\(\\s*x\\s*\\)", "h": "float(x)", "w": "Dùng hàm float() để chuyển đổi kiểu." },
-    { "q": "Kiểm tra xem x có khác 0 không", "r": "x\\s*!=\\s*0", "h": "x != 0", "w": "Dấu != nghĩa là so sánh khác." }
+    {
+      "q": "Tạo một danh sách rỗng gán vào biến 'lst'",
+      "r": "lst\\s*=\\s*\\[\\s*\\]",
+      "h": "lst = []",
+      "w": "Sử dụng cặp ngoặc vuông [] để khai báo danh sách rỗng."
+    },
+    {
+      "q": "Thực hiện phép nhân giữa 4 và 5",
+      "r": "4\\s*\\*\\s*5",
+      "h": "4 * 5",
+      "w": "Toán tử nhân trong Python ký hiệu là dấu sao *."
+    },
+    {
+      "q": "Chia lấy phần nguyên của 15 cho 4",
+      "r": "15\\s*\\/\\/\\s*4",
+      "h": "15 // 4",
+      "w": "Toán tử chia lấy phần nguyên trong Python là hai dấu gạch chéo //."
+    },
+    {
+      "q": "Tạo vòng lặp for với biến chạy i từ 0 đến 4",
+      "r": "for\\s+i\\s+in\\s+range\\s*\\(\\s*5\\s*\\)\\s*:",
+      "h": "for i in range(5):",
+      "w": "Dùng hàm range(5) và đừng quên dấu hai chấm ở cuối câu lệnh."
+    },
+    {
+      "q": "Nhập dữ liệu từ bàn phím và gán vào biến 'y'",
+      "r": "y\\s*=\\s*input\\s*\\(\\s*\\)",
+      "h": "y = input()",
+      "w": "Sử dụng hàm input() bên vế phải phép gán."
+    },
+    {
+      "q": "Kiểm tra xem giá trị của x có bằng 10 hay không",
+      "r": "x\\s*==\\s*10",
+      "h": "x == 10",
+      "w": "Sử dụng hai dấu bằng == để so sánh bằng."
+    },
+    {
+      "q": "Tạo biến name gán giá trị chuỗi là 'Python'",
+      "r": "name\\s*=\\s*['\"]Python['\"]",
+      "h": "name = 'Python'",
+      "w": "Gán giá trị chuỗi nằm trong dấu nháy vào biến name."
+    },
+    {
+      "q": "Chuyển kiểu dữ liệu của biến y sang số thực (float)",
+      "r": "float\\s*\\(\\s*y\\s*\\)",
+      "h": "float(y)",
+      "w": "Sử dụng hàm float(y) để chuyển đổi kiểu số thực."
+    },
+    {
+      "q": "Đảo ngược giá trị logic của biến ok",
+      "r": "not\\s+ok",
+      "h": "not ok",
+      "w": "Toán tử logic phủ định trong Python là từ khóa 'not'."
+    },
+    {
+      "q": "In ra phần tử đầu tiên của danh sách 'lst'",
+      "r": "print\\s*\\(\\s*lst\\s*\\[\\s*0\\s*\\]\\s*\\)",
+      "h": "print(lst[0])",
+      "w": "Truy cập phần tử đầu tiên tại chỉ mục 0 rồi in ra màn hình."
+    }
   ]
 }

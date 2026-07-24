@@ -1,368 +1,404 @@
 {
-    "title": "On_tap_module_3_Python_Kien_thuc_nang_cao",
-    "time_seconds": 7200,
-    "questions": [
-        {
-            "q": "Khi tạo dictionary từ hai list bằng hàm zip, kết quả của dict(zip(['a', 'b'], [1, 2, 3])) sẽ như thế nào?",
-            "opts": [
-                "{'a': 1, 'b': 2}",
-                "{'a': 1, 'b': 2, 'c': 3}",
-                "Lỗi",
-                "{'a': 1, 'b': 2, None: 3}"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Trong Python 3, hàm map(lambda x: x**2, [1, 2, 3]) trả về kiểu dữ liệu nào?",
-            "opts": [
-                "List",
-                "Tuple",
-                "Map object (iterator)",
-                "Set"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Nếu biết năm sinh và năm hiện tại, cách tính tuổi đúng là gì?",
-            "opts": [
-                "tuoi = nam_sinh - nam_hien_tai",
-                "tuoi = nam_hien_tai - nam_sinh",
-                "tuoi = nam_hien_tai + nam_sinh",
-                "tuoi = nam_hien_tai / nam_sinh"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Toán tử nào được dùng để lấy phần bù đối xứng của hai tập hợp (set)?",
-            "opts": [
-                "&",
-                "|",
-                "-",
-                "^"
-            ],
-            "ans": 3
-        },
-        {
-            "q": "Kết quả của biểu thức {x: x**2 for x in (1, 2, 3)} là gì?",
-            "opts": [
-                "{1, 4, 9}",
-                "[1, 4, 9]",
-                "{1: 1, 2: 4, 3: 9}",
-                "(1, 4, 9)"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Để ghép hai danh sách list1 và list2 thành danh sách các cặp tuple, ta nên dùng hàm nào?",
-            "opts": [
-                "combine()",
-                "zip()",
-                "merge()",
-                "join()"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để lấy giá trị của key 'k' từ dict 'd' và trả về 0 nếu không tồn tại, câu lệnh nào đúng?",
-            "opts": [
-                "d['k']",
-                "d.get('k', 0)",
-                "d.find('k', 0)",
-                "d.fetch('k', 0)"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Cho a = [1, 2] và b = a.copy(). Nếu thay đổi a[0] = 9 thì giá trị của b[0] sẽ là bao nhiêu?",
-            "opts": [
-                "9",
-                "1",
-                "Lỗi",
-                "None"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Hàm enumerate(['A', 'B'], start=1) sẽ bắt đầu đánh chỉ số từ giá trị nào?",
-            "opts": [
-                "0",
-                "1",
-                "2",
-                "-1"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để đảo ngược một tuple t = (1, 2, 3), cách viết nào đúng?",
-            "opts": [
-                "t.reverse()",
-                "t[::-1]",
-                "reverse(t)",
-                "t.flip()"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Kết quả của all([True, 1, 'hello']) là gì?",
-            "opts": [
-                "True",
-                "False",
-                "1",
-                "Lỗi"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Trong Python, thao tác tuple unpacking a, b = (1, 2) có ý nghĩa gì?",
-            "opts": [
-                "Tạo một tuple mới",
-                "Gán 1 cho a và 2 cho b",
-                "Gán (1, 2) cho cả a và b",
-                "Xóa tuple"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để nối các phần tử của một danh sách chuỗi thành một chuỗi duy nhất, ngăn cách bởi dấu phẩy, ta dùng cách nào?",
-            "opts": [
-                "','.join(list)",
-                "list.join(',')",
-                "str(list)",
-                "comb(list, ',')"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Hàm filter(lambda x: x > 0, [-1, 1, 0]) sẽ trả về các giá trị nào?",
-            "opts": [
-                "[1, 0]",
-                "[1]",
-                "[-1, 1, 0]",
-                "True"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để đếm số lần xuất hiện của các phần tử trong list, thư viện nào thường được dùng nhất?",
-            "opts": [
-                "math",
-                "random",
-                "collections (Counter)",
-                "os"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Kết quả của biểu thức [x for x in range(5) if x % 2 == 0] là gì?",
-            "opts": [
-                "[0, 2, 4]",
-                "[1, 3]",
-                "[0, 1, 2, 3, 4, 5]",
-                "[2, 4]"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Câu lệnh nào tạo ra một shallow copy của list L?",
-            "opts": [
-                "L[:]",
-                "std.copy(L)",
-                "L.clone()",
-                "L.all()"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Trong dictionary, key có thể là kiểu dữ liệu nào?",
-            "opts": [
-                "List",
-                "Set",
-                "Tuple (chứa các thành phần immutable)",
-                "Dictionary"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Hàm zip(*[(1, 2), (3, 4)]) sẽ trả về cấu trúc tương đương với biểu thức nào?",
-            "opts": [
-                "[(1, 3), (2, 4)]",
-                "[(1, 2), (3, 4)]",
-                "[(1, 4), (2, 3)]",
-                "Lỗi"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Biểu thức lambda có thể chứa tối đa bao nhiêu biểu thức?",
-            "opts": [
-                "1",
-                "2",
-                "Không giới hạn",
-                "5"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Để tính tuổi một cách chính xác theo ngày hiện tại, ta nên dùng module nào?",
-            "opts": [
-                "time",
-                "datetime",
-                "calendar",
-                "math"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Câu lệnh set([1, 2, 2, 3]) sẽ tạo ra một tập hợp có bao nhiêu phần tử?",
-            "opts": [
-                "2",
-                "3",
-                "4",
-                "1"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Để lấy phần tử cuối cùng của một tuple t, cách viết nào đúng?",
-            "opts": [
-                "t.last()",
-                "t[-1]",
-                "t(len(t))",
-                "t.pop()"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Hàm sorted([5, 2, 8, 1], reverse=True) sẽ trả về kết quả nào?",
-            "opts": [
-                "[1, 2, 5, 8]",
-                "[8, 5, 2, 1]",
-                "(8, 5, 2, 1)",
-                "{8, 5, 2, 1}"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Cách truy cập giá trị 'Hà Nội' từ d = {'VN': {'cap': 'Hà Nội'}} là gì?",
-            "opts": [
-                "d['VN']['cap']",
-                "d['VN', 'cap']",
-                "d.VN.cap",
-                "d['cap']"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Phép toán set1 - set2 có ý nghĩa gì?",
-            "opts": [
-                "Các phần tử chỉ có ở set1",
-                "Các phần tử chỉ có ở set2",
-                "Các phần tử có ở cả hai",
-                "Loại bỏ set2 khỏi bộ nhớ"
-            ],
-            "ans": 0
-        },
-        {
-            "q": "Trong vòng lặp for k, v in d.items(), biến v đại diện cho thành phần nào?",
-            "opts": [
-                "Key (Khóa)",
-                "Value (Giá trị)",
-                "Index (Chỉ số)",
-                "Cả key và value"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Hàm any([0, False, [], None]) sẽ trả về giá trị nào?",
-            "opts": [
-                "True",
-                "False",
-                "None",
-                "0"
-            ],
-            "ans": 1
-        },
-        {
-            "q": "Cấu trúc dữ liệu nào có tốc độ tìm kiếm phần tử trung bình là O(1)?",
-            "opts": [
-                "List",
-                "Tuple",
-                "Set/Dictionary",
-                "Linked List"
-            ],
-            "ans": 2
-        },
-        {
-            "q": "Để kiểm tra một năm có phải năm nhuận hay không, điều kiện đúng là gì?",
-            "opts": [
-                "y % 4 == 0 and (y % 100 != 0 or y % 400 == 0)",
-                "y % 4 == 0 or (y % 100 != 0 and y % 400 == 0)",
-                "y % 400 == 0",
-                "y % 4 == 0"
-            ],
-            "ans": 0
-        }
-    ],
-    "coding_tasks": [
-        {
-            "q": "Tạo dictionary 'd' từ 2 list 'keys' và 'values' dùng zip",
-            "r": "dict\\s*\\(\\s*zip\\s*\\(\\s*keys\\s*,\\s*values\\s*\\)\\s*\\)",
-            "h": "dict(zip(keys, values))",
-            "w": "Hàm zip kết hợp 2 list, dict chuyển thành từ điển."
-        },
-        {
-            "q": "Tính tuổi 'age' từ 'birth_year' và 'current_year'",
-            "r": "current_year\\s*-\\s*birth_year",
-            "h": "current_year - birth_year",
-            "w": "Phép trừ đơn giản giữa năm hiện tại và năm sinh."
-        },
-        {
-            "q": "Dùng map và lambda để nhân đôi các phần tử trong list 'a'",
-            "r": "map\\s*\\(\\s*lambda\\s+x\\s*:\\s*x\\s*\\*\\s*2\\s*,\\s*a\\s*\\)",
-            "h": "map(lambda x: x * 2, a)",
-            "w": "Sử dụng map(function, iterable)."
-        },
-        {
-            "q": "Lấy giá trị của key 'id' trong 'data', mặc định là 0 nếu không thấy",
-            "r": "data\\.get\\s*\\(\\s*['\"]id['\"]\\s*,\\s*0\\s*\\)",
-            "h": "data.get('id', 0)",
-            "w": "Hàm .get() giúp tránh lỗi KeyError."
-        },
-        {
-            "q": "Tạo set 's' chứa các số bình phương từ 1 đến 5 bằng set comprehension",
-            "r": "\\{\\s*x\\s*\\*\\*\\s*2\\s+for\\s+x\\s+in\\s+range\\s*\\(\\s*1\\s*,\\s*6\\s*\\)\\s*\\}",
-            "h": "{x**2 for x in range(1, 6)}",
-            "w": "Set comprehension giống list comprehension nhưng dùng dấu {}."
-        },
-        {
-            "q": "Sắp xếp list 'students' (dạng tuple) theo phần tử thứ hai (điểm số)",
-            "r": "sorted\\s*\\(\\s*students\\s*,\\s*key\\s*=\\s*lambda\\s+x\\s*:\\s*x\\s*\\[\\s*1\\s*\\]\\s*\\)",
-            "h": "sorted(students, key=lambda x: x[1])",
-            "w": "Tham số key dùng để xác định tiêu chí sắp xếp."
-        },
-        {
-            "q": "Dùng filter để lấy các số lớn hơn 10 từ list 'nums'",
-            "r": "filter\\s*\\(\\s*lambda\\s+x\\s*:\\s*x\\s*>\\s*10\\s*,\\s*nums\\s*\\)",
-            "h": "filter(lambda x: x > 10, nums)",
-            "w": "Hàm filter lọc các phần tử thỏa mãn điều kiện."
-        },
-        {
-            "q": "Giải nén (transpose) ma trận 'matrix' dùng zip",
-            "r": "zip\\s*\\(\\s*\\*matrix\\s*\\)",
-            "h": "zip(*matrix)",
-            "w": "Dấu * dùng để giải nén các hàng của ma trận vào zip."
-        },
-        {
-            "q": "Kiểm tra xem chuỗi 's' có chứa toàn chữ số không",
-            "r": "s\\.isdigit\\s*\\(\\s*\\)",
-            "h": "s.isdigit()",
-            "w": "Hàm .isdigit() trả về True nếu chuỗi chỉ gồm số."
-        },
-        {
-            "q": "Gộp 2 dictionary 'd1' và 'd2' thành 'd3' (Python 3.9+)",
-            "r": "d3\\s*=\\s*d1\\s*\\|\\s*d2",
-            "h": "d3 = d1 | d2",
-            "w": "Toán tử | dùng để gộp dictionary cực nhanh."
-        }
-    ]
+  "title": "Kiem_Tra_Module_3_Python_OOP_Nang_Cao",
+  "time_seconds": 7200,
+  "questions": [
+    {
+      "q": "Lớp (class) trong Python được định nghĩa bằng từ khóa nào?",
+      "opts": ["object", "class", "struct", "type"],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức đặc biệt nào được gọi tự động khi tạo một đối tượng (object) mới từ lớp?",
+      "opts": ["__start__()", "__new__()", "__init__()", "__create__()"],
+      "ans": 2
+    },
+    {
+      "q": "Trong Python, tham số đầu tiên của một phương thức (method) thông thường trong lớp thường được đặt tên là gì?",
+      "opts": ["this", "self", "me", "cls"],
+      "ans": 1
+    },
+    {
+      "q": "Tính kế thừa (Inheritance) trong OOP mang lại lợi ích gì?",
+      "opts": [
+        "Ẩn giấu dữ liệu khỏi người dùng bên ngoài",
+        "Lớp con tái sử dụng được thuộc tính và phương thức của lớp cha",
+        "Cho phép tạo nhiều đối tượng cùng lúc",
+        "Tự động tối ưu hóa tốc độ chạy"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Từ khóa nào dùng để một lớp kế thừa từ lớp khác trong Python?",
+      "opts": ["inherit", "extends", "Ghi tên lớp cha trong ngoặc khi khai báo lớp", "super"],
+      "ans": 2
+    },
+    {
+      "q": "Hàm super() trong Python dùng để làm gì?",
+      "opts": [
+        "Tạo ra một đối tượng cấp cao hơn",
+        "Gọi phương thức từ lớp cha",
+        "Kiểm tra kiểu dữ liệu của đối tượng",
+        "Xóa đối tượng khỏi bộ nhớ"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Tính đóng gói (Encapsulation) trong OOP có nghĩa là gì?",
+      "opts": [
+        "Một lớp có thể đóng vai trò nhiều kiểu khác nhau",
+        "Bao bọc dữ liệu và phương thức vào trong một đơn vị (lớp), hạn chế truy cập trực tiếp từ bên ngoài",
+        "Một phương thức có thể được định nghĩa nhiều lần",
+        "Lớp con luôn chạy nhanh hơn lớp cha"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Trong Python, thuộc tính bắt đầu bằng hai dấu gạch dưới (ví dụ: __name) có ý nghĩa gì?",
+      "opts": [
+        "Đây là thuộc tính công khai (public) cho phép mọi người truy cập",
+        "Đây là thuộc tính tĩnh (static) dùng chung cho cả lớp",
+        "Đây là thuộc tính riêng tư (private), không thể truy cập trực tiếp từ bên ngoài lớp",
+        "Đây là thuộc tính bị xóa ngay sau khi dùng"
+      ],
+      "ans": 2
+    },
+    {
+      "q": "Hàm isinstance(obj, MyClass) dùng để làm gì?",
+      "opts": [
+        "Tạo ra một thể hiện (instance) mới của MyClass",
+        "Kiểm tra xem obj có phải là thể hiện của MyClass hay không",
+        "Chuyển đổi obj sang kiểu MyClass",
+        "So sánh hai đối tượng obj với nhau"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức __str__ trong một lớp Python được dùng để làm gì?",
+      "opts": [
+        "Khởi tạo giá trị ban đầu cho đối tượng",
+        "Xóa đối tượng khỏi bộ nhớ",
+        "Định nghĩa cách đối tượng được hiển thị dưới dạng chuỗi khi dùng print()",
+        "So sánh hai đối tượng có bằng nhau không"
+      ],
+      "ans": 2
+    },
+    {
+      "q": "Trong xử lý ngoại lệ (Exception Handling), khối lệnh nào luôn được thực thi dù có lỗi hay không?",
+      "opts": ["try", "except", "else", "finally"],
+      "ans": 3
+    },
+    {
+      "q": "Câu lệnh nào dùng để chủ động phát sinh (raise) một ngoại lệ trong Python?",
+      "opts": ["throw Exception()", "raise Exception()", "error Exception()", "trigger Exception()"],
+      "ans": 1
+    },
+    {
+      "q": "Ngoại lệ nào được Python phát sinh khi ta chia một số cho 0?",
+      "opts": ["ValueError", "TypeError", "ZeroDivisionError", "ArithmeticError"],
+      "ans": 2
+    },
+    {
+      "q": "Ngoại lệ nào xảy ra khi cố gắng truy cập một key không tồn tại trong dictionary?",
+      "opts": ["IndexError", "KeyError", "AttributeError", "LookupError"],
+      "ans": 1
+    },
+    {
+      "q": "Ngoại lệ nào xảy ra khi cố gắng truy cập một chỉ số (index) nằm ngoài phạm vi của list?",
+      "opts": ["KeyError", "ValueError", "IndexError", "OverflowError"],
+      "ans": 2
+    },
+    {
+      "q": "Cách đúng để mở file 'data.txt' ở chế độ chỉ đọc trong Python là gì?",
+      "opts": [
+        "open('data.txt', 'w')",
+        "open('data.txt', 'r')",
+        "open('data.txt', 'a')",
+        "open('data.txt', 'rb')"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Khi dùng cú pháp 'with open(\"file.txt\") as f:', lợi ích chính là gì?",
+      "opts": [
+        "File được mở nhanh hơn so với cách thông thường",
+        "File tự động được đóng lại sau khi khối lệnh kết thúc, dù có lỗi hay không",
+        "File chỉ đọc được, không thể ghi",
+        "File được lưu tự động vào bộ nhớ cache"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Phương thức nào của file object đọc toàn bộ nội dung file thành một chuỗi duy nhất?",
+      "opts": ["f.readline()", "f.readlines()", "f.read()", "f.getall()"],
+      "ans": 2
+    },
+    {
+      "q": "Phương thức nào của file object đọc toàn bộ file và trả về một danh sách, mỗi phần tử là một dòng?",
+      "opts": ["f.read()", "f.readline()", "f.readlines()", "f.lines()"],
+      "ans": 2
+    },
+    {
+      "q": "Kết quả của biểu thức list comprehension [x*2 for x in range(1, 4)] là gì?",
+      "opts": ["[1, 2, 3]", "[2, 4, 6]", "[2, 4, 6, 8]", "[1, 4, 9]"],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của biểu thức [x for x in range(10) if x % 3 == 0] là gì?",
+      "opts": ["[0, 3, 6, 9]", "[3, 6, 9]", "[1, 4, 7]", "[0, 3, 6]"],
+      "ans": 0
+    },
+    {
+      "q": "Dict comprehension {k: v for k, v in [('a', 1), ('b', 2)]} tạo ra gì?",
+      "opts": [
+        "[('a', 1), ('b', 2)]",
+        "{'a': 1, 'b': 2}",
+        "{('a', 1), ('b', 2)}",
+        "Lỗi cú pháp"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Hàm lambda trong Python dùng để tạo ra loại hàm nào?",
+      "opts": [
+        "Hàm đệ quy",
+        "Hàm ẩn danh (anonymous function) không cần đặt tên",
+        "Hàm bất đồng bộ (async)",
+        "Hàm tĩnh (static method)"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của (lambda x, y: x + y)(3, 5) là gì?",
+      "opts": ["35", "8", "Lỗi", "15"],
+      "ans": 1
+    },
+    {
+      "q": "Hàm map(func, iterable) dùng để làm gì?",
+      "opts": [
+        "Lọc các phần tử thỏa mãn điều kiện trong iterable",
+        "Áp dụng func lên từng phần tử của iterable và trả về một iterator kết quả",
+        "Sắp xếp các phần tử trong iterable theo func",
+        "Tính tổng của tất cả phần tử trong iterable"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Hàm filter(func, iterable) dùng để làm gì?",
+      "opts": [
+        "Biến đổi từng phần tử theo func",
+        "Giữ lại các phần tử mà khi áp dụng func trả về True",
+        "Sắp xếp iterable theo thứ tự giảm dần",
+        "Gộp các phần tử của iterable thành một giá trị duy nhất"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của list(map(str, [1, 2, 3])) là gì?",
+      "opts": ["[1, 2, 3]", "['1', '2', '3']", "123", "Lỗi"],
+      "ans": 1
+    },
+    {
+      "q": "Decorator trong Python là gì?",
+      "opts": [
+        "Một loại vòng lặp đặc biệt",
+        "Một hàm nhận hàm khác làm đối số, mở rộng hành vi hàm đó mà không sửa code gốc",
+        "Một cú pháp tạo dict từ list",
+        "Một từ khóa để định nghĩa lớp trừu tượng"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Generator function trong Python khác hàm thông thường ở điểm nào?",
+      "opts": [
+        "Generator function không thể nhận tham số đầu vào",
+        "Generator dùng từ khóa 'yield' thay vì 'return', trả về từng giá trị một theo yêu cầu",
+        "Generator function chạy nhanh hơn 10 lần so với hàm thông thường",
+        "Generator function chỉ có thể dùng trong class"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của list(filter(lambda x: x > 2, [1, 2, 3, 4])) là gì?",
+      "opts": ["[1, 2]", "[3, 4]", "[2, 3, 4]", "[1, 2, 3]"],
+      "ans": 1
+    },
+    {
+      "q": "Trong Python, phương thức class method được đánh dấu bằng decorator nào và nhận gì làm tham số đầu tiên?",
+      "opts": [
+        "@staticmethod và nhận 'self'",
+        "@classmethod và nhận 'cls' (tham chiếu đến lớp)",
+        "@property và nhận 'self'",
+        "@abstractmethod và không nhận tham số"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Kết quả của sorted(['banana', 'apple', 'cherry'], key=len) là gì?",
+      "opts": [
+        "['apple', 'banana', 'cherry']",
+        "['banana', 'apple', 'cherry']",
+        "['apple', 'cherry', 'banana']",
+        "Lỗi"
+      ],
+      "ans": 2
+    },
+    {
+      "q": "Câu lệnh 'from functools import reduce' dùng để import hàm reduce. Hàm reduce(func, [a,b,c]) hoạt động như thế nào?",
+      "opts": [
+        "Áp dụng func lên từng phần tử riêng lẻ",
+        "Lọc danh sách theo func",
+        "Áp dụng func tích lũy: func(func(a, b), c) để rút gọn danh sách thành một giá trị",
+        "Sắp xếp danh sách theo func"
+      ],
+      "ans": 2
+    },
+    {
+      "q": "Biểu thức {x**2 for x in range(1, 5)} tạo ra kiểu dữ liệu nào?",
+      "opts": ["List", "Tuple", "Set", "Dict"],
+      "ans": 2
+    },
+    {
+      "q": "Thuộc tính __name__ của một module trả về '__main__' khi nào?",
+      "opts": [
+        "Khi module được import bởi module khác",
+        "Khi module được chạy trực tiếp bằng Python",
+        "Khi module có lỗi cú pháp",
+        "Khi module không có bất kỳ hàm nào"
+      ],
+      "ans": 1
+    },
+    {
+      "q": "Ngoại lệ nào xảy ra khi thực hiện thao tác không hợp lệ trên kiểu dữ liệu, ví dụ '2' + 2?",
+      "opts": ["ValueError", "TypeError", "SyntaxError", "NameError"],
+      "ans": 1
+    }
+  ],
+  "coding_tasks": [
+    {
+      "q": "Định nghĩa lớp 'Animal' với phương thức __init__ nhận tham số self và name",
+      "r": "class\\s+Animal\\s*:\\s*[\\s\\S]*def\\s+__init__\\s*\\(\\s*self\\s*,\\s*name\\s*\\)",
+      "h": "class Animal:\n    def __init__(self, name):",
+      "w": "Dùng từ khóa class, đặt tên lớp, rồi định nghĩa phương thức __init__ với self và name."
+    },
+    {
+      "q": "Gọi phương thức __init__ của lớp cha từ lớp con dùng super()",
+      "r": "super\\s*\\(\\s*\\)\\s*\\.\\s*__init__\\s*\\(",
+      "h": "super().__init__(...)",
+      "w": "Dùng super().__init__() để kế thừa và gọi khởi tạo từ lớp cha."
+    },
+    {
+      "q": "Bắt ngoại lệ ZeroDivisionError khi thực hiện phép chia cho 0",
+      "r": "except\\s+ZeroDivisionError",
+      "h": "except ZeroDivisionError:",
+      "w": "Dùng cú pháp except <TênNgoạiLệ>: để bắt ngoại lệ cụ thể."
+    },
+    {
+      "q": "Tạo list comprehension lấy bình phương các số chẵn từ 0 đến 9",
+      "r": "\\[\\s*x\\s*\\*\\*\\s*2\\s+for\\s+x\\s+in\\s+range\\s*\\(\\s*10\\s*\\)\\s+if\\s+x\\s*%\\s*2\\s*==\\s*0\\s*\\]",
+      "h": "[x**2 for x in range(10) if x % 2 == 0]",
+      "w": "Kết hợp bình phương x**2 và điều kiện lọc chẵn x % 2 == 0 trong list comprehension."
+    },
+    {
+      "q": "Dùng map và lambda để nhân đôi mọi phần tử trong danh sách nums",
+      "r": "map\\s*\\(\\s*lambda\\s+x\\s*:\\s*x\\s*\\*\\s*2\\s*,\\s*nums\\s*\\)",
+      "h": "map(lambda x: x * 2, nums)",
+      "w": "Dùng map kết hợp lambda x: x * 2 để biến đổi từng phần tử trong nums."
+    },
+    {
+      "q": "Dùng filter và lambda để giữ lại các số dương trong danh sách nums",
+      "r": "filter\\s*\\(\\s*lambda\\s+x\\s*:\\s*x\\s*>\\s*0\\s*,\\s*nums\\s*\\)",
+      "h": "filter(lambda x: x > 0, nums)",
+      "w": "Dùng filter kết hợp lambda x: x > 0 để lọc chỉ giữ số dương."
+    },
+    {
+      "q": "Mở file 'output.txt' ở chế độ ghi bằng cú pháp 'with open'",
+      "r": "with\\s+open\\s*\\(\\s*['\"]output\\.txt['\"]\\s*,\\s*['\"]w['\"]\\s*\\)\\s+as\\s+\\w+\\s*:",
+      "h": "with open('output.txt', 'w') as f:",
+      "w": "Dùng with open(tên_file, chế_độ) as biến: để quản lý file an toàn."
+    },
+    {
+      "q": "Tạo dict comprehension ánh xạ mỗi ký tự trong chuỗi 'abc' tới vị trí index của nó",
+      "r": "\\{\\s*v\\s*:\\s*i\\s+for\\s+i\\s*,\\s*v\\s+in\\s+enumerate\\s*\\(\\s*['\"]abc['\"]\\s*\\)\\s*\\}",
+      "h": "{v: i for i, v in enumerate('abc')}",
+      "w": "Dùng enumerate để lấy cả index và giá trị, rồi xây dict comprehension."
+    },
+    {
+      "q": "Định nghĩa hàm lambda tính tổng hai số a và b",
+      "r": "lambda\\s+a\\s*,\\s*b\\s*:\\s*a\\s*\\+\\s*b",
+      "h": "lambda a, b: a + b",
+      "w": "Cú pháp lambda: lambda tham_số: biểu_thức_trả_về."
+    },
+    {
+      "q": "Bắt mọi ngoại lệ bằng cú pháp except Exception as e và in ra thông báo lỗi",
+      "r": "except\\s+Exception\\s+as\\s+\\w+",
+      "h": "except Exception as e:",
+      "w": "Dùng except Exception as e: để bắt tất cả các loại ngoại lệ và lưu vào biến e."
+    },
+    {
+      "q": "Định nghĩa generator function trả về lần lượt các phần tử trong list bằng yield",
+      "r": "\\byield\\b",
+      "h": "yield phan_tu",
+      "w": "Generator dùng từ khóa yield thay vì return để trả về từng giá trị một."
+    },
+    {
+      "q": "Kiểm tra xem đối tượng obj có phải là thể hiện của lớp MyClass không",
+      "r": "isinstance\\s*\\(\\s*obj\\s*,\\s*MyClass\\s*\\)",
+      "h": "isinstance(obj, MyClass)",
+      "w": "Dùng hàm isinstance(đối_tượng, lớp) để kiểm tra kiểu dữ liệu."
+    },
+    {
+      "q": "Sắp xếp danh sách students theo key là thuộc tính 'score' của mỗi đối tượng",
+      "r": "sorted\\s*\\(\\s*students\\s*,\\s*key\\s*=\\s*lambda\\s+\\w+\\s*:\\s*\\w+\\.score\\s*\\)",
+      "h": "sorted(students, key=lambda s: s.score)",
+      "w": "Dùng sorted kết hợp lambda để chỉ định tiêu chí sắp xếp."
+    },
+    {
+      "q": "Viết khối try-except-finally với thao tác chia n cho d",
+      "r": "try\\s*:\\s*[\\s\\S]*except[\\s\\S]*finally\\s*:",
+      "h": "try:\n    result = n / d\nexcept ZeroDivisionError:\n    ...\nfinally:\n    ...",
+      "w": "Cấu trúc đầy đủ: try -> except -> finally."
+    },
+    {
+      "q": "Tạo set comprehension gồm độ dài (len) của từng từ trong list words",
+      "r": "\\{\\s*len\\s*\\(\\s*\\w+\\s*\\)\\s+for\\s+\\w+\\s+in\\s+words\\s*\\}",
+      "h": "{len(w) for w in words}",
+      "w": "Set comprehension không chứa phần tử trùng — dùng ngoặc nhọn {} và biểu thức."
+    },
+    {
+      "q": "Gọi phương thức speak() trên đối tượng dog là thể hiện của lớp Dog",
+      "r": "dog\\.speak\\s*\\(\\s*\\)",
+      "h": "dog.speak()",
+      "w": "Truy cập phương thức của đối tượng qua dấu chấm rồi gọi với ngoặc đơn."
+    },
+    {
+      "q": "Ghi chuỗi 'Hello World' vào file thông qua đối tượng file f",
+      "r": "f\\.write\\s*\\(\\s*['\"]Hello World['\"]\\s*\\)",
+      "h": "f.write('Hello World')",
+      "w": "Dùng phương thức .write() của đối tượng file để ghi nội dung."
+    },
+    {
+      "q": "Dùng enumerate để lấy cả index và giá trị khi duyệt list fruits",
+      "r": "for\\s+\\w+\\s*,\\s*\\w+\\s+in\\s+enumerate\\s*\\(\\s*fruits\\s*\\)\\s*:",
+      "h": "for i, fruit in enumerate(fruits):",
+      "w": "Hàm enumerate() trả về từng cặp (index, giá_trị) khi duyệt danh sách."
+    },
+    {
+      "q": "Dùng zip để ghép 2 list names và scores thành các cặp tuple",
+      "r": "zip\\s*\\(\\s*names\\s*,\\s*scores\\s*\\)",
+      "h": "zip(names, scores)",
+      "w": "Hàm zip() ghép hai iterable song song thành các cặp (a, b)."
+    },
+    {
+      "q": "Chủ động phát sinh ngoại lệ ValueError với thông báo 'Giá trị không hợp lệ'",
+      "r": "raise\\s+ValueError\\s*\\(",
+      "h": "raise ValueError('Giá trị không hợp lệ')",
+      "w": "Dùng từ khóa raise để phát sinh ngoại lệ và kèm thông báo lỗi."
+    },
+    {
+      "q": "Tạo tuple kết quả từ việc giải nén (unpack) list [10, 20] vào hai biến a và b",
+      "r": "a\\s*,\\s*b\\s*=\\s*\\[\\s*10\\s*,\\s*20\\s*\\]",
+      "h": "a, b = [10, 20]",
+      "w": "Python cho phép giải nén (unpack) các phần tử trong iterable vào nhiều biến cùng lúc."
+    }
+  ]
 }
