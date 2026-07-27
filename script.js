@@ -826,31 +826,67 @@ function selectClub(clubId, el) {
     el.classList.add('active');
 }
 
-// === CẤU HÌNH HỆ THỐNG CHỐNG GIAN LẬN & ĐẾM NGƯỢC THỜI GIAN ===
+function validateNumberInput(el) {
+    if (!el) return;
+    let val = el.value.replace(/[^0-9]/g, '');
+    if (val.length > 2) val = val.slice(0, 2);
+    if (val !== '') {
+        let num = parseInt(val, 10);
+        if (num > 99) num = 99;
+        val = num.toString();
+    }
+    el.value = val;
+}
+
+// === CẤU HÌNH HỆ THỐNG CHỐNG GIAN LẬN & ĐẾM NGƯỜI DÙNG ===
 let questionTimerInterval = null;
 let timeLeft = 30;
 let isQuestionAnswered = false;
 let antiCheatSetupDone = false;
 let tabSwitchPenalized = false;
 
+let focusPollInterval = null;
+
 function setupAntiCheat() {
     if (antiCheatSetupDone) return;
     antiCheatSetupDone = true;
 
-    // 1. Phát hiện chuyển Tab & rời Cửa sổ
+    // 1. Polling kiểm tra Focus liên tục (350ms)
+    // Giúp bắt triệt để khi chia màn hình và click chuột sang ứng dụng/tab bên cạnh, hoặc mở Snipping Tool (Win+Shift+S)
+    if (!focusPollInterval) {
+        focusPollInterval = setInterval(() => {
+            if (gameStarted && !shooting && !isQuestionAnswered && currentQuestion < 10 && lives > 0) {
+                if (!document.hasFocus() || document.visibilityState === 'hidden') {
+                    triggerTabSwitchPenalty("Nhấp chuột ra ngoài cửa sổ game / sang tab ứng dụng khác (chia màn hình / Snipping Tool)");
+                }
+            }
+        }, 350);
+    }
+
+    // 2. Phát hiện chuyển Tab trình duyệt
     document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'hidden') {
+        if (document.visibilityState === 'hidden' && gameStarted && !shooting && !isQuestionAnswered && currentQuestion < 10 && lives > 0) {
             triggerTabSwitchPenalty("Chuyển tab trình duyệt");
         }
     });
 
+    // 4. Phát hiện mất Focus cửa sổ (Window Blur)
     window.addEventListener('blur', () => {
-        if (document.visibilityState === 'hidden') {
-            triggerTabSwitchPenalty("Rời khỏi cửa sổ game");
+        if (gameStarted && !shooting && !isQuestionAnswered && currentQuestion < 10 && lives > 0) {
+            triggerTabSwitchPenalty("Click ra ngoài cửa sổ game (chia màn hình / Snipping Tool / phần mềm khác)");
         }
     });
 
-    // 2. Chặn Chuột phải (Context menu)
+    // 5. Phát hiện Thu nhỏ / Chia màn hình theo kích thước khung hình (Resize Event)
+    window.addEventListener('resize', () => {
+        if (gameStarted && !shooting && !isQuestionAnswered && currentQuestion < 10 && lives > 0) {
+            if (window.innerWidth < 700) {
+                triggerTabSwitchPenalty("Thu nhỏ / Chia màn hình cửa sổ game (< 700px)");
+            }
+        }
+    });
+
+    // 6. Chặn Chuột phải (Context menu)
     document.addEventListener('contextmenu', (e) => {
         if (gameStarted && !shooting) {
             e.preventDefault();
@@ -858,20 +894,29 @@ function setupAntiCheat() {
         }
     });
 
-    // 3. Chặn Copy / Cut
+    // 7. Chặn Copy / Cut
     document.addEventListener('copy', handleCopyCut);
     document.addEventListener('cut', handleCopyCut);
 
-    // 4. Chặn Phím tắt (Ctrl+C, Ctrl+V, Ctrl+U, F12, etc.)
+    // 8. Chặn Phím tắt & Bắt Phím Chụp màn hình (PrintScreen / Win+Shift+S / Cmd+Shift+4)
     document.addEventListener('keydown', handleKeyCombination);
+    document.addEventListener('keyup', handleKeyUpAntiCheat);
 
-    // 5. Chặn Dán (Paste) vào ô nhập code
+    // 9. Chặn Dán (Paste) vào ô nhập code
     const answerInput = document.getElementById('answer');
     if (answerInput) {
         answerInput.addEventListener('paste', (e) => {
             e.preventDefault();
             showAntiCheatNotice("⚠️ CHỐNG GIAN LẬN: Không cho dán (paste)! Vui lòng tự gõ câu trả lời.");
         });
+    }
+}
+
+function handleKeyUpAntiCheat(e) {
+    if (!gameStarted || shooting || isQuestionAnswered) return;
+    const isPrintScreen = e.key === 'PrintScreen' || e.code === 'PrintScreen';
+    if (isPrintScreen) {
+        triggerTabSwitchPenalty("Sử dụng phím chụp màn hình (PrintScreen)");
     }
 }
 
@@ -883,10 +928,20 @@ function handleCopyCut(e) {
 }
 
 function handleKeyCombination(e) {
-    if (!gameStarted) return;
+    if (!gameStarted || shooting || isQuestionAnswered) return;
     const isCtrl = e.ctrlKey || e.metaKey;
+    const isMeta = e.key === 'Meta' || e.key === 'OS';
     const key = e.key.toLowerCase();
+    const isPrintScreen = e.key === 'PrintScreen' || e.code === 'PrintScreen';
 
+    // Bắt phím PrintScreen hoặc Win+Shift+S (Snipping Tool)
+    if (isPrintScreen || (isMeta && e.shiftKey && key === 's') || (e.shiftKey && key === 's' && isCtrl)) {
+        e.preventDefault();
+        triggerTabSwitchPenalty("Sử dụng công cụ chụp màn hình (Win + Shift + S / PrintScreen)");
+        return;
+    }
+
+    // Chặn Ctrl+C, Ctrl+V, Ctrl+U, Ctrl+Shift+I, F12
     if (e.key === 'F12' || (isCtrl && (key === 'c' || key === 'v' || key === 'u' || key === 's')) || (isCtrl && e.shiftKey && (key === 'i' || key === 'c' || key === 'j'))) {
         e.preventDefault();
         showAntiCheatNotice("⚠️ CHỐNG GIAN LẬN: Thao tác phím tắt bị vô hiệu hóa!");
@@ -954,9 +1009,27 @@ function triggerTabSwitchPenalty(reason) {
 
     const isDead = handleLifeLoss();
 
+    const q = activeQuestions[currentQuestion];
+    let correctSolutionHtml = '';
+    if (q) {
+        if (q.type === 'mcq') {
+            correctSolutionHtml = `<div style="background: #e8f8f5; border-left: 4px solid #2ecc71; padding: 10px 14px; margin: 10px 0; text-align: left; border-radius: 8px; font-size: 0.95rem; color: #27ae60;">
+                <b>✅ Đáp án đúng của câu này l\u00e0:</b> <span style="font-weight: 700;">${q.opts[q.ans]}</span>
+            </div>`;
+        } else {
+            correctSolutionHtml = `<div style="background: #e8f8f5; border-left: 4px solid #2ecc71; padding: 10px 14px; margin: 10px 0; text-align: left; border-radius: 8px; font-size: 0.95rem; color: #2c3e50;">
+                <b>\uD83D\uDCA1 G\u1ee3i \u00fd m\u1eabu code \u0111\u00fang:</b> <code style="background: #fff; padding: 3px 8px; border-radius: 4px; color: #c0392b; font-weight: 700; font-family: monospace;">${q.h}</code>
+            </div>`;
+        }
+    }
+
     showPenaltyModal(
-        "⚠️ PHÁT HIỆN GIAN LẬN!",
-        `Hệ thống phát hiện: <b>${reason}</b>.<br>Bạn bị <b>trừ 1 tim ❤️</b> và mất lượt sút này!`,
+        "⚠️ TH\u00d4NG B\u00c1O B\u1eca TR\u1eea TIM (VI PH\u1EA0M GIAN L\u1EACN)",
+        `<b>❌ L\u1ed7i vi ph\u1EA1m:</b> ${reason}.<br>B\u1EA1n b\u1ECB <b>tr\u1EEB 1 tim ❤️</b> v\u00e0 m\u1EA5t l\u01B0\u1EE3t s\u00fat n\u00e0y!
+        <div style="background: #fef9e7; border-left: 4px solid #f39c12; padding: 10px 14px; margin: 10px 0; text-align: left; border-radius: 8px; font-size: 0.9rem; color: #7f8c8d;">
+            <b>👉 Thao t\u00e1c \u0111\u00fang:</b> M\u1edf to\u00e0n m\u00e0n h\u00ecnh game, gi\u1eef con tr\u1ecf chu\u1ed9t t\u1EADp trung trong c\u1eeda s\u1ed5 v\u00e0 kh\u00f4ng nh\u1ea5p chu\u1ed9t/chuy\u1ec3n tab sang \u1ee9ng d\u1ee5ng kh\u00e1c hay d\u00f9ng ph\u00edm ch\u1ee5p m\u00e0n h\u00ecnh (Win+Shift+S).
+        </div>
+        ${correctSolutionHtml}`,
         () => {
             if (!isDead) {
                 currentQuestion++;
@@ -1045,15 +1118,26 @@ function handleTimeOut() {
 }
 
 function startGame() {
-    const nameInput = document.getElementById('playerNameInput').value.trim();
-    const numInput = document.getElementById('playerNumberInput').value.trim();
-    const gkNameInput = document.getElementById('gkNameInput').value.trim();
-    const gkNumInput = document.getElementById('gkNumberInput').value.trim();
+    let nameInput = document.getElementById('playerNameInput').value.trim();
+    let numStr = document.getElementById('playerNumberInput').value.trim();
+    let gkNameInput = document.getElementById('gkNameInput').value.trim();
+    let gkNumStr = document.getElementById('gkNumberInput').value.trim();
 
-    if (!nameInput || !numInput || !gkNameInput || !gkNumInput) {
+    if (!nameInput || !numStr || !gkNameInput || !gkNumStr) {
         document.getElementById('mixiNotice').style.display = 'flex';
         return;
     }
+
+    let numInput = parseInt(numStr, 10);
+    let gkNumInput = parseInt(gkNumStr, 10);
+
+    if (isNaN(numInput) || numInput < 1 || numInput > 99 || isNaN(gkNumInput) || gkNumInput < 1 || gkNumInput > 99) {
+        alert("⚠️ Số áo người chơi và thủ môn phải nằm trong khoảng từ 1 đến 99!");
+        return;
+    }
+
+    if (nameInput.length > 15) nameInput = nameInput.substring(0, 15);
+    if (gkNameInput.length > 15) gkNameInput = gkNameInput.substring(0, 15);
 
     const charConfig = characterConfigs[characterIndex];
     const club = clubData[selectedClubId];
@@ -1207,9 +1291,16 @@ function checkMCQ(idx) {
         stopQuestionTimer();
         document.getElementById('optsContainer').style.display = 'none';
         const isDead = handleLifeLoss();
+
         showPenaltyModal(
-            "❌ ĐÁP ÁN CHƯA CHÍNH XÁC!",
-            `Rất tiếc! Bạn đã chọn sai đáp án và bị <b>trừ 1 tim ❤️</b>.<br>Hãy suy nghĩ kỹ hơn ở các câu tiếp theo!`,
+            "❌ THÔNG BÁO BỊ TRỪ TIM (ĐÁP ÁN SAI)",
+            `<b>❌ Lỗi sai:</b> Bạn đã chọn phương án <i>"${q.opts[idx]}"</i> và bị <b>trừ 1 tim ❤️</b>.
+            <div style="background: #e8f8f5; border-left: 4px solid #2ecc71; padding: 10px 14px; margin: 12px 0; text-align: left; border-radius: 8px; font-size: 0.95rem; color: #27ae60;">
+                <b>✅ Đáp án chính xác là:</b> <span style="font-weight: 800;">${q.opts[q.ans]}</span>
+            </div>
+            <div style="background: #fef9e7; border-left: 4px solid #f39c12; padding: 10px 14px; margin: 10px 0; text-align: left; border-radius: 8px; font-size: 0.9rem; color: #7f8c8d;">
+                <b>👉 Thao tác đúng:</b> Đọc kỹ từng tùy chọn và phân tích kiến thức trước khi bấm chọn.
+            </div>`,
             () => {
                 if (!isDead) {
                     currentQuestion++;
@@ -1245,10 +1336,17 @@ function submitAnswer() {
         document.getElementById('answer').style.display = 'none';
         document.getElementById('submitBtn').style.display = 'none';
         const isDead = handleLifeLoss();
-        const hintText = q.h ? `<br><small style="color: #7f8c8d; font-size: 0.95rem;">Gợi ý: ${q.h}</small>` : '';
+
         showPenaltyModal(
-            "❌ MÃ CODE CHƯA ĐÚNG!",
-            `Mã code của bạn chưa chính xác và bị <b>trừ 1 tim ❤️</b>.${hintText}`,
+            "❌ THÔNG BÁO BỊ TRỪ TIM (MÃ CODE SAI)",
+            `<b>❌ Lỗi sai:</b> Mã cú pháp bạn vừa nhập chưa đúng chuẩn Python và bị <b>trừ 1 tim ❤️</b>.
+            <div style="background: #e8f8f5; border-left: 4px solid #2ecc71; padding: 10px 14px; margin: 12px 0; text-align: left; border-radius: 8px; font-size: 0.95rem; color: #2c3e50;">
+                <b>💡 Gợi ý mẫu code đúng:</b> <code style="background: #fff; padding: 3px 8px; border-radius: 4px; color: #c0392b; font-weight: 700; font-family: monospace;">${q.h}</code>
+                ${q.w ? `<br><small style="color: #7f8c8d; display: block; margin-top: 4px;">Giải thích: ${q.w}</small>` : ''}
+            </div>
+            <div style="background: #fef9e7; border-left: 4px solid #f39c12; padding: 10px 14px; margin: 10px 0; text-align: left; border-radius: 8px; font-size: 0.9rem; color: #7f8c8d;">
+                <b>👉 Thao tác đúng:</b> Chú ý tên biến, khoảng trắng và cú pháp đúng theo gợi ý trước khi bấm Trả lời.
+            </div>`,
             () => {
                 if (!isDead) {
                     currentQuestion++;
