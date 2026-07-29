@@ -1515,14 +1515,14 @@ function stopAllLifelineAudio() {
 
 function confirmCall() {
     const q = activeQuestions[currentQuestion];
-    let resultText = (q.type === 'mcq') ? q.opts[q.ans] : q.h;
+    let resultText = (q.type === 'mcq') ? q.opts[q.ans] : (q.w || q.h || 'Gợi ý đáp án');
 
     helps['call'] = true;
     document.getElementById('callBtn').classList.add('used');
 
     document.getElementById('callSelectionBox').style.display = 'none';
     document.getElementById('startCallBtn').style.display = 'none';
-    document.getElementById('closeCallBtn').style.display = 'inline-block';
+    document.getElementById('closeCallBtn').style.display = 'none';
 
     const person = document.querySelector('input[name="callPerson"]:checked')?.value || 'mixi';
     const callImg = document.getElementById('callImg');
@@ -1538,6 +1538,7 @@ function confirmCall() {
             callMsg.innerText = "¡Hola! GOAT Lionel Messi đang trả lời!";
             callResult.innerHTML = `GOAT Messi tư vấn: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Muchachos! GOAT tin tưởng tuyệt đối vào đáp án này!"</span>`;
             player.thought = "¡Muchas gracias GOAT Messi! Vamos Argentina!";
+            document.getElementById('closeCallBtn').style.display = 'inline-block';
             render();
         }, 1500);
     } else {
@@ -1549,6 +1550,7 @@ function confirmCall() {
             callMsg.innerText = "À, Anh Độ Mixi đây rồi!";
             callResult.innerHTML = `Anh bảo đáp án là: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Em đừng có mà chối!"</span>`;
             player.thought = "Nà ná na na. Cảm ơn Anh Độ Mixi!";
+            document.getElementById('closeCallBtn').style.display = 'inline-block';
             render();
         }, 1500);
     }
@@ -1556,14 +1558,14 @@ function confirmCall() {
 
 function confirmWise() {
     const q = activeQuestions[currentQuestion];
-    let resultText = (q.type === 'mcq') ? q.opts[q.ans] : q.w;
+    let resultText = (q.type === 'mcq') ? q.opts[q.ans] : (q.w || q.h || 'Gợi ý đáp án');
 
     helps['wise'] = true;
     document.getElementById('wiseBtn').classList.add('used');
 
     document.getElementById('wiseSelectionBox').style.display = 'none';
     document.getElementById('startWiseBtn').style.display = 'none';
-    document.getElementById('closeWiseBtn').style.display = 'inline-block';
+    document.getElementById('closeWiseBtn').style.display = 'none';
 
     const person = document.querySelector('input[name="wisePerson"]:checked')?.value || 'TAN';
     const wiseImg = document.getElementById('wiseImg');
@@ -1581,6 +1583,7 @@ function confirmWise() {
             wiseMsg.innerText = "Chân gỗ Lukaku (Lakaka) phán truyền:";
             wiseResult.innerHTML = `Lukaku gợi ý: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Tốt nhất là sút trúng người thủ môn như Lukaku nhé!"</span>`;
             player.thought = "Cảm ơn chiến thần Lakaka Lukaku!";
+            document.getElementById('closeWiseBtn').style.display = 'inline-block';
             render();
         }, 1500);
     } else if (person === 'cr7') {
@@ -1593,6 +1596,7 @@ function confirmWise() {
             wiseMsg.innerText = "SIUUU! CR7 phán truyền tuyệt đỉnh:";
             wiseResult.innerHTML = `Cristiano Ronaldo tư vấn: <div class="highlight-code">${resultText}</div><span class="extra-msg">"SIUUU! Sút chính xác như cú dứt điểm của CR7!"</span>`;
             player.thought = "SIUUU! Cảm ơn anh Bảy CR7!";
+            document.getElementById('closeWiseBtn').style.display = 'inline-block';
             render();
         }, 1500);
     } else {
@@ -1605,6 +1609,7 @@ function confirmWise() {
             wiseMsg.innerText = "Lời khuyên từ nhà thông thái (người Ý):";
             wiseResult.innerHTML = `Người Ý nói: <div class="highlight-code">${resultText}</div><span class="extra-msg">"Tin chuẩn em nhé!"</span>`;
             player.thought = "Cảm ơn bác Trông Anh Ngược!";
+            document.getElementById('closeWiseBtn').style.display = 'inline-block';
             render();
         }, 1500);
     }
