@@ -1117,6 +1117,60 @@ function handleTimeOut() {
     );
 }
 
+function removeAccents(str) {
+    return str.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+}
+
+function containsProfanity(text) {
+    if (!text) return false;
+    
+    // Chuẩn hóa chuỗi: chuyển chữ thường, bỏ dấu tiếng Việt, thay leetspeak cơ bản
+    let raw = text.toLowerCase();
+    let normalized = removeAccents(raw);
+    
+    // Thay thế leetspeak phổ biến: @ -> a, 0 -> o, 1/! -> i, 3 -> e, 5 -> s, 7 -> t
+    let leetNormalized = normalized
+        .replace(/@/g, 'a')
+        .replace(/0/g, 'o')
+        .replace(/[1!]/g, 'i')
+        .replace(/3/g, 'e')
+        .replace(/5/g, 's')
+        .replace(/7/g, 't');
+    
+    // Loại bỏ ký tự đặc biệt & khoảng trắng để kiểm tra từ lách
+    let stripped = leetNormalized.replace(/[^a-z0-9]/g, '');
+
+    // Danh sách từ cấm (Tiếng Anh & Tiếng Việt - bao gồm cả từ viết tắt và từ lách)
+    const badWords = [
+        // Tiếng Anh (Slurs & Vulgarity)
+        'nigga', 'nigger', 'niga', 'nigr', 'fuck', 'fuk', 'fck', 'bitch', 'btch', 'shit', 
+        'asshole', 'cunt', 'dick', 'pussy', 'bastard', 'slut', 'whore', 'retard', 'penis', 'vagina',
+        
+        // Tiếng Việt (Chửi bậy, tục tĩu, xúc phạm)
+        'dm', 'dmm', 'dcm', 'dkm', 'cl', 'clm', 'vcl', 'vl', 'vc', 'cc', 'cai l', 
+        'dit', 'djt', 'du', 'dume', 'duma', 'djtme', 'ditme', 'ditconme', 'dmcs',
+        'lon', 'lona', 'luz', 'cac', 'cai cac', 'buoi', 'cai buoi', 'cu', 'chim',
+        'bo may', 'con me', 'suc sinh', 'oc dog', 'oc doc', 'cho đe', 'cho de',
+        'do cho', 'dm', 'da m'
+    ];
+
+    // Check 1: Kiểm tra từ cấm theo từ nguyên bản & chuẩn hóa
+    for (let word of badWords) {
+        // Nếu là từ ngắn (2-3 ký tự như dm, cc, cl, vl) thì so sánh theo từ riêng biệt hoặc stripped match exact
+        if (word.length <= 3) {
+            let regex = new RegExp(`(?:^|[^a-z0-9])${word}(?:$|[^a-z0-9])`, 'i');
+            if (regex.test(normalized) || regex.test(leetNormalized)) return true;
+        } else {
+            // Từ dài hơn (>3 ký tự) kiểm tra chứa trong chuỗi
+            if (leetNormalized.includes(word) || stripped.includes(word)) return true;
+        }
+    }
+
+    return false;
+}
+
 function startGame() {
     let nameInput = document.getElementById('playerNameInput').value.trim();
     let numStr = document.getElementById('playerNumberInput').value.trim();
@@ -1125,6 +1179,12 @@ function startGame() {
 
     if (!nameInput || !numStr || !gkNameInput || !gkNumStr) {
         document.getElementById('mixiNotice').style.display = 'flex';
+        return;
+    }
+
+    // Kiểm tra tên vi phạm từ ngữ cấm / tiêu cực
+    if (containsProfanity(nameInput) || containsProfanity(gkNameInput)) {
+        alert("⚠️ Tên người chơi hoặc thủ môn chứa từ ngữ không phù hợp/tiêu cực. Vui lòng đổi tên khác lịch sự hơn!");
         return;
     }
 
